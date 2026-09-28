@@ -10,10 +10,10 @@
   --text-muted: #667085;
   --border-color: #E5EAF0;
   --cream-bg: #FFFDF8;
-  
+
   --shadow-subtle: 0 2px 8px rgba(0, 0, 0, 0.04);
   --shadow-hover: 0 10px 25px rgba(0, 0, 0, 0.08);
-  
+
   --font-en: 'Inter', sans-serif;
   --font-mr: 'Noto Sans Devanagari', sans-serif;
 }
@@ -51,7 +51,12 @@ ul {
 }
 
 /* Typography */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: var(--primary-navy);
   font-weight: 700;
   line-height: 1.3;
@@ -95,6 +100,7 @@ h1, h2, h3, h4, h5, h6 {
   background-color: var(--accent-gold);
   color: var(--dark-navy);
 }
+
 .btn-primary:hover {
   background-color: #d98f00;
   transform: translateY(-2px);
@@ -105,6 +111,7 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--bg-white);
   border-color: var(--bg-white);
 }
+
 .btn-outline:hover {
   background-color: rgba(255, 255, 255, 0.1);
   transform: translateY(-2px);
@@ -114,6 +121,7 @@ h1, h2, h3, h4, h5, h6 {
   background-color: var(--primary-navy);
   color: var(--bg-white);
 }
+
 .btn-navy:hover {
   background-color: var(--dark-navy);
 }
@@ -125,16 +133,20 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 0.875rem;
   padding: 0.5rem 0;
 }
+
 .utility-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.utility-left, .utility-right {
+
+.utility-left,
+.utility-right {
   display: flex;
   align-items: center;
   gap: 1.5rem;
 }
+
 .utility-item {
   display: flex;
   align-items: center;
@@ -143,10 +155,11 @@ h1, h2, h3, h4, h5, h6 {
 
 .lang-switcher-top {
   display: flex;
-  background: rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 20px;
   padding: 2px;
 }
+
 .lang-btn {
   background: transparent;
   border: none;
@@ -158,6 +171,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
   transition: 0.3s;
 }
+
 .lang-btn.active {
   background: var(--accent-gold);
   color: var(--dark-navy);
@@ -172,37 +186,44 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 50;
   padding: 0.5rem 0;
 }
+
 .header-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
 .logo-section {
   display: flex;
   align-items: center;
   gap: 1rem;
 }
+
 .school-logo {
   width: 60px;
   height: 60px;
   object-fit: contain;
 }
+
 .school-name {
   font-size: 1.125rem;
   font-weight: 700;
   color: var(--primary-navy);
   line-height: 1.2;
 }
+
 .school-tagline {
   font-size: 0.75rem;
   color: var(--text-muted);
   margin-top: 0.25rem;
 }
+
 .nav-links {
   display: flex;
   gap: 1.5rem;
   align-items: center;
 }
+
 .nav-link {
   font-size: 0.9375rem;
   font-weight: 500;
@@ -210,7 +231,9 @@ h1, h2, h3, h4, h5, h6 {
   transition: color 0.2s;
   padding: 0.5rem 0;
 }
-.nav-link:hover, .nav-link.active {
+
+.nav-link:hover,
+.nav-link.active {
   color: var(--accent-gold);
   border-bottom: 2px solid var(--accent-gold);
 }
@@ -219,6 +242,7 @@ h1, h2, h3, h4, h5, h6 {
 .section {
   padding: 5rem 0;
 }
+
 .section-title {
   font-size: 2.25rem;
   margin-bottom: 3rem;
@@ -230,23 +254,27 @@ h1, h2, h3, h4, h5, h6 {
   color: white;
   padding: 4rem 0 2rem;
 }
+
 .footer-grid {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
   gap: 3rem;
   margin-bottom: 3rem;
 }
+
 .footer h4 {
   color: var(--accent-gold);
   margin-bottom: 1.5rem;
   font-size: 1.25rem;
 }
+
 .footer-logo {
   display: flex;
   align-items: center;
   gap: 1rem;
   margin-bottom: 1rem;
 }
+
 .footer-logo img {
   width: 50px;
   height: 50px;
@@ -254,17 +282,20 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 50%;
   padding: 4px;
 }
+
 .footer-links li {
   margin-bottom: 0.75rem;
 }
+
 .footer-links a:hover {
   color: var(--accent-gold);
 }
+
 .footer-bottom {
-  border-top: 1px solid rgba(255,255,255,0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
   padding-top: 2rem;
   text-align: center;
-  color: rgba(255,255,255,0.6);
+  color: rgba(255, 255, 255, 0.6);
   font-size: 0.875rem;
 }
 
@@ -279,12 +310,15 @@ h1, h2, h3, h4, h5, h6 {
     flex-direction: column;
     gap: 0.5rem;
   }
+
   .hide-mobile {
     display: none !important;
   }
+
   .mobile-menu-btn {
     display: block;
   }
+
   .nav-links {
     display: none;
     position: absolute;
@@ -297,22 +331,27 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: var(--shadow-hover);
     border-top: 1px solid var(--border-color);
   }
+
   .nav-links.open {
     display: flex;
   }
+
   .search-icon {
     display: none;
   }
+
   .school-tagline {
     display: none;
   }
+
   .header-container {
     padding: 0.5rem;
   }
+
   .footer-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .hero h1 {
     font-size: 2rem !important;
   }
@@ -352,8 +391,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 /* Teacher Card */
@@ -418,3 +462,685 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--text-muted);
   margin-bottom: 0.5rem;
 }
+
+/* =============================================
+   Activities + Gallery Pages
+   ============================================= */
+
+.activities-page,
+.gallery-page {
+  background-color: var(--bg-color);
+  min-height: 100vh;
+}
+
+/* ─── Filters ─── */
+.activities-filters {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+  justify-content: center;
+}
+
+.filter-btn {
+  padding: 0.5rem 1.25rem;
+  border-radius: 20px;
+  border: 1px solid var(--border-color);
+  background: white;
+  color: var(--primary-navy);
+  font-weight: 500;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.filter-btn:hover {
+  border-color: var(--primary-navy);
+}
+
+.filter-btn.active {
+  background: var(--primary-navy);
+  color: white;
+  border-color: var(--primary-navy);
+}
+
+/* ─── Section helpers ─── */
+.activities-section {
+  margin-bottom: 3.5rem;
+}
+
+.section-title-m {
+  font-size: 1.75rem;
+  color: var(--primary-navy);
+  margin-bottom: 0.25rem;
+}
+
+.section-subtitle {
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--text-muted);
+  font-size: 1.125rem;
+}
+
+/* ─── Featured Layout ─── */
+.featured-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1.5rem;
+}
+
+.featured-main-card,
+.featured-small-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-subtle);
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+.featured-main-card:hover,
+.featured-small-card:hover,
+.recent-card:hover,
+.gallery-album-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
+.featured-img-wrapper {
+  width: 100%;
+  height: 320px;
+  position: relative;
+}
+
+.featured-small-img {
+  width: 100%;
+  height: 180px;
+  position: relative;
+}
+
+.featured-img-wrapper img,
+.featured-small-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.featured-card-body {
+  padding: 1.25rem 1.5rem;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.featured-card-body h3 {
+  font-size: 1.125rem;
+  margin: 0;
+}
+
+.featured-side {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* ─── Slideshow ─── */
+.slideshow-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.slideshow-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transform: scale(1.04);
+  transition: opacity 0.8s ease, transform 4.5s ease;
+  z-index: 0;
+}
+
+.slideshow-img.active {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 1;
+}
+
+/* Arrows */
+.slide-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  background: rgba(255,255,255,0.25);
+  border: none;
+  color: white;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s, background 0.2s;
+  backdrop-filter: blur(4px);
+}
+
+.slideshow-container:hover .slide-arrow {
+  opacity: 1;
+}
+
+.slide-arrow:hover {
+  background: rgba(255,255,255,0.5);
+}
+
+.slide-arrow-left {
+  left: 0.75rem;
+}
+
+.slide-arrow-right {
+  right: 0.75rem;
+}
+
+/* Dots */
+.slide-dots {
+  position: absolute;
+  bottom: 0.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  gap: 6px;
+  padding: 4px 10px;
+  background: rgba(0,0,0,0.35);
+  border-radius: 12px;
+  backdrop-filter: blur(4px);
+}
+
+.slide-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255,255,255,0.45);
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.slide-dot.active {
+  background: var(--accent-gold);
+  transform: scale(1.3);
+}
+
+.slide-dot:hover:not(.active) {
+  background: rgba(255,255,255,0.8);
+}
+
+/* ─── Shared Badges & Pills ─── */
+.category-pill {
+  display: inline-block;
+  background: var(--accent-gold);
+  color: var(--dark-navy);
+  padding: 0.2rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  width: fit-content;
+}
+
+.category-badge {
+  display: inline-block;
+  background: var(--accent-gold);
+  color: var(--dark-navy);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.photo-count-label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.photo-count {
+  font-size: 0.75rem;
+  opacity: 0.8;
+}
+
+/* ─── Buttons ─── */
+.view-more-navy {
+  background: none;
+  border: none;
+  color: var(--primary-navy);
+  font-weight: 600;
+  margin-top: 0.5rem;
+  padding: 0;
+  cursor: pointer;
+  font-size: 0.875rem;
+}
+
+.view-more-text {
+  background: none;
+  border: none;
+  color: var(--primary-navy);
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-top: 0.5rem;
+  cursor: pointer;
+  padding: 0;
+}
+
+/* ─── Recent Grid ─── */
+.recent-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.recent-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-subtle);
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card-img-wrapper {
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s;
+}
+
+.recent-card:hover .card-img-wrapper img {
+  transform: scale(1.03);
+}
+
+.absolute-badge {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  background: white;
+  padding: 0.2rem 0.6rem;
+  border-radius: 10px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--primary-navy);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.card-content-m {
+  padding: 1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.card-content-m h4 {
+  font-size: 1rem;
+  margin: 0;
+}
+
+/* ─── Masonry Gallery ─── */
+.masonry-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 220px;
+  gap: 1rem;
+}
+
+.masonry-item {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.masonry-item.item-0 {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.masonry-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s;
+}
+
+.masonry-item:hover img {
+  transform: scale(1.05);
+}
+
+.masonry-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.5rem 1rem 1rem;
+  background: linear-gradient(to top, rgba(13,43,91,0.85), transparent);
+  color: white;
+}
+
+.masonry-overlay h4 {
+  color: white;
+  margin: 0.25rem 0;
+  font-size: 0.95rem;
+}
+
+/* =============================================
+   Gallery Page — Album Cards
+   ============================================= */
+
+.gallery-album-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.gallery-album-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-subtle);
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.album-cover {
+  height: 220px;
+  position: relative;
+  overflow: hidden;
+}
+
+.album-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s;
+}
+
+.gallery-album-card:hover .album-cover img {
+  transform: scale(1.03);
+}
+
+.album-photo-count {
+  position: absolute;
+  bottom: 0.75rem;
+  right: 0.75rem;
+  background: rgba(0,0,0,0.65);
+  color: white;
+  padding: 0.25rem 0.6rem;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.album-info {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.album-info h3 {
+  font-size: 1.05rem;
+  margin: 0;
+}
+
+/* ─── Gallery Back Button ─── */
+.gallery-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: none;
+  border: 1px solid var(--border-color);
+  color: var(--primary-navy);
+  padding: 0.5rem 1.25rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.gallery-back-btn:hover {
+  background: var(--primary-navy);
+  color: white;
+  border-color: var(--primary-navy);
+}
+
+/* ─── Gallery Photo Grid (inside event) ─── */
+.gallery-photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.gallery-photo-item {
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  aspect-ratio: 4 / 3;
+  position: relative;
+}
+
+.gallery-photo-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s;
+}
+
+.gallery-photo-item:hover img {
+  transform: scale(1.04);
+}
+
+/* =============================================
+   Lightbox
+   ============================================= */
+
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.92);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+}
+
+.lightbox-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  z-index: 1010;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+.lightbox-close:hover {
+  opacity: 1;
+}
+
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  z-index: 1010;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.lightbox-nav:hover {
+  opacity: 1;
+}
+
+.nav-prev {
+  left: 1.5rem;
+}
+
+.nav-next {
+  right: 1.5rem;
+}
+
+.lightbox-image-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 5rem;
+}
+
+.lightbox-image-container img {
+  max-width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  border-radius: 4px;
+}
+
+.lightbox-footer {
+  padding: 1.25rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent);
+}
+
+.lightbox-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.lightbox-counter {
+  font-variant-numeric: tabular-nums;
+  opacity: 0.8;
+  font-size: 0.875rem;
+}
+
+/* =============================================
+   Responsive — Activities + Gallery
+   ============================================= */
+
+@media (max-width: 1024px) {
+  .featured-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .featured-side {
+    flex-direction: row;
+  }
+
+  .featured-side > * {
+    flex: 1;
+  }
+
+  .recent-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .masonry-gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .masonry-item.item-0 {
+    grid-column: span 2;
+  }
+
+  .gallery-album-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .gallery-photo-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2rem !important;
+  }
+
+  .featured-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .featured-side {
+    flex-direction: column;
+  }
+
+  .featured-img-wrapper {
+    height: 220px;
+  }
+
+  .recent-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .masonry-gallery {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 250px;
+  }
+
+  .masonry-item.item-0 {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+
+  .gallery-album-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-photo-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .lightbox-nav {
+    display: none;
+  }
+
+  .lightbox-image-container {
+    padding: 1rem;
+  }
+}
+
