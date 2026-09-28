@@ -13,9 +13,9 @@ const Contact = () => {
           <br/>
           <p><strong>Address:</strong> Bhutkarwadi, Taluka Ahilyanagar, District Ahilyanagar</p>
           <br/>
-          <p><strong>Phone:</strong> +91 XXXXX XXXXX</p>
+          <p><strong>Phone:</strong> 8793617304</p>
           <br/>
-          <p><strong>Email:</strong> info@bhutkarwadischool.edu</p>
+          <p><strong>Email:</strong> mnpschoolbhutkarwadi03@gmail.com</p>
           <br/>
           <p><strong>Office Timings:</strong> Mon - Sat: 9:00 AM - 5:00 PM</p>
         </div>

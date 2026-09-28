@@ -23,14 +23,7 @@ const Home = () => {
           padding: '4rem 0'
         }}
       >
-        <div 
-          style={{
-            position: 'absolute',
-            top: 0, left: 0, right: 0, bottom: 0,
-            background: 'linear-gradient(90deg, var(--dark-navy) 0%, rgba(13, 43, 91, 0.9) 40%, rgba(13, 43, 91, 0.4) 100%)',
-            zIndex: 1
-          }}
-        ></div>
+
         
         <div className="container" style={{ position: 'relative', zIndex: 2, width: '100%' }}>
           <div style={{ maxWidth: '650px' }}>
@@ -142,37 +135,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Statistics */}
-      <section style={{ padding: '0 0 5rem', backgroundColor: 'var(--bg-white)' }}>
-        <div className="container">
-          <div style={{ 
-            display: 'grid', 
-            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', 
-            gap: '1.5rem' 
-          }}>
-            {[
-              { number: '350+', label: 'विद्यार्थी', color: '#EBF3FF', iconColor: '#173F82' },
-              { number: '18', label: 'शिक्षक', color: '#FFF4E5', iconColor: '#F2A000' },
-              { number: '12', label: 'वर्ग', color: '#EAF7ED', iconColor: '#2E7D32' },
-              { number: '25+', label: 'वर्षांचा अनुभव', color: '#FCECEC', iconColor: '#C62828' }
-            ].map((stat, idx) => (
-              <div key={idx} style={{ 
-                backgroundColor: stat.color, 
-                padding: '2rem', 
-                borderRadius: '12px', 
-                textAlign: 'center',
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                gap: '0.5rem'
-              }}>
-                <div style={{ fontSize: '2.5rem', fontWeight: 800, color: stat.iconColor, lineHeight: 1 }}>{stat.number}</div>
-                <div style={{ fontSize: '1rem', fontWeight: 600, color: 'var(--text-main)' }}>{stat.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+
 
     </div>
   );

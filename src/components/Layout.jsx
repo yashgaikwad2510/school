@@ -26,12 +26,12 @@ const Layout = () => {
       <div className="utility-bar">
         <div className="container utility-container">
           <div className="utility-left">
-            <span style={{fontWeight: 600}}>पुणे महानगरपालिका | शिक्षण विभाग</span>
+            <span style={{fontWeight: 600}}>अहिल्यानगर महानगरपालिका | शिक्षण विभाग</span>
           </div>
           <div className="utility-right">
-            <span className="utility-item hide-mobile"><MapPin size={14} /> भुतकरवाडी, पुणे</span>
-            <span className="utility-item hide-mobile"><Phone size={14} /> 020-XXXXXXX</span>
-            <span className="utility-item hide-mobile"><Mail size={14} /> school@pmc.gov.in</span>
+            <span className="utility-item hide-mobile"><MapPin size={14} /> भुतकरवाडी, अहिल्यानगर</span>
+            <span className="utility-item hide-mobile"><Phone size={14} /> 8793617304</span>
+            <span className="utility-item hide-mobile"><Mail size={14} /> mnpschoolbhutkarwadi03@gmail.com</span>
             <div className="lang-switcher-top">
               <button 
                 onClick={() => toggleLanguage('mr')} 
@@ -74,7 +74,7 @@ const Layout = () => {
             <NavLink to="/about-school" onClick={() => setMobileMenuOpen(false)} className={({isActive}) => isActive ? "nav-link active" : "nav-link"}>{t.nav.about}</NavLink>
             <NavLink to="/teachers" onClick={() => setMobileMenuOpen(false)} className={({isActive}) => isActive ? "nav-link active" : "nav-link"}>{t.nav.teachers}</NavLink>
             <NavLink to="/students" onClick={() => setMobileMenuOpen(false)} className={({isActive}) => isActive ? "nav-link active" : "nav-link"}>{t.nav.students}</NavLink>
-            <NavLink to="/facilities" onClick={() => setMobileMenuOpen(false)} className={({isActive}) => isActive ? "nav-link active" : "nav-link"}>{t.nav.facilities}</NavLink>
+
             <NavLink to="/activities" onClick={() => setMobileMenuOpen(false)} className={({isActive}) => isActive ? "nav-link active" : "nav-link"}>{t.nav.activities}</NavLink>
             <NavLink to="/gallery" onClick={() => setMobileMenuOpen(false)} className={({isActive}) => isActive ? "nav-link active" : "nav-link"}>{t.nav.gallery}</NavLink>
             <NavLink to="/contact" onClick={() => setMobileMenuOpen(false)} className={({isActive}) => isActive ? "nav-link active" : "nav-link"}>{t.nav.contact}</NavLink>
@@ -95,7 +95,7 @@ const Layout = () => {
                 <img src="/logo.png" alt="School Logo" onError={(e) => { e.target.style.display='none' }} />
                 <div>
                   <h3 style={{color: 'white', fontSize: '1.1rem'}}>{language === 'mr' ? 'श्री छत्रपती शिवाजी महाराज महानगरपालिका प्राथमिक शाळा' : 'Shri Chhatrapati Shivaji Maharaj Mahanagarpalika Primary School'}</h3>
-                  <p style={{fontSize: '0.875rem', color: 'rgba(255,255,255,0.7)', marginTop: '4px'}}>पुणे महानगरपालिका</p>
+                  <p style={{fontSize: '0.875rem', color: 'rgba(255,255,255,0.7)', marginTop: '4px'}}>अहिल्यानगर महानगरपालिका</p>
                 </div>
               </div>
               <p style={{color: 'rgba(255,255,255,0.7)', fontSize: '0.9rem', marginTop: '1rem'}}>
@@ -108,7 +108,7 @@ const Layout = () => {
               <ul className="footer-links">
                 <li><Link to="/">{t.nav.home}</Link></li>
                 <li><Link to="/about-school">{t.nav.about}</Link></li>
-                <li><Link to="/facilities">{t.nav.facilities}</Link></li>
+
                 <li><Link to="/contact">{t.nav.contact}</Link></li>
               </ul>
             </div>
@@ -116,9 +116,9 @@ const Layout = () => {
             <div>
               <h4>{language === 'mr' ? 'संपर्क माहिती' : 'Contact Info'}</h4>
               <ul className="footer-links" style={{ color: 'rgba(255,255,255,0.8)' }}>
-                <li style={{ display: 'flex', gap: '0.5rem' }}><MapPin size={16} /> भुतकरवाडी, पुणे</li>
-                <li style={{ display: 'flex', gap: '0.5rem' }}><Phone size={16} /> 020-XXXXXXX</li>
-                <li style={{ display: 'flex', gap: '0.5rem' }}><Mail size={16} /> school@pmc.gov.in</li>
+                <li style={{ display: 'flex', gap: '0.5rem' }}><MapPin size={16} /> भुतकरवाडी, अहिल्यानगर</li>
+                <li style={{ display: 'flex', gap: '0.5rem' }}><Phone size={16} /> 8793617304</li>
+                <li style={{ display: 'flex', gap: '0.5rem' }}><Mail size={16} /> mnpschoolbhutkarwadi03@gmail.com</li>
               </ul>
             </div>
           </div>
