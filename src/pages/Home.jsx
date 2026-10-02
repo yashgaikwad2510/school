@@ -2,7 +2,19 @@ import React, { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { translations } from '../data/translations';
 import { Link } from 'react-router-dom';
-import { Megaphone, ArrowRight, GraduationCap, Calendar, Book, Users, Image as ImageIcon, Phone, BookOpen, HeartPulse, ShieldCheck, Palette, X } from 'lucide-react';
+import { Megaphone, ArrowRight, GraduationCap, Calendar, Book, Users, Image as ImageIcon, Phone, BookOpen, HeartPulse, ShieldCheck, Palette, X, Target, School, Home as HomeIcon, Building, FileText, Link as LinkIcon, Bell, ChevronRight, HelpCircle } from 'lucide-react';
+
+const rawFacilityImages = import.meta.glob('../assets/आमच्या शाळेतील सुविधा/*.{png,jpg,jpeg,webp}', { eager: true, import: 'default' });
+
+const getFacilityImage = (keywords, defaultFallback = '/teacherbg.png') => {
+  const paths = Object.keys(rawFacilityImages);
+  if (!paths || paths.length === 0) return defaultFallback;
+  for (const keyword of keywords) {
+    const match = paths.find(p => p.toLowerCase().includes(keyword.toLowerCase()));
+    if (match) return rawFacilityImages[match];
+  }
+  return rawFacilityImages[paths[0]]; // fallback to first image found
+};
 
 const Home = () => {
   const { language } = useLanguage();
@@ -14,8 +26,8 @@ const Home = () => {
       id: 'knowledge',
       title: 'ज्ञानाची समृद्धी',
       shortText: 'ग्रंथालय, डिजिटल शिक्षण आणि शैक्षणिक साहित्य',
-      icon: <BookOpen size={24} color="var(--accent-gold)" />,
-      img: '/fac_knowledge.jpeg',
+      icon: <BookOpen size={20} color="var(--accent-gold)" />,
+      img: getFacilityImage(['library', 'reading']),
       details: [
         'सुसज्ज ग्रंथालय व वाचन साहित्य',
         'डिजिटल शिक्षणासाठी संगणक व स्मार्ट साधने',
@@ -27,8 +39,8 @@ const Home = () => {
       id: 'sports',
       title: 'खेळ आणि आरोग्य',
       shortText: 'क्रीडा, पोषण, स्वच्छता आणि आरोग्यविषयक सुविधा',
-      icon: <HeartPulse size={24} color="var(--accent-gold)" />,
-      img: '/fac_sports.jpeg',
+      icon: <HeartPulse size={20} color="var(--accent-gold)" />,
+      img: getFacilityImage(['sports', 'health']),
       details: [
         'विस्तीर्ण मैदान व विविध खेळांचे साहित्य',
         'शालेय पोषण आहार आणि स्वच्छ पिण्याचे पाणी',
@@ -40,8 +52,8 @@ const Home = () => {
       id: 'environment',
       title: 'सुरक्षित शालेय वातावरण',
       shortText: 'हवेशीर वर्गखोल्या, स्वच्छता आणि सुरक्षित परिसर',
-      icon: <ShieldCheck size={24} color="var(--accent-gold)" />,
-      img: '/fac_environment.jpeg',
+      icon: <ShieldCheck size={20} color="var(--accent-gold)" />,
+      img: getFacilityImage(['safe', 'school', 'classroom']),
       details: [
         'प्रशस्त व हवेशीर वर्गखोल्या',
         'शालेय परिसरात सुरक्षिततेसाठी योग्य व्यवस्था',
@@ -53,8 +65,8 @@ const Home = () => {
       id: 'activities',
       title: 'सर्वांगीण विकास',
       shortText: 'कला, संस्कृती, पर्यावरण आणि विविध शैक्षणिक उपक्रम',
-      icon: <Palette size={24} color="var(--accent-gold)" />,
-      img: '/fac_activities.jpeg',
+      icon: <Palette size={20} color="var(--accent-gold)" />,
+      img: getFacilityImage(['overall', 'development']),
       details: [
         'विविध सांस्कृतिक कार्यक्रम आणि स्नेहसंमेलने',
         'कला, हस्तकला आणि चित्रकला स्पर्धा',
@@ -165,582 +177,645 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Educational Leadership Section */}
-      <style>
-        {`
-          @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-          }
-          
-          .leadership-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-            position: relative;
-            z-index: 2;
-          }
-          
-          @media (max-width: 1100px) {
-            .leadership-grid {
-              grid-template-columns: repeat(2, 1fr);
-            }
-          }
-          
-          @media (max-width: 768px) {
-            .leadership-grid {
-              grid-template-columns: 1fr;
-            }
-          }
-
-          .leadership-card {
-            background-color: white;
-            border-radius: 20px;
-            border: 1px solid #e5e7eb;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
-            display: flex;
-            align-items: center;
-            padding: 24px;
-            gap: 24px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-          }
-          
-          .leadership-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
-          }
-          
-          .leadership-photo {
-            flex: 0 0 180px;
-            height: 240px;
-            border-radius: 12px;
-            overflow: hidden;
-            background-color: #f3f4f6;
-          }
-
-          .leadership-info {
-            flex: 1;
-            text-align: left;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-          }
-          
-          @media (max-width: 480px) {
-            .leadership-card {
-              flex-direction: column;
-              text-align: center;
-              padding: 24px 20px;
-              gap: 20px;
-            }
-            .leadership-photo {
-              flex: 0 0 auto;
-              width: 180px;
-              height: 240px;
-            }
-            .leadership-info {
-              text-align: center;
-            }
-          }
-
-          .section-divider-line {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 0.75rem;
-          }
-          .section-divider-line::before, .section-divider-line::after {
-            content: '';
-            height: 2px;
-            width: 40px;
-            background-color: var(--accent-gold);
-            opacity: 0.5;
-          }
-        `}
-      </style>
-      <section style={{ 
-        padding: '4rem 0 5rem', 
-        backgroundColor: '#fafafa'
-      }}>
-        <div className="container">
-          <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-            <div style={{ color: 'var(--accent-gold)', marginBottom: '0.75rem', display: 'flex', justifyContent: 'center' }}>
-              <Users size={36} />
-            </div>
-            <div className="section-divider-line">
-              <h2 className="section-title" style={{ margin: 0, color: 'var(--dark-navy)' }}>शैक्षणिक नेतृत्व</h2>
-            </div>
-            <p style={{ fontSize: '1.125rem', color: 'var(--text-muted)' }}>
-              शाळेच्या गुणवत्तापूर्ण शिक्षणासाठी मार्गदर्शन करणारे मान्यवर
-            </p>
-          </div>
-          
-          <div className="leadership-grid">
-            {[
-              {
-                tag: "अहिल्यानगर मनपा",
-                name: "श्री यशवंत भीमराव डांगे",
-                role: "अहिल्यानगर मनपा आयुक्त",
-                image: "/aukta.jpeg"
-              },
-              {
-                tag: "शिक्षण विभाग",
-                name: "श्री. जुबेर नुरमोहम्मद पठाण",
-                role: "प्रशासन अधिकारी,\nअहमदनगर मनपा शिक्षण विभाग",
-                image: "/zuber.jpeg"
-              },
-              {
-                tag: "मुख्याध्यापक",
-                name: "श्री अरुण मारुती पवार",
-                role: "मुख्याध्यापक",
-                image: "/teacher2.jpeg"
-              }
-            ].map((leader, idx) => (
-              <div key={idx} className="leadership-card" style={{ animation: `fadeInUp 0.6s ease-out ${idx * 0.1}s both` }}>
-                <div className="leadership-photo">
-                  <img 
-                    src={leader.image} 
-                    alt={leader.name} 
-                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                    onError={(e) => { e.target.style.display = 'none' }}
-                  />
-                </div>
-                <div className="leadership-info">
-                  <div style={{ 
-                    color: 'var(--accent-gold)',
-                    fontSize: '0.85rem',
-                    fontWeight: 700,
-                    marginBottom: '0.5rem',
-                    letterSpacing: '0.5px'
-                  }}>
-                    {leader.tag}
-                  </div>
-                  <h3 style={{ 
-                    fontSize: '1.25rem', 
-                    color: 'var(--dark-navy)', 
-                    marginBottom: '0.5rem', 
-                    fontWeight: 800, 
-                    lineHeight: 1.3 
-                  }}>
-                    {leader.name}
-                  </h3>
-                  <div style={{ 
-                    fontSize: '0.95rem', 
-                    color: 'var(--text-main)', 
-                    whiteSpace: 'pre-line', 
-                    lineHeight: 1.5,
-                    fontWeight: 500
-                  }}>
-                    {leader.role}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Facilities / About Section */}
+      {/* === UNIFIED GOV PORTAL STYLES === */}
       <style>{`
-        .fac-section {
-          padding: 6rem 0;
-          background-color: #fbfbfc;
+        .gov-portal-section {
+          background-color: #f0f4f8;
+          padding: 3rem 0;
+          font-family: Arial, sans-serif;
         }
-        .fac-container {
+        .gov-portal-container {
           max-width: 1240px;
           margin: 0 auto;
-          padding: 0 1.5rem;
+          padding: 0 15px;
         }
-        
-        /* Top Layout: Image + Intro */
-        .fac-header-grid {
+        .gov-portal-layout {
           display: grid;
-          grid-template-columns: 55% 45%;
-          gap: 4rem;
-          align-items: center;
-          margin-bottom: 4rem;
+          grid-template-columns: 240px 1fr 240px;
+          gap: 15px;
+          align-items: start;
         }
-        .fac-main-img {
-          width: 100%;
-          aspect-ratio: 16/9;
-          object-fit: cover;
-          border-radius: 22px;
-          box-shadow: 0 15px 35px rgba(0,0,0,0.06);
-          transition: transform 0.5s ease;
+
+        /* Sticky sidebar wrappers */
+        .gov-sidebar-sticky {
+          position: sticky;
+          top: 80px;
+          align-self: start;
         }
-        .fac-main-img:hover {
-          transform: scale(1.02);
+
+        /* Sidebars */
+        .gov-sidebar {
+          background: #fff;
+          border: 1px solid #8ab8d0;
+          border-radius: 2px;
         }
-        .fac-intro-panel {
-          display: flex;
-          flex-direction: column;
-        }
-        .fac-eyebrow {
-          color: var(--accent-gold);
-          font-weight: 700;
-          font-size: 1rem;
-          margin-bottom: 0.5rem;
-          letter-spacing: 0.5px;
-        }
-        .fac-main-title {
-          font-size: 2.5rem;
-          font-weight: 800;
-          color: var(--navy-dark);
-          line-height: 1.2;
-          margin-bottom: 1.5rem;
-        }
-        .fac-desc {
-          font-size: 1.15rem;
-          color: var(--text-main);
-          line-height: 1.6;
-          margin-bottom: 2rem;
-        }
-        .fac-quote-box {
-          background: white;
-          padding: 1.5rem;
-          border-radius: 12px;
-          border-left: 4px solid var(--accent-gold);
-          box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-          margin-bottom: 2rem;
-        }
-        .fac-quote-text {
+        .gov-sidebar-header {
+          background-color: #0c1a9c;
+          color: #fff;
+          padding: 12px 15px;
           font-size: 1.1rem;
-          font-style: italic;
-          color: var(--navy-dark);
-          font-weight: 600;
-          line-height: 1.5;
-        }
-        .fac-highlight-strip {
-          display: inline-block;
-          font-weight: 700;
-          color: var(--accent-gold);
-          font-size: 1.05rem;
-          letter-spacing: 1px;
-          padding-bottom: 0.5rem;
-          border-bottom: 2px solid var(--accent-gold);
-        }
-
-        /* 4 Cards Grid */
-        .fac-cards-grid {
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          gap: 2.5rem;
-        }
-        .fac-card {
-          background: white;
-          border-radius: 20px;
-          padding: 2rem;
-          box-shadow: 0 4px 20px rgba(0,0,0,0.04);
-          border: 1px solid rgba(0,0,0,0.02);
-          transition: all 0.3s ease;
-          cursor: pointer;
+          font-weight: bold;
           display: flex;
           align-items: center;
-          gap: 1.5rem;
+          gap: 10px;
+          border-bottom: 2px solid #ffb833;
         }
-        .fac-card:hover {
-          transform: translateY(-4px);
-          box-shadow: 0 12px 30px rgba(0,0,0,0.08);
-        }
-        .fac-card-content {
-          flex: 1;
-        }
-        .fac-card-icon {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          width: 48px;
-          height: 48px;
-          background: rgba(212, 175, 55, 0.1);
-          border-radius: 12px;
-          margin-bottom: 1rem;
-          color: var(--accent-gold);
-          transition: transform 0.3s ease;
-        }
-        .fac-card:hover .fac-card-icon {
-          transform: scale(1.1);
-        }
-        .fac-card-title {
-          font-size: 1.35rem;
-          font-weight: 800;
-          color: var(--navy-dark);
-          margin-bottom: 0.5rem;
-        }
-        .fac-card-desc {
-          font-size: 1rem;
-          color: var(--text-muted);
-          line-height: 1.5;
-          margin-bottom: 1.25rem;
-        }
-        .fac-card-btn {
-          color: var(--accent-gold);
-          font-weight: 700;
-          font-size: 0.95rem;
-          display: flex;
-          align-items: center;
-          gap: 0.25rem;
-          transition: gap 0.2s ease;
-        }
-        .fac-card:hover .fac-card-btn {
-          gap: 0.5rem;
-        }
-        .fac-card-thumb {
-          width: 100px;
-          height: 100px;
-          border-radius: 14px;
-          object-fit: cover;
-          box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-        }
-
-        /* Bottom Mission Strip */
-        .fac-mission {
-          margin-top: 4.5rem;
-          background: linear-gradient(135deg, var(--navy-dark) 0%, #1a3673 100%);
-          padding: 2rem 3rem;
-          border-radius: 16px;
-          text-align: center;
-          box-shadow: 0 10px 30px rgba(10, 37, 88, 0.15);
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 0.5rem;
-        }
-        .fac-mission-title {
-          color: var(--accent-gold);
-          font-size: 1.15rem;
-          font-weight: 800;
-          letter-spacing: 1px;
-        }
-        .fac-mission-text {
-          color: white;
-          font-size: 1.25rem;
-          font-weight: 600;
-          line-height: 1.5;
-          max-width: 800px;
-        }
-
-        /* Modal Styles */
-        .fac-modal-overlay {
-          position: fixed;
-          inset: 0;
-          background: rgba(10, 37, 88, 0.7);
-          backdrop-filter: blur(5px);
-          z-index: 1000;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          padding: 1.5rem;
-        }
-        .fac-modal {
-          background: white;
-          border-radius: 24px;
-          width: 100%;
-          max-width: 600px;
-          overflow: hidden;
-          box-shadow: 0 25px 50px rgba(0,0,0,0.3);
-          position: relative;
-          animation: modalFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        @keyframes modalFadeIn {
-          from { opacity: 0; transform: translateY(30px) scale(0.95); }
-          to { opacity: 1; transform: translateY(0) scale(1); }
-        }
-        .fac-modal-close {
-          position: absolute;
-          top: 1rem;
-          right: 1rem;
-          background: white;
-          border: none;
-          width: 40px;
-          height: 40px;
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          cursor: pointer;
-          color: var(--navy-dark);
-          box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-          z-index: 10;
-          transition: transform 0.2s ease;
-        }
-        .fac-modal-close:hover {
-          transform: scale(1.1);
-        }
-        .fac-modal-img {
-          height: 260px;
-          width: 100%;
-          object-fit: cover;
-        }
-        .fac-modal-content {
-          padding: 2.5rem;
-        }
-        .fac-modal-header {
-          display: flex;
-          align-items: center;
-          gap: 0.75rem;
-          margin-bottom: 1.5rem;
-        }
-        .fac-modal-title {
-          font-size: 1.6rem;
-          font-weight: 800;
-          color: var(--navy-dark);
-        }
-        .fac-modal-list {
+        .gov-sidebar-list {
           list-style: none;
           padding: 0;
           margin: 0;
         }
-        .fac-modal-list li {
-          position: relative;
-          padding-left: 1.75rem;
-          margin-bottom: 1rem;
-          color: var(--text-main);
-          font-size: 1.1rem;
-          line-height: 1.5;
+        .gov-sidebar-item {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 10px 15px;
+          border-bottom: 1px solid #e1e8ed;
+          color: #000;
+          font-size: 0.95rem;
+          cursor: pointer;
+          transition: background-color 0.2s;
         }
-        .fac-modal-list li::before {
-          content: "•";
-          position: absolute;
-          left: 0;
-          color: var(--accent-gold);
-          font-size: 1.75rem;
-          line-height: 1;
-          top: -3px;
+        .gov-sidebar-item:last-child {
+          border-bottom: none;
+        }
+        .gov-sidebar-item:hover {
+          background-color: #f7fbff;
+        }
+        .gov-sidebar-item-left {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          color: #081272;
+        }
+        .gov-sidebar-item.active {
+          background-color: #ffefbc;
+          font-weight: bold;
+          border-left: 3px solid #d9381e;
         }
 
-        /* Responsive Breakpoints */
-        @media (max-width: 1100px) {
-          .fac-header-grid {
+        /* Center Main Content */
+        .gov-center {
+          display: flex;
+          flex-direction: column;
+          gap: 15px;
+          min-width: 0;
+        }
+
+        /* Section Divider */
+        .gov-section-divider {
+          height: 20px;
+        }
+
+        /* Section Headers */
+        .gov-header {
+          background-color: #0c1a9c;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 12px 20px;
+          color: white;
+          border: 1px solid #081272;
+        }
+        .gov-header-left {
+          display: flex;
+          align-items: center;
+          gap: 15px;
+        }
+        .gov-header-title {
+          font-size: 1.8rem;
+          font-weight: bold;
+          margin: 0;
+        }
+        .gov-header-subtitle {
+          font-size: 0.95rem;
+          color: #d6eaf8;
+        }
+
+        /* Info Strips */
+        .gov-intro-strip {
+          background-color: #d6eaf8;
+          padding: 15px 20px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          border: 1px solid #8ab8d0;
+          font-size: 1rem;
+          line-height: 1.5;
+          color: #000;
+          gap: 15px;
+        }
+
+        /* Profile Blocks (Leadership) */
+        .gov-profiles-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 15px;
+        }
+        .gov-profile-block {
+          border: 1px solid #8ab8d0;
+          background: #fff;
+        }
+        .gov-profile-header {
+          background-color: #ffefbc;
+          color: #0c1a9c;
+          font-size: 1.25rem;
+          font-weight: bold;
+          padding: 10px 15px;
+          border-bottom: 1px solid #8ab8d0;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+        .gov-profile-content {
+          padding: 15px;
+          background-color: #f7fbff;
+        }
+        .gov-profile-top {
+          display: flex;
+          gap: 15px;
+          margin-bottom: 15px;
+        }
+        .gov-profile-photo {
+          width: 120px;
+          height: 150px;
+          object-fit: cover;
+          border: 1px solid #8ab8d0;
+          background-color: #fff;
+          padding: 2px;
+        }
+        .gov-profile-details {
+          flex: 1;
+          padding-top: 5px;
+        }
+        .gov-profile-name {
+          color: #0c1a9c;
+          font-size: 1.25rem;
+          font-weight: bold;
+          margin: 0 0 5px 0;
+        }
+        .gov-profile-role {
+          color: #000;
+          font-size: 0.95rem;
+          font-weight: normal;
+          margin: 0;
+          line-height: 1.4;
+        }
+
+        /* Tables */
+        .gov-table {
+          width: 100%;
+          border-collapse: collapse;
+          font-size: 0.9rem;
+        }
+        .gov-table th, .gov-table td {
+          border: 1px solid #8ab8d0;
+          padding: 8px 10px;
+          text-align: left;
+          color: #000;
+        }
+        .gov-table th {
+          background-color: #d6eaf8;
+          width: 25%;
+          font-weight: normal;
+        }
+        .gov-table td {
+          background-color: #fff;
+        }
+
+        /* Footer Strip */
+        .gov-footer-strip {
+          background-color: #d6eaf8;
+          padding: 15px 20px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border: 1px solid #8ab8d0;
+          position: relative;
+        }
+        .gov-footer-icon {
+          position: absolute;
+          left: 20px;
+          color: #d9381e;
+        }
+        .gov-footer-icon-right {
+          position: absolute;
+          right: 20px;
+          color: #0c1a9c;
+        }
+        .gov-footer-text {
+          color: #0c1a9c;
+          font-size: 1.15rem;
+          font-weight: bold;
+        }
+
+        /* Facility Category Blocks */
+        .gov-fac-block {
+          border: 1px solid #8ab8d0;
+          background: #fff;
+        }
+        .gov-fac-block-header {
+          background-color: #ffefbc;
+          color: #0c1a9c;
+          font-size: 1.2rem;
+          font-weight: bold;
+          padding: 10px 15px;
+          border-bottom: 1px solid #8ab8d0;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+        .gov-fac-block-body {
+          display: flex;
+          gap: 15px;
+          padding: 15px;
+          background-color: #f7fbff;
+        }
+        .gov-fac-block-img {
+          width: 200px;
+          height: 160px;
+          object-fit: cover;
+          border: 1px solid #8ab8d0;
+          flex-shrink: 0;
+          background: #fff;
+          padding: 2px;
+        }
+        .gov-fac-block-content {
+          flex: 1;
+        }
+        .gov-fac-block-list {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+        }
+        .gov-fac-block-list li {
+          padding: 5px 0;
+          font-size: 0.9rem;
+          color: #333;
+          line-height: 1.5;
+          border-bottom: 1px dotted #d6eaf8;
+          display: flex;
+          align-items: flex-start;
+          gap: 8px;
+        }
+        .gov-fac-block-list li:last-child {
+          border-bottom: none;
+        }
+        .gov-fac-bullet {
+          color: #d9381e;
+          font-weight: bold;
+          flex-shrink: 0;
+          margin-top: 2px;
+        }
+        .gov-fac-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 15px;
+        }
+
+        /* Mission Block */
+        .gov-fac-mission {
+          border: 1px solid #8ab8d0;
+          background: #fff;
+        }
+        .gov-fac-mission-header {
+          background-color: #0c1a9c;
+          color: #fff;
+          font-size: 1.1rem;
+          font-weight: bold;
+          padding: 10px 15px;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          border-bottom: 2px solid #ffb833;
+        }
+        .gov-fac-mission-body {
+          padding: 20px;
+          background: #fffdf5;
+          text-align: center;
+          font-size: 1.05rem;
+          color: #0c1a9c;
+          font-weight: 600;
+          line-height: 1.7;
+        }
+
+        /* Notice Board */
+        .gov-notice-board {
+          margin-top: 15px;
+        }
+        .gov-notice-item {
+          padding: 10px 15px;
+          border-bottom: 1px dotted #8ab8d0;
+          font-size: 0.85rem;
+          color: #333;
+          line-height: 1.4;
+        }
+        .gov-notice-item:last-child {
+          border-bottom: none;
+        }
+        .gov-notice-date {
+          color: #d9381e;
+          font-weight: bold;
+          font-size: 0.75rem;
+          display: block;
+          margin-bottom: 3px;
+        }
+        .gov-notice-more {
+          display: block;
+          text-align: right;
+          padding: 8px 15px;
+          font-size: 0.85rem;
+          color: #0c1a9c;
+          font-weight: bold;
+          background: #f7fbff;
+          text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+          .gov-portal-layout {
             grid-template-columns: 1fr;
-            gap: 2.5rem;
           }
-          .fac-main-img {
-            max-height: 400px;
+          .gov-sidebar-sticky {
+            position: static;
           }
         }
-        @media (max-width: 768px) {
-          .fac-cards-grid {
+        @media (max-width: 860px) {
+          .gov-profiles-grid,
+          .gov-fac-grid {
             grid-template-columns: 1fr;
-            gap: 1.5rem;
           }
-          .fac-main-title {
-            font-size: 2rem;
-          }
-          .fac-mission {
-            padding: 1.5rem;
-          }
-          .fac-mission-text {
-            font-size: 1.1rem;
-          }
-        }
-        @media (max-width: 480px) {
-          .fac-section { padding: 4rem 0; }
-          .fac-card {
+          .gov-header {
             flex-direction: column;
-            align-items: flex-start;
-            gap: 1rem;
-            padding: 1.5rem;
+            text-align: center;
+            gap: 8px;
           }
-          .fac-card-thumb {
+          .gov-fac-block-body {
+            flex-direction: column;
+          }
+          .gov-fac-block-img {
             width: 100%;
-            height: 140px;
+            height: 180px;
+          }
+          .gov-footer-icon, .gov-footer-icon-right {
+            position: static;
+            margin: 0 10px;
+          }
+          .gov-footer-strip {
+            flex-direction: column;
+            gap: 10px;
           }
         }
       `}</style>
-      
-      <section className="fac-section">
-        <div className="fac-container">
-          
-          {/* Top Feature Grid */}
-          <div className="fac-header-grid">
-            <div>
-              <img src="/bghero.png" alt="School Environment" className="fac-main-img" loading="lazy" />
-            </div>
-            <div className="fac-intro-panel">
-              <div className="fac-eyebrow">आमच्या शाळेबद्दल</div>
-              <h2 className="fac-main-title">आमच्या शाळेतील सुविधा</h2>
-              <p className="fac-desc">
-                गुणवत्तापूर्ण शिक्षण, संस्कार आणि सर्वांगीण विकासासाठी विद्यार्थ्यांना आवश्यक सुविधा उपलब्ध करून दिल्या जातात.
-              </p>
-              
-              <div className="fac-quote-box">
-                <p className="fac-quote-text">
-                  "शाळा म्हणजे केवळ वर्गखोली नाही, तर विद्यार्थ्यांच्या सर्वांगीण विकासाचे केंद्र आहे."
-                </p>
-              </div>
-              
-              <div>
-                <span className="fac-highlight-strip">
-                  शिक्षण • आरोग्य • सुरक्षितता • संस्कार
-                </span>
-              </div>
-            </div>
-          </div>
 
-          {/* 4 Cards Grid */}
-          <div className="fac-cards-grid">
-            {facilitiesData.map((fac, idx) => (
-              <div 
-                key={fac.id} 
-                className="fac-card" 
-                onClick={() => setActiveFacility(fac)}
-                style={{ animation: `fadeInUp 0.5s ease-out ${idx * 0.1}s both` }}
-              >
-                <div className="fac-card-content">
-                  <div className="fac-card-icon">
-                    {fac.icon}
-                  </div>
-                  <h3 className="fac-card-title">{fac.title}</h3>
-                  <p className="fac-card-desc">{fac.shortText}</p>
-                  <div className="fac-card-btn">
-                    अधिक जाणून घ्या <ArrowRight size={16} />
-                  </div>
-                </div>
-                <img src={fac.img} alt={fac.title} className="fac-card-thumb" loading="lazy" />
-              </div>
-            ))}
-          </div>
+      {/* === ONE UNIFIED 3-COLUMN PORTAL SHELL === */}
+      <section className="gov-portal-section">
+        <div className="gov-portal-container">
+          <div className="gov-portal-layout">
 
-          {/* Bottom Mission Strip */}
-          <div className="fac-mission">
-            <div className="fac-mission-title">🌟 आमचे ध्येय</div>
-            <div className="fac-mission-text">
-              "प्रत्येक विद्यार्थी शिकावा, घडावा, प्रगती करावा आणि आत्मविश्वासाने भविष्याकडे वाटचाल करावी!"
-            </div>
-          </div>
-          
-        </div>
-      </section>
-
-      {/* Facilities Modal */}
-      {activeFacility && (
-        <div className="fac-modal-overlay" onClick={() => setActiveFacility(null)}>
-          <div className="fac-modal" onClick={e => e.stopPropagation()}>
-            <button className="fac-modal-close" onClick={() => setActiveFacility(null)}>
-              <X size={24} />
-            </button>
-            <img src={activeFacility.img} alt={activeFacility.title} className="fac-modal-img" />
-            <div className="fac-modal-content">
-              <div className="fac-modal-header">
-                {activeFacility.icon}
-                <h3 className="fac-modal-title">{activeFacility.title}</h3>
+            {/* ======= LEFT SIDEBAR (ONE INSTANCE) ======= */}
+            <div className="gov-sidebar gov-sidebar-sticky">
+              <div className="gov-sidebar-header">
+                <HomeIcon size={20} />
+                त्वरित प्रवेश
               </div>
-              <ul className="fac-modal-list">
-                {activeFacility.details.map((detail, idx) => (
-                  <li key={idx}>{detail}</li>
+              <ul className="gov-sidebar-list">
+                {[
+                  { icon: HomeIcon, text: "मुख्य पृष्ठ" },
+                  { icon: Building, text: "शाळेबद्दल" },
+                  { icon: Users, text: "शैक्षणिक नेतृत्व" },
+                  { icon: BookOpen, text: "आमच्या सुविधा" },
+                  { icon: Users, text: "शिक्षक आणि कर्मचारी" },
+                  { icon: GraduationCap, text: "विद्यार्थी" },
+                  { icon: Calendar, text: "उपक्रम" },
+                  { icon: ImageIcon, text: "गॅलरी" },
+                  { icon: Phone, text: "संपर्क" },
+                  { icon: LinkIcon, text: "महत्त्वाचे दुवे" },
+                  { icon: Building, text: "शासकीय योजना" },
+                  { icon: FileText, text: "प्रवेश माहिती" },
+                  { icon: Bell, text: "सूचना फलक" },
+                  { icon: HelpCircle, text: "वारंवार विचारले जाणारे प्रश्न" },
+                ].map((item, idx) => (
+                  <li key={idx} className="gov-sidebar-item">
+                    <div className="gov-sidebar-item-left">
+                      <item.icon size={16} color="#081272" />
+                      <span>{item.text}</span>
+                    </div>
+                    <ChevronRight size={14} color="#8ab8d0" />
+                  </li>
                 ))}
               </ul>
             </div>
+
+            {/* ======= CENTER CONTENT (ALL SECTIONS) ======= */}
+            <div className="gov-center">
+
+              {/* ─── SECTION 1: शैक्षणिक नेतृत्व ─── */}
+              <div className="gov-header">
+                <div className="gov-header-left">
+                  <Users size={32} />
+                  <h2 className="gov-header-title">शैक्षणिक नेतृत्व</h2>
+                </div>
+                <div className="gov-header-subtitle">
+                  शाळेच्या गुणवत्तापूर्ण शिक्षणासाठी मार्गदर्शन करणारे मान्यवर
+                </div>
+              </div>
+
+              <div className="gov-intro-strip">
+                <div>
+                  आमच्या शाळेच्या प्रगतीत मार्गदर्शन, प्रशासन, शैक्षणिक नियोजन आणि सर्वांगीण विकासासाठी हे मान्यवर सतत कार्यरत आहेत.<br/>
+                  त्यांचा अनुभव, नेतृत्व आणि प्रेरणेमुळे विद्यार्थ्यांना गुणवत्तापूर्ण शिक्षणाची संधी उपलब्ध होत आहे.
+                </div>
+                <div style={{color: '#081272', paddingLeft: '15px', flexShrink: 0}}>
+                  <Megaphone size={40} fill="#c4ecfa" color="#081272" strokeWidth={1} />
+                </div>
+              </div>
+
+              <div className="gov-profiles-grid">
+                {/* अहिल्यानगर मनपा */}
+                <div className="gov-profile-block">
+                  <div className="gov-profile-header">
+                    <Building size={22} color="#0c1a9c" />
+                    अहिल्यानगर मनपा
+                  </div>
+                  <div className="gov-profile-content">
+                    <div className="gov-profile-top">
+                      <img src="/aukta.jpeg" alt="श्री यशवंत भीमराव डांगे" className="gov-profile-photo" />
+                      <div className="gov-profile-details">
+                        <h3 className="gov-profile-name">श्री यशवंत भीमराव डांगे</h3>
+                        <p className="gov-profile-role">अहिल्यानगर मनपा आयुक्त</p>
+                        <div style={{ marginTop: '10px', width: '30px', height: '3px', backgroundColor: '#ffb833' }}></div>
+                      </div>
+                    </div>
+                    <table className="gov-table">
+                      <tbody>
+                        <tr><th>पद</th><td>आयुक्त</td></tr>
+                        <tr><th>संस्था</th><td>अहिल्यानगर महानगरपालिका</td></tr>
+                        <tr><th>कार्यक्षेत्र</th><td>शिक्षण, प्रशासन व सर्वांगीण विकास</td></tr>
+                        <tr><th>मार्गदर्शन</th><td>शाळेच्या गुणवत्तापूर्ण शिक्षणासाठी सतत मार्गदर्शन</td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+                {/* शिक्षण विभाग */}
+                <div className="gov-profile-block">
+                  <div className="gov-profile-header">
+                    <Target size={22} color="#0c1a9c" />
+                    शिक्षण विभाग
+                  </div>
+                  <div className="gov-profile-content">
+                    <div className="gov-profile-top">
+                      <img src="/zuber.jpeg" alt="श्री. जुबेर नुरमोहम्मद पठाण" className="gov-profile-photo" />
+                      <div className="gov-profile-details">
+                        <h3 className="gov-profile-name">श्री. जुबेर नुरमोहम्मद पठाण</h3>
+                        <p className="gov-profile-role">प्रशासन अधिकारी<br/>अहिल्यानगर मनपा शिक्षण विभाग</p>
+                        <div style={{ marginTop: '10px', width: '30px', height: '3px', backgroundColor: '#ffb833' }}></div>
+                      </div>
+                    </div>
+                    <table className="gov-table">
+                      <tbody>
+                        <tr><th>पद</th><td>प्रशासन अधिकारी</td></tr>
+                        <tr><th>विभाग</th><td>अहिल्यानगर मनपा शिक्षण विभाग</td></tr>
+                        <tr><th>कार्यक्षेत्र</th><td>शैक्षणिक नियोजन, प्रशासन व शाळा विकास</td></tr>
+                        <tr><th>मार्गदर्शन</th><td>विद्यार्थ्यांच्या उज्ज्वल भविष्यासाठी कटिबद्ध</td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+              <div className="gov-footer-strip">
+                <Building size={32} className="gov-footer-icon" fill="#ffefbc" color="#000" strokeWidth={1} />
+                <div className="gov-footer-text">
+                  गुणवत्तापूर्ण शिक्षण &nbsp;|&nbsp; सक्षम प्रशासन &nbsp;|&nbsp; उज्ज्वल भविष्य
+                </div>
+                <BookOpen size={32} className="gov-footer-icon-right" fill="#0c1a9c" color="#fff" strokeWidth={1} />
+              </div>
+
+              {/* ─── SPACER ─── */}
+              <div className="gov-section-divider"></div>
+
+              {/* ─── SECTION 2: आमच्या शाळेतील सुविधा ─── */}
+              <div className="gov-header">
+                <div className="gov-header-left">
+                  <School size={32} />
+                  <h2 className="gov-header-title">आमच्या शाळेतील सुविधा</h2>
+                </div>
+                <div className="gov-header-subtitle">
+                  गुणवत्तापूर्ण शिक्षण, संस्कार आणि सर्वांगीण विकासासाठी उपलब्ध सुविधा
+                </div>
+              </div>
+
+              <div className="gov-intro-strip">
+                <BookOpen size={40} color="#081272" style={{flexShrink: 0}} />
+                <div>
+                  विद्यार्थ्यांना आनंददायी, सुरक्षित आणि गुणवत्तापूर्ण शिक्षण मिळावे यासाठी अनेक विविध शैक्षणिक, शारीरिक, आरोग्यविषयक व
+                  भौतिक सुविधा उपलब्ध करून देत आहोत. या सुविधांच्या माध्यमातून प्रत्येक विद्यार्थ्यांचा संपूर्ण विकास घडावा, हे आमचे ध्येय आहे.
+                </div>
+              </div>
+
+              <div className="gov-fac-grid">
+                {facilitiesData.map((fac) => (
+                  <div key={fac.id} className="gov-fac-block">
+                    <div className="gov-fac-block-header">
+                      {fac.icon}
+                      {fac.title}
+                    </div>
+                    <div className="gov-fac-block-body">
+                      <img src={fac.img} alt={fac.title} className="gov-fac-block-img" loading="lazy" />
+                      <div className="gov-fac-block-content">
+                        <ul className="gov-fac-block-list">
+                          {fac.details.map((detail, idx) => (
+                            <li key={idx}>
+                              <span className="gov-fac-bullet">•</span>
+                              <span>{detail}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="gov-fac-mission">
+                <div className="gov-fac-mission-header">
+                  <Target size={20} />
+                  आमचे ध्येय
+                </div>
+                <div className="gov-fac-mission-body">
+                  "प्रत्येक विद्यार्थी शिकावा, घडावा, प्रगती करावा<br/>
+                  आणि आत्मविश्वासाने भविष्याकडे वाटचाल करावी!"
+                </div>
+              </div>
+
+              <div className="gov-footer-strip">
+                <School size={28} className="gov-footer-icon" color="#0c1a9c" />
+                <div className="gov-footer-text">
+                  गुणवत्तापूर्ण शिक्षण &nbsp;|&nbsp; सक्षम प्रशासन &nbsp;|&nbsp; उज्ज्वल भविष्य
+                </div>
+                <BookOpen size={28} className="gov-footer-icon-right" color="#0c1a9c" />
+              </div>
+
+            </div>
+
+            {/* ======= RIGHT SIDEBAR (ONE INSTANCE) ======= */}
+            <div className="gov-sidebar-sticky">
+              <div className="gov-sidebar">
+                <div className="gov-sidebar-header">
+                  <LinkIcon size={20} />
+                  महत्त्वाच्या लिंक्स
+                </div>
+                <ul className="gov-sidebar-list">
+                  {[
+                    "सूचना व परिपत्रके",
+                    "प्रवेश प्रक्रिया",
+                    "शालेय अभ्यासक्रम",
+                    "शालेय दिनदर्शिका",
+                    "छायाचित्र संग्रह",
+                    "महत्त्वाचे दस्तऐवज"
+                  ].map((text, idx) => (
+                    <li key={idx} className="gov-sidebar-item">
+                      <div className="gov-sidebar-item-left">
+                        <ChevronRight size={14} color="#d9381e" />
+                        <span>{text}</span>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="gov-sidebar gov-notice-board">
+                <div className="gov-sidebar-header">
+                  <Bell size={20} />
+                  सूचना फलक
+                </div>
+                <div className="gov-notice-list">
+                  <div className="gov-notice-item">
+                    <span className="gov-notice-date">नवीन (०१-०६-२०२६)</span>
+                    शाळेत नवीन शैक्षणिक वर्ष २०२६-२७ ची प्रवेश प्रक्रिया सुरू झाली आहे.
+                  </div>
+                  <div className="gov-notice-item">
+                    <span className="gov-notice-date">महत्त्वाचे (२८-०५-२०२६)</span>
+                    विद्यार्थ्यांसाठी गणवेश व पाठ्यपुस्तके वाटप शिबीर.
+                  </div>
+                  <div className="gov-notice-item">
+                    <span className="gov-notice-date">पालक सभा (२५-०५-२०२६)</span>
+                    इयत्ता पहिली ते चौथीच्या पालकांसाठी विशेष सभा.
+                  </div>
+                </div>
+                <a href="#" className="gov-notice-more">सर्व पहा &rarr;</a>
+              </div>
+            </div>
+
           </div>
         </div>
-      )}
-
-
-
+      </section>
 
     </div>
   );
 };
 
 export default Home;
+
