@@ -7,36 +7,12 @@ const Teachers = () => {
   
   const staff = [
     {
-      id: 1,
-      name: "श्री यशवंत भीमराव डांगे",
-      role: "अहिल्यानगर मनपा आयुक्त",
-      department: "अहिल्यानगर महानगरपालिका",
-      category: "अधिकारी",
-      education: null,
-      email: null,
-      phone: null,
-      image: "/aukta.jpeg",
-      org: "अहिल्यानगर महानगरपालिका"
-    },
-    {
-      id: 2,
-      name: "श्री. जुबेर नुरमोहम्मद पठाण",
-      role: "प्रशासन अधिकारी",
-      department: "शिक्षण विभाग",
-      category: "अधिकारी",
-      education: "MA, D.Ed, B.Ed",
-      email: "mnpschoolbhutkarwadi03@gmail.com",
-      phone: null,
-      image: "/zuber.jpeg",
-      org: "अहमदनगर मनपा शिक्षण विभाग"
-    },
-    {
       id: 3,
       name: "श्री अरुण मारुती पवार",
       role: "मुख्याध्यापक",
       department: null,
       category: "मुख्याध्यापक",
-      education: "B.A., D.Ed",
+      education: null,
       email: null,
       phone: null,
       image: "/teacher2.jpeg",
@@ -62,7 +38,6 @@ const Teachers = () => {
   const getCount = (cat) => staff.filter(s => s.category === cat).length;
   const filterOptions = [
     { label: 'सर्व', count: staff.length },
-    { label: 'अधिकारी', count: getCount('अधिकारी') },
     { label: 'मुख्याध्यापक', count: getCount('मुख्याध्यापक') },
     { label: 'शिक्षक', count: getCount('शिक्षक') }
   ];
@@ -213,13 +188,15 @@ const Teachers = () => {
                     </div>
                   )}
 
-                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem', fontSize: '0.875rem', color: 'var(--text-main)' }}>
-                    <GraduationCap size={16} style={{ color: 'var(--primary-navy)', flexShrink: 0, marginTop: '0.125rem' }} />
-                    <div style={{ display: 'flex', flexDirection: 'column' }}>
-                      <span style={{ color: 'var(--text-muted)', fontSize: '0.75rem' }}>शिक्षण</span>
-                      <span>{person.education || "माहिती उपलब्ध नाही"}</span>
+                  {person.education && (
+                    <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem', fontSize: '0.875rem', color: 'var(--text-main)' }}>
+                      <GraduationCap size={16} style={{ color: 'var(--primary-navy)', flexShrink: 0, marginTop: '0.125rem' }} />
+                      <div style={{ display: 'flex', flexDirection: 'column' }}>
+                        <span style={{ color: 'var(--text-muted)', fontSize: '0.75rem' }}>शिक्षण</span>
+                        <span>{person.education}</span>
+                      </div>
                     </div>
-                  </div>
+                  )}
 
                   <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem', fontSize: '0.875rem', color: 'var(--text-main)' }}>
                     <Phone size={16} style={{ color: 'var(--primary-navy)', flexShrink: 0, marginTop: '0.125rem' }} />

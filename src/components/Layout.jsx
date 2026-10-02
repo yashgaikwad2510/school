@@ -30,7 +30,7 @@ const Layout = () => {
           </div>
           <div className="utility-right">
             <span className="utility-item hide-mobile"><MapPin size={14} /> भुतकरवाडी, अहिल्यानगर</span>
-            <span className="utility-item hide-mobile"><Phone size={14} /> 8793617304</span>
+            <span className="utility-item hide-mobile"><Phone size={14} /> 8329664751</span>
             <span className="utility-item hide-mobile"><Mail size={14} /> mnpschoolbhutkarwadi03@gmail.com</span>
             <div className="lang-switcher-top">
               <button 
