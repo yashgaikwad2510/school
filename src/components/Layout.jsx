@@ -71,10 +71,7 @@ const Layout = () => {
 
           <nav className={`nav-links ${mobileMenuOpen ? 'open' : ''}`}>
             <NavLink to="/" onClick={() => setMobileMenuOpen(false)} className={({isActive}) => isActive ? "nav-link active" : "nav-link"}>{t.nav.home}</NavLink>
-            <NavLink to="/about-school" onClick={() => setMobileMenuOpen(false)} className={({isActive}) => isActive ? "nav-link active" : "nav-link"}>{t.nav.about}</NavLink>
             <NavLink to="/teachers" onClick={() => setMobileMenuOpen(false)} className={({isActive}) => isActive ? "nav-link active" : "nav-link"}>{t.nav.teachers}</NavLink>
-            <NavLink to="/students" onClick={() => setMobileMenuOpen(false)} className={({isActive}) => isActive ? "nav-link active" : "nav-link"}>{t.nav.students}</NavLink>
-
             <NavLink to="/activities" onClick={() => setMobileMenuOpen(false)} className={({isActive}) => isActive ? "nav-link active" : "nav-link"}>{t.nav.activities}</NavLink>
             <NavLink to="/gallery" onClick={() => setMobileMenuOpen(false)} className={({isActive}) => isActive ? "nav-link active" : "nav-link"}>{t.nav.gallery}</NavLink>
             <NavLink to="/contact" onClick={() => setMobileMenuOpen(false)} className={({isActive}) => isActive ? "nav-link active" : "nav-link"}>{t.nav.contact}</NavLink>
