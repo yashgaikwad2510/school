@@ -4,6 +4,34 @@ import { useLanguage } from '../context/LanguageContext';
 import { translations } from '../data/translations';
 import { MapPin, Phone, Mail, Search, Menu, Book } from 'lucide-react';
 
+const SocialIcon = ({ type }) => {
+  if (type === 'instagram') {
+    return (
+      <svg className="footer-social-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <rect x="3" y="3" width="18" height="18" rx="5" />
+        <circle cx="12" cy="12" r="4" />
+        <circle cx="17.5" cy="6.5" r="1" className="footer-social-dot" />
+      </svg>
+    );
+  }
+
+  if (type === 'facebook') {
+    return (
+      <svg className="footer-social-icon footer-facebook-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="12" cy="12" r="9" />
+        <path d="M13.5 20v-7h2.4l.4-2.7h-2.8V8.6c0-.8.2-1.4 1.4-1.4h1.5V4.8c-.3 0-.9-.1-1.9-.1-2.6 0-4.3 1.6-4.3 4.4v1.2H7.8V13h2.4v7h3.3Z" />
+      </svg>
+    );
+  }
+
+  return (
+    <svg className="footer-social-icon footer-youtube-icon" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M21 7.2a2.8 2.8 0 0 0-2-2C17.2 4.7 12 4.7 12 4.7s-5.2 0-7 .5a2.8 2.8 0 0 0-2 2A29 29 0 0 0 2.5 12 29 29 0 0 0 3 16.8a2.8 2.8 0 0 0 2 2c1.8.5 7 .5 7 .5s5.2 0 7-.5a2.8 2.8 0 0 0 2-2 29 29 0 0 0 .5-4.8 29 29 0 0 0-.5-4.8Z" />
+      <path className="footer-youtube-play" d="m10 15.5 5-3.5-5-3.5v7Z" />
+    </svg>
+  );
+};
+
 const Layout = () => {
   const { language, toggleLanguage } = useLanguage();
   const t = translations[language];
@@ -116,6 +144,24 @@ const Layout = () => {
                 <li style={{ display: 'flex', gap: '0.5rem' }}><MapPin size={16} /> भुतकरवाडी, अहिल्यानगर</li>
                 <li style={{ display: 'flex', gap: '0.5rem' }}><Phone size={16} /> 8329664751</li>
                 <li style={{ display: 'flex', gap: '0.5rem' }}><Mail size={16} /> mnpschoolbhutkarwadi03@gmail.com</li>
+              </ul>
+              <h4 style={{ marginTop: '1.5rem', marginBottom: '0.9rem' }}>{language === 'mr' ? 'आम्हाला फॉलो करा' : 'Follow Us'}</h4>
+              <ul className="footer-links footer-social-links">
+                <li>
+                  <a href="https://www.instagram.com/mnpschoolbhutkarwadi/" target="_blank" rel="noreferrer">
+                    <SocialIcon type="instagram" /> Instagram · mnpschoolbhutkarwadi
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.facebook.com/search/pages/?q=MNP%20School%20Bhutkarwadi" target="_blank" rel="noreferrer">
+                    <SocialIcon type="facebook" /> Facebook · MNP School Bhutkarwadi
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.youtube.com/results?search_query=MNP+School+Bhutkarwadi" target="_blank" rel="noreferrer">
+                    <SocialIcon type="youtube" /> YouTube · MNP School Bhutkarwadi
+                  </a>
+                </li>
               </ul>
             </div>
           </div>

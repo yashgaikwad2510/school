@@ -307,6 +307,44 @@ h6 {
   color: var(--accent-gold);
 }
 
+.footer-social-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footer-social-icon {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+}
+
+.footer-social-dot {
+  fill: currentColor;
+  stroke: none;
+}
+
+.footer-facebook-icon {
+  fill: currentColor;
+  stroke: none;
+}
+
+.footer-facebook-icon path {
+  fill: var(--dark-navy);
+}
+
+.footer-youtube-icon {
+  fill: currentColor;
+  stroke: none;
+}
+
+.footer-youtube-play {
+  fill: var(--dark-navy);
+}
+
 .footer-bottom {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   padding-top: 2rem;
@@ -1233,4 +1271,3 @@ h6 {
     font-size: clamp(1.75rem, 6vw, 3.5rem) !important;
   }
 }
-
