@@ -80,9 +80,9 @@ const Layout = () => {
         </div>
       </header>
 
-      <main className="main-content">
+      <div className="layout-body">
         <Outlet />
-      </main>
+      </div>
 
       <footer className="footer">
         <div className="container">
@@ -114,7 +114,7 @@ const Layout = () => {
               <h4>{language === 'mr' ? 'संपर्क माहिती' : 'Contact Info'}</h4>
               <ul className="footer-links" style={{ color: 'rgba(255,255,255,0.8)' }}>
                 <li style={{ display: 'flex', gap: '0.5rem' }}><MapPin size={16} /> भुतकरवाडी, अहिल्यानगर</li>
-                <li style={{ display: 'flex', gap: '0.5rem' }}><Phone size={16} /> 8793617304</li>
+                <li style={{ display: 'flex', gap: '0.5rem' }}><Phone size={16} /> 8329664751</li>
                 <li style={{ display: 'flex', gap: '0.5rem' }}><Mail size={16} /> mnpschoolbhutkarwadi03@gmail.com</li>
               </ul>
             </div>

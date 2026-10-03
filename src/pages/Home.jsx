@@ -78,131 +78,8 @@ const Home = () => {
 
   return (
     <div>
-      {/* Hero Section */}
-      <section 
-        className="hero" 
-        style={{
-          position: 'relative',
-          background: 'url("/bghero.png") no-repeat right center/cover',
-          minHeight: '70vh',
-          display: 'flex',
-          alignItems: 'center',
-          color: 'white',
-          padding: '4rem 0'
-        }}
-      >
-
-        
-        <div className="container" style={{ position: 'relative', zIndex: 2, width: '100%' }}>
-          <div style={{ maxWidth: '650px' }}>
-            <div className="eyebrow" style={{ color: 'var(--accent-gold)' }}>शिक्षण | संस्कार | उज्ज्वल भविष्य</div>
-            <h1 style={{ fontSize: '3.5rem', marginBottom: '1.5rem', color: 'white' }}>
-              श्री छत्रपती शिवाजी महाराज महानगरपालिका प्राथमिक शाळा, <span style={{ color: 'var(--accent-gold)' }}>भुतकरवाडी</span>
-            </h1>
-            <p style={{ fontSize: '1.25rem', marginBottom: '2.5rem', opacity: 0.9, lineHeight: 1.6 }}>
-              गुणवत्तापूर्ण प्राथमिक शिक्षणाद्वारे विद्यार्थ्यांचे शैक्षणिक, मानसिक आणि सामाजिक विकास हेच आमचे ध्येय.
-            </p>
-            <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-              <Link to="/about-school" className="btn btn-primary">
-                शाळेबद्दल जाणून घ्या <ArrowRight size={18} />
-              </Link>
-              <Link to="/contact" className="btn btn-outline">
-                प्रवेश माहिती <ArrowRight size={18} />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Notice Bar */}
-      <div style={{ backgroundColor: 'var(--cream-bg)', borderBottom: '1px solid var(--border-color)', padding: '1rem 0' }}>
-        <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flex: 1 }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--accent-gold)', fontWeight: 700 }}>
-              <Megaphone size={20} />
-              महत्त्वाच्या सूचना
-            </div>
-            <div style={{ width: '1px', height: '24px', backgroundColor: 'var(--border-color)' }}></div>
-            <div style={{ color: 'var(--text-main)', fontSize: '0.9375rem', fontWeight: 500 }}>
-              शाळा प्रवेश प्रक्रिया 2026-27 सुरू आहे. &nbsp;|&nbsp; शैक्षणिक दिनदर्शिका जाहीर झाली आहे.
-            </div>
-          </div>
-          <Link to="/" style={{ color: 'var(--primary-navy)', fontSize: '0.875rem', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
-            सर्व सूचना पहा <ArrowRight size={14} />
-          </Link>
-        </div>
-      </div>
-
-      {/* Quick Access Cards */}
-      <section style={{ padding: '3rem 0 1rem', backgroundColor: 'var(--bg-white)' }}>
-        <div className="container">
-          <div style={{ 
-            display: 'grid', 
-            gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', 
-            gap: '1.5rem' 
-          }}>
-            {[
-              { icon: GraduationCap, title: 'प्रवेश प्रक्रिया', desc: '2026-27 माहिती' },
-              { icon: Calendar, title: 'शैक्षणिक दिनदर्शिका', desc: 'महत्त्वाच्या तारखा' },
-              { icon: Book, title: 'अभ्यासक्रम', desc: 'वर्गानुसार माहिती' },
-              { icon: Users, title: 'शिक्षक व कर्मचारी', desc: 'आमची टीम' },
-              { icon: ImageIcon, title: 'छायाचित्रे', desc: 'शाळेतील उपक्रम' },
-              { icon: Phone, title: 'संपर्क', desc: 'पत्ता व संपर्क माहिती' },
-            ].map((card, idx) => (
-              <div key={idx} style={{ 
-                border: '1px solid var(--border-color)', 
-                borderRadius: '8px', 
-                padding: '1.5rem', 
-                display: 'flex', 
-                alignItems: 'center', 
-                gap: '1rem',
-                backgroundColor: 'var(--bg-white)',
-                boxShadow: 'var(--shadow-subtle)',
-                transition: 'transform 0.2s, box-shadow 0.2s',
-                cursor: 'pointer'
-              }}
-              onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = 'var(--shadow-hover)'; }}
-              onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'var(--shadow-subtle)'; }}
-              >
-                <div style={{ color: 'var(--primary-navy)' }}>
-                  <card.icon size={28} strokeWidth={1.5} />
-                </div>
-                <div>
-                  <h4 style={{ fontSize: '1rem', marginBottom: '0.25rem', color: 'var(--dark-navy)' }}>{card.title}</h4>
-                  <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>{card.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* === UNIFIED GOV PORTAL STYLES === */}
+      {/* === GOV PORTAL CONTENT STYLES (layout handled by global .page-layout) === */}
       <style>{`
-        .gov-portal-section {
-          background-color: #f0f4f8;
-          padding: 3rem 0;
-          font-family: Arial, sans-serif;
-        }
-        .gov-portal-container {
-          max-width: 1240px;
-          margin: 0 auto;
-          padding: 0 15px;
-        }
-        .gov-portal-layout {
-          display: grid;
-          grid-template-columns: 240px 1fr 240px;
-          gap: 15px;
-          align-items: start;
-        }
-
-        /* Sticky sidebar wrappers */
-        .gov-sidebar-sticky {
-          position: sticky;
-          top: 80px;
-          align-self: start;
-        }
-
         /* Sidebars */
         .gov-sidebar {
           background: #fff;
@@ -367,16 +244,19 @@ const Home = () => {
           width: 100%;
           border-collapse: collapse;
           font-size: 0.9rem;
+          table-layout: fixed;
+          word-wrap: break-word;
         }
         .gov-table th, .gov-table td {
           border: 1px solid #8ab8d0;
           padding: 8px 10px;
           text-align: left;
           color: #000;
+          word-break: break-word;
         }
         .gov-table th {
           background-color: #d6eaf8;
-          width: 25%;
+          width: 35%;
           font-weight: normal;
         }
         .gov-table td {
@@ -501,7 +381,7 @@ const Home = () => {
 
         /* Notice Board */
         .gov-notice-board {
-          margin-top: 15px;
+          margin-top: 0;
         }
         .gov-notice-item {
           padding: 10px 15px;
@@ -532,14 +412,6 @@ const Home = () => {
         }
 
         /* Responsive */
-        @media (max-width: 1024px) {
-          .gov-portal-layout {
-            grid-template-columns: 1fr;
-          }
-          .gov-sidebar-sticky {
-            position: static;
-          }
-        }
         @media (max-width: 860px) {
           .gov-profiles-grid,
           .gov-fac-grid {
@@ -564,258 +436,373 @@ const Home = () => {
           .gov-footer-strip {
             flex-direction: column;
             gap: 10px;
+            text-align: center;
+          }
+          .gov-profile-top {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+          }
+          .gov-intro-strip {
+            flex-direction: column;
+            text-align: center;
           }
         }
       `}</style>
 
-      {/* === ONE UNIFIED 3-COLUMN PORTAL SHELL === */}
-      <section className="gov-portal-section">
-        <div className="gov-portal-container">
-          <div className="gov-portal-layout">
+      {/* ======================================================================
+           UNIFIED 3-COLUMN PAGE LAYOUT
+           LEFT SIDEBAR | CENTER CONTENT | RIGHT SIDEBAR
+         ====================================================================== */}
+      <div style={{ backgroundColor: '#f0f4f8', padding: '20px 0 40px' }}>
+        <div className="page-layout">
 
-            {/* ======= LEFT SIDEBAR (ONE INSTANCE) ======= */}
-            <div className="gov-sidebar gov-sidebar-sticky">
+          {/* ======= LEFT SIDEBAR ======= */}
+          <aside className="left-sidebar">
+            <div className="gov-sidebar">
               <div className="gov-sidebar-header">
                 <HomeIcon size={20} />
                 त्वरित प्रवेश
               </div>
               <ul className="gov-sidebar-list">
                 {[
-                  { icon: HomeIcon, text: "मुख्य पृष्ठ" },
-                  { icon: Building, text: "शाळेबद्दल" },
-                  { icon: Users, text: "शैक्षणिक नेतृत्व" },
-                  { icon: BookOpen, text: "आमच्या सुविधा" },
-                  { icon: Users, text: "शिक्षक आणि कर्मचारी" },
-                  { icon: GraduationCap, text: "विद्यार्थी" },
-                  { icon: Calendar, text: "उपक्रम" },
-                  { icon: ImageIcon, text: "गॅलरी" },
-                  { icon: Phone, text: "संपर्क" },
-                  { icon: LinkIcon, text: "महत्त्वाचे दुवे" },
-                  { icon: Building, text: "शासकीय योजना" },
-                  { icon: FileText, text: "प्रवेश माहिती" },
-                  { icon: Bell, text: "सूचना फलक" },
-                  { icon: HelpCircle, text: "वारंवार विचारले जाणारे प्रश्न" },
+                  { icon: HomeIcon, text: "मुख्य पृष्ठ", to: "/" },
+                  { icon: Users, text: "शैक्षणिक नेतृत्व", to: "/teachers" },
+                  { icon: Users, text: "शिक्षक आणि कर्मचारी", to: "/teachers" },
+                  { icon: GraduationCap, text: "विद्यार्थी", to: "/students" },
+                  { icon: Calendar, text: "उपक्रम", to: "/activities" },
+                  { icon: ImageIcon, text: "गॅलरी", to: "/gallery" },
+                  { icon: Phone, text: "संपर्क", to: "/contact" },
+                  { icon: LinkIcon, text: "महत्त्वाचे दुवे", to: "/contact" },
+                  { icon: Building, text: "शासकीय योजना", to: "/about-school" },
+                  { icon: FileText, text: "प्रवेश माहिती", to: "/contact" },
+                  { icon: Bell, text: "सूचना फलक", to: "/#notices" },
+                  { icon: HelpCircle, text: "वारंवार विचारले जाणारे प्रश्न", to: "/contact" },
                 ].map((item, idx) => (
-                  <li key={idx} className="gov-sidebar-item">
+                  <Link key={idx} to={item.to} className="gov-sidebar-item">
                     <div className="gov-sidebar-item-left">
                       <item.icon size={16} color="#081272" />
                       <span>{item.text}</span>
                     </div>
                     <ChevronRight size={14} color="#8ab8d0" />
-                  </li>
+                  </Link>
+                ))}
+              </ul>
+            </div>
+          </aside>
+
+          {/* ======= CENTER CONTENT ======= */}
+          <main className="main-content">
+
+            {/* ─── HERO SECTION (RESTORED ORIGINAL) ─── */}
+            <section
+              className="hero"
+              style={{
+                position: 'relative',
+                background: 'url("/bghero.png") no-repeat right center/cover',
+                minHeight: '50vh',
+                display: 'flex',
+                alignItems: 'center',
+                color: 'white',
+                padding: '3rem 0',
+                borderRadius: '4px',
+                overflow: 'hidden'
+              }}
+            >
+            <div
+              style={{
+                position: 'absolute',
+                inset: 0,
+                background: 'linear-gradient(90deg, rgba(0, 0, 0, 0.42) 0%, rgba(0, 0, 0, 0.22) 38%, rgba(0, 0, 0, 0) 68%)',
+                zIndex: 1,
+                pointerEvents: 'none'
+              }}
+            ></div>
+
+            <div style={{ position: 'relative', zIndex: 2, width: '100%', padding: '0 20px' }}>
+                <div style={{ maxWidth: '650px' }}>
+                  <div className="eyebrow" style={{ color: 'var(--accent-gold)' }}>शिक्षण | संस्कार | उज्ज्वल भविष्य</div>
+                  <h1 style={{ fontSize: 'clamp(1.75rem, 4vw, 3rem)', marginBottom: '1.5rem', color: 'white', lineHeight: 1.2 }}>
+                    श्री छत्रपती शिवाजी महाराज महानगरपालिका प्राथमिक शाळा, <span style={{ color: 'var(--accent-gold)' }}>भुतकरवाडी</span>
+                  </h1>
+                  <p style={{ fontSize: 'clamp(0.95rem, 2vw, 1.15rem)', marginBottom: '2rem', opacity: 0.9, lineHeight: 1.6 }}>
+                    गुणवत्तापूर्ण प्राथमिक शिक्षणाद्वारे विद्यार्थ्यांचे शैक्षणिक, मानसिक आणि सामाजिक विकास हेच आमचे ध्येय.
+                  </p>
+                  <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+                    <Link to="/about-school" className="btn btn-primary">
+                      शाळेबद्दल जाणून घ्या <ArrowRight size={18} />
+                    </Link>
+                    <Link to="/contact" className="btn btn-outline">
+                      प्रवेश माहिती <ArrowRight size={18} />
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            {/* ─── NOTICE BAR ─── */}
+            <div style={{ backgroundColor: 'var(--cream-bg)', border: '1px solid var(--border-color)', borderRadius: '4px', padding: '1rem 1.25rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flex: 1, flexWrap: 'wrap' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--accent-gold)', fontWeight: 700, whiteSpace: 'nowrap' }}>
+                    <Megaphone size={20} />
+                    महत्त्वाच्या सूचना
+                  </div>
+                  <div style={{ width: '1px', height: '24px', backgroundColor: 'var(--border-color)' }} className="hide-mobile"></div>
+                  <div style={{ color: 'var(--text-main)', fontSize: 'clamp(0.8rem, 2.5vw, 0.9375rem)', fontWeight: 500, flex: 1, minWidth: '200px' }}>
+                    शाळा प्रवेश प्रक्रिया 2026-27 सुरू आहे. <span className="hide-mobile">&nbsp;|&nbsp; शैक्षणिक दिनदर्शिका जाहीर झाली आहे.</span>
+                  </div>
+                </div>
+                <Link to="/" style={{ color: 'var(--primary-navy)', fontSize: '0.875rem', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '0.25rem', whiteSpace: 'nowrap' }}>
+                  सर्व सूचना पहा <ArrowRight size={14} />
+                </Link>
+              </div>
+            </div>
+
+            {/* ─── QUICK ACCESS CARDS ─── */}
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))',
+              gap: '1rem'
+            }}>
+              {[
+                { icon: GraduationCap, title: 'प्रवेश प्रक्रिया', desc: '2026-27 माहिती' },
+                { icon: Calendar, title: 'शैक्षणिक दिनदर्शिका', desc: 'महत्त्वाच्या तारखा' },
+                { icon: Book, title: 'अभ्यासक्रम', desc: 'वर्गानुसार माहिती' },
+                { icon: Users, title: 'शिक्षक व कर्मचारी', desc: 'आमची टीम' },
+                { icon: ImageIcon, title: 'छायाचित्रे', desc: 'शाळेतील उपक्रम' },
+                { icon: Phone, title: 'संपर्क', desc: 'पत्ता व संपर्क माहिती' },
+              ].map((card, idx) => (
+                <div key={idx} style={{
+                  border: '1px solid var(--border-color)',
+                  borderRadius: '8px',
+                  padding: '1.25rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.75rem',
+                  backgroundColor: 'var(--bg-white)',
+                  boxShadow: 'var(--shadow-subtle)',
+                  transition: 'transform 0.2s, box-shadow 0.2s',
+                  cursor: 'pointer'
+                }}
+                onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = 'var(--shadow-hover)'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'var(--shadow-subtle)'; }}
+                >
+                  <div style={{ color: 'var(--primary-navy)' }}>
+                    <card.icon size={28} strokeWidth={1.5} />
+                  </div>
+                  <div>
+                    <h4 style={{ fontSize: '1rem', marginBottom: '0.25rem', color: 'var(--dark-navy)' }}>{card.title}</h4>
+                    <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>{card.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* ─── SECTION 1: शैक्षणिक नेतृत्व ─── */}
+            <div className="gov-header">
+              <div className="gov-header-left">
+                <Users size={32} />
+                <h2 className="gov-header-title" style={{ color: '#fff' }}>शैक्षणिक नेतृत्व</h2>
+              </div>
+              <div className="gov-header-subtitle">
+                शाळेच्या गुणवत्तापूर्ण शिक्षणासाठी मार्गदर्शन करणारे मान्यवर
+              </div>
+            </div>
+
+            <div className="gov-intro-strip">
+              <div>
+                आमच्या शाळेच्या प्रगतीत मार्गदर्शन, प्रशासन, शैक्षणिक नियोजन आणि सर्वांगीण विकासासाठी हे मान्यवर सतत कार्यरत आहेत.<br/>
+                त्यांचा अनुभव, नेतृत्व आणि प्रेरणेमुळे विद्यार्थ्यांना गुणवत्तापूर्ण शिक्षणाची संधी उपलब्ध होत आहे.
+              </div>
+              <div style={{color: '#081272', paddingLeft: '15px', flexShrink: 0}}>
+                <Megaphone size={40} fill="#c4ecfa" color="#081272" strokeWidth={1} />
+              </div>
+            </div>
+
+            <div className="gov-profiles-grid">
+              {/* अहिल्यानगर मनपा */}
+              <div className="gov-profile-block">
+                <div className="gov-profile-header">
+                  <Building size={22} color="#0c1a9c" />
+                  अहिल्यानगर मनपा
+                </div>
+                <div className="gov-profile-content">
+                  <div className="gov-profile-top">
+                    <img src="/aukta.jpeg" alt="श्री यशवंत भीमराव डांगे" className="gov-profile-photo" />
+                    <div className="gov-profile-details">
+                      <h3 className="gov-profile-name">श्री यशवंत भीमराव डांगे</h3>
+                      <p className="gov-profile-role">अहिल्यानगर मनपा आयुक्त</p>
+                      <div style={{ marginTop: '10px', width: '30px', height: '3px', backgroundColor: '#ffb833' }}></div>
+                    </div>
+                  </div>
+                  <table className="gov-table">
+                    <tbody>
+                      <tr><th>पद</th><td>आयुक्त</td></tr>
+                      <tr><th>संस्था</th><td>अहिल्यानगर महानगरपालिका</td></tr>
+                      <tr><th>कार्यक्षेत्र</th><td>शिक्षण, प्रशासन व सर्वांगीण विकास</td></tr>
+                      <tr><th>मार्गदर्शन</th><td>शाळेच्या गुणवत्तापूर्ण शिक्षणासाठी सतत मार्गदर्शन</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              {/* शिक्षण विभाग */}
+              <div className="gov-profile-block">
+                <div className="gov-profile-header">
+                  <Target size={22} color="#0c1a9c" />
+                  शिक्षण विभाग
+                </div>
+                <div className="gov-profile-content">
+                  <div className="gov-profile-top">
+                    <img src="/zuber.jpeg" alt="श्री. जुबेर नुरमोहम्मद पठाण" className="gov-profile-photo" />
+                    <div className="gov-profile-details">
+                      <h3 className="gov-profile-name">श्री. जुबेर नुरमोहम्मद पठाण</h3>
+                      <p className="gov-profile-role">प्रशासन अधिकारी<br/>अहिल्यानगर मनपा शिक्षण विभाग</p>
+                      <div style={{ marginTop: '10px', width: '30px', height: '3px', backgroundColor: '#ffb833' }}></div>
+                    </div>
+                  </div>
+                  <table className="gov-table">
+                    <tbody>
+                      <tr><th>पद</th><td>प्रशासन अधिकारी</td></tr>
+                      <tr><th>विभाग</th><td>अहिल्यानगर मनपा शिक्षण विभाग</td></tr>
+                      <tr><th>कार्यक्षेत्र</th><td>शैक्षणिक नियोजन, प्रशासन व शाळा विकास</td></tr>
+                      <tr><th>मार्गदर्शन</th><td>विद्यार्थ्यांच्या उज्ज्वल भविष्यासाठी कटिबद्ध</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <div className="gov-footer-strip">
+              <Building size={32} className="gov-footer-icon" fill="#ffefbc" color="#000" strokeWidth={1} />
+              <div className="gov-footer-text">
+                गुणवत्तापूर्ण शिक्षण &nbsp;|&nbsp; सक्षम प्रशासन &nbsp;|&nbsp; उज्ज्वल भविष्य
+              </div>
+              <BookOpen size={32} className="gov-footer-icon-right" fill="#0c1a9c" color="#fff" strokeWidth={1} />
+            </div>
+
+            {/* ─── SPACER ─── */}
+            <div className="gov-section-divider"></div>
+
+            {/* ─── SECTION 2: आमच्या शाळेतील सुविधा ─── */}
+            <div className="gov-header">
+              <div className="gov-header-left">
+                <School size={32} />
+                <h2 className="gov-header-title" style={{ color: '#fff' }}>आमच्या शाळेतील सुविधा</h2>
+              </div>
+              <div className="gov-header-subtitle">
+                गुणवत्तापूर्ण शिक्षण, संस्कार आणि सर्वांगीण विकासासाठी उपलब्ध सुविधा
+              </div>
+            </div>
+
+            <div className="gov-intro-strip">
+              <BookOpen size={40} color="#081272" style={{flexShrink: 0}} />
+              <div>
+                विद्यार्थ्यांना आनंददायी, सुरक्षित आणि गुणवत्तापूर्ण शिक्षण मिळावे यासाठी अनेक विविध शैक्षणिक, शारीरिक, आरोग्यविषयक व
+                भौतिक सुविधा उपलब्ध करून देत आहोत. या सुविधांच्या माध्यमातून प्रत्येक विद्यार्थ्यांचा संपूर्ण विकास घडावा, हे आमचे ध्येय आहे.
+              </div>
+            </div>
+
+            <div className="gov-fac-grid">
+              {facilitiesData.map((fac) => (
+                <div key={fac.id} className="gov-fac-block">
+                  <div className="gov-fac-block-header">
+                    {fac.icon}
+                    {fac.title}
+                  </div>
+                  <div className="gov-fac-block-body">
+                    <img src={fac.img} alt={fac.title} className="gov-fac-block-img" loading="lazy" />
+                    <div className="gov-fac-block-content">
+                      <ul className="gov-fac-block-list">
+                        {fac.details.map((detail, idx) => (
+                          <li key={idx}>
+                            <span className="gov-fac-bullet">•</span>
+                            <span>{detail}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="gov-fac-mission">
+              <div className="gov-fac-mission-header">
+                <Target size={20} />
+                आमचे ध्येय
+              </div>
+              <div className="gov-fac-mission-body">
+                "प्रत्येक विद्यार्थी शिकावा, घडावा, प्रगती करावा<br/>
+                आणि आत्मविश्वासाने भविष्याकडे वाटचाल करावी!"
+              </div>
+            </div>
+
+            <div className="gov-footer-strip">
+              <School size={28} className="gov-footer-icon" color="#0c1a9c" />
+              <div className="gov-footer-text">
+                गुणवत्तापूर्ण शिक्षण &nbsp;|&nbsp; सक्षम प्रशासन &nbsp;|&nbsp; उज्ज्वल भविष्य
+              </div>
+              <BookOpen size={28} className="gov-footer-icon-right" color="#0c1a9c" />
+            </div>
+
+          </main>
+
+          {/* ======= RIGHT SIDEBAR ======= */}
+          <aside className="right-sidebar">
+            <div className="gov-sidebar">
+              <div className="gov-sidebar-header">
+                <LinkIcon size={20} />
+                महत्त्वाच्या लिंक्स
+              </div>
+              <ul className="gov-sidebar-list">
+                {[
+                  { text: "सूचना व परिपत्रके", to: "/#notices" },
+                  { text: "प्रवेश प्रक्रिया", to: "/contact" },
+                  { text: "शालेय अभ्यासक्रम", to: "/students" },
+                  { text: "शालेय दिनदर्शिका", to: "/#notices" },
+                  { text: "छायाचित्र संग्रह", to: "/gallery" },
+                  { text: "महत्त्वाचे दस्तऐवज", to: "/contact" }
+                ].map((text, idx) => (
+                  <Link key={idx} to={text.to} className="gov-sidebar-item">
+                    <div className="gov-sidebar-item-left">
+                      <ChevronRight size={14} color="#d9381e" />
+                      <span>{text.text}</span>
+                    </div>
+                  </Link>
                 ))}
               </ul>
             </div>
 
-            {/* ======= CENTER CONTENT (ALL SECTIONS) ======= */}
-            <div className="gov-center">
-
-              {/* ─── SECTION 1: शैक्षणिक नेतृत्व ─── */}
-              <div className="gov-header">
-                <div className="gov-header-left">
-                  <Users size={32} />
-                  <h2 className="gov-header-title">शैक्षणिक नेतृत्व</h2>
+            <div id="notices" className="gov-sidebar gov-notice-board">
+              <div className="gov-sidebar-header">
+                <Bell size={20} />
+                सूचना फलक
+              </div>
+              <div className="gov-notice-list">
+                <div className="gov-notice-item">
+                  <span className="gov-notice-date">नवीन (०१-०६-२०२६)</span>
+                  शाळेत नवीन शैक्षणिक वर्ष २०२६-२७ ची प्रवेश प्रक्रिया सुरू झाली आहे.
                 </div>
-                <div className="gov-header-subtitle">
-                  शाळेच्या गुणवत्तापूर्ण शिक्षणासाठी मार्गदर्शन करणारे मान्यवर
+                <div className="gov-notice-item">
+                  <span className="gov-notice-date">महत्त्वाचे (२८-०५-२०२६)</span>
+                  विद्यार्थ्यांसाठी गणवेश व पाठ्यपुस्तके वाटप शिबीर.
+                </div>
+                <div className="gov-notice-item">
+                  <span className="gov-notice-date">पालक सभा (२५-०५-२०२६)</span>
+                  इयत्ता पहिली ते चौथीच्या पालकांसाठी विशेष सभा.
                 </div>
               </div>
-
-              <div className="gov-intro-strip">
-                <div>
-                  आमच्या शाळेच्या प्रगतीत मार्गदर्शन, प्रशासन, शैक्षणिक नियोजन आणि सर्वांगीण विकासासाठी हे मान्यवर सतत कार्यरत आहेत.<br/>
-                  त्यांचा अनुभव, नेतृत्व आणि प्रेरणेमुळे विद्यार्थ्यांना गुणवत्तापूर्ण शिक्षणाची संधी उपलब्ध होत आहे.
-                </div>
-                <div style={{color: '#081272', paddingLeft: '15px', flexShrink: 0}}>
-                  <Megaphone size={40} fill="#c4ecfa" color="#081272" strokeWidth={1} />
-                </div>
-              </div>
-
-              <div className="gov-profiles-grid">
-                {/* अहिल्यानगर मनपा */}
-                <div className="gov-profile-block">
-                  <div className="gov-profile-header">
-                    <Building size={22} color="#0c1a9c" />
-                    अहिल्यानगर मनपा
-                  </div>
-                  <div className="gov-profile-content">
-                    <div className="gov-profile-top">
-                      <img src="/aukta.jpeg" alt="श्री यशवंत भीमराव डांगे" className="gov-profile-photo" />
-                      <div className="gov-profile-details">
-                        <h3 className="gov-profile-name">श्री यशवंत भीमराव डांगे</h3>
-                        <p className="gov-profile-role">अहिल्यानगर मनपा आयुक्त</p>
-                        <div style={{ marginTop: '10px', width: '30px', height: '3px', backgroundColor: '#ffb833' }}></div>
-                      </div>
-                    </div>
-                    <table className="gov-table">
-                      <tbody>
-                        <tr><th>पद</th><td>आयुक्त</td></tr>
-                        <tr><th>संस्था</th><td>अहिल्यानगर महानगरपालिका</td></tr>
-                        <tr><th>कार्यक्षेत्र</th><td>शिक्षण, प्रशासन व सर्वांगीण विकास</td></tr>
-                        <tr><th>मार्गदर्शन</th><td>शाळेच्या गुणवत्तापूर्ण शिक्षणासाठी सतत मार्गदर्शन</td></tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-
-                {/* शिक्षण विभाग */}
-                <div className="gov-profile-block">
-                  <div className="gov-profile-header">
-                    <Target size={22} color="#0c1a9c" />
-                    शिक्षण विभाग
-                  </div>
-                  <div className="gov-profile-content">
-                    <div className="gov-profile-top">
-                      <img src="/zuber.jpeg" alt="श्री. जुबेर नुरमोहम्मद पठाण" className="gov-profile-photo" />
-                      <div className="gov-profile-details">
-                        <h3 className="gov-profile-name">श्री. जुबेर नुरमोहम्मद पठाण</h3>
-                        <p className="gov-profile-role">प्रशासन अधिकारी<br/>अहिल्यानगर मनपा शिक्षण विभाग</p>
-                        <div style={{ marginTop: '10px', width: '30px', height: '3px', backgroundColor: '#ffb833' }}></div>
-                      </div>
-                    </div>
-                    <table className="gov-table">
-                      <tbody>
-                        <tr><th>पद</th><td>प्रशासन अधिकारी</td></tr>
-                        <tr><th>विभाग</th><td>अहिल्यानगर मनपा शिक्षण विभाग</td></tr>
-                        <tr><th>कार्यक्षेत्र</th><td>शैक्षणिक नियोजन, प्रशासन व शाळा विकास</td></tr>
-                        <tr><th>मार्गदर्शन</th><td>विद्यार्थ्यांच्या उज्ज्वल भविष्यासाठी कटिबद्ध</td></tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-
-              <div className="gov-footer-strip">
-                <Building size={32} className="gov-footer-icon" fill="#ffefbc" color="#000" strokeWidth={1} />
-                <div className="gov-footer-text">
-                  गुणवत्तापूर्ण शिक्षण &nbsp;|&nbsp; सक्षम प्रशासन &nbsp;|&nbsp; उज्ज्वल भविष्य
-                </div>
-                <BookOpen size={32} className="gov-footer-icon-right" fill="#0c1a9c" color="#fff" strokeWidth={1} />
-              </div>
-
-              {/* ─── SPACER ─── */}
-              <div className="gov-section-divider"></div>
-
-              {/* ─── SECTION 2: आमच्या शाळेतील सुविधा ─── */}
-              <div className="gov-header">
-                <div className="gov-header-left">
-                  <School size={32} />
-                  <h2 className="gov-header-title">आमच्या शाळेतील सुविधा</h2>
-                </div>
-                <div className="gov-header-subtitle">
-                  गुणवत्तापूर्ण शिक्षण, संस्कार आणि सर्वांगीण विकासासाठी उपलब्ध सुविधा
-                </div>
-              </div>
-
-              <div className="gov-intro-strip">
-                <BookOpen size={40} color="#081272" style={{flexShrink: 0}} />
-                <div>
-                  विद्यार्थ्यांना आनंददायी, सुरक्षित आणि गुणवत्तापूर्ण शिक्षण मिळावे यासाठी अनेक विविध शैक्षणिक, शारीरिक, आरोग्यविषयक व
-                  भौतिक सुविधा उपलब्ध करून देत आहोत. या सुविधांच्या माध्यमातून प्रत्येक विद्यार्थ्यांचा संपूर्ण विकास घडावा, हे आमचे ध्येय आहे.
-                </div>
-              </div>
-
-              <div className="gov-fac-grid">
-                {facilitiesData.map((fac) => (
-                  <div key={fac.id} className="gov-fac-block">
-                    <div className="gov-fac-block-header">
-                      {fac.icon}
-                      {fac.title}
-                    </div>
-                    <div className="gov-fac-block-body">
-                      <img src={fac.img} alt={fac.title} className="gov-fac-block-img" loading="lazy" />
-                      <div className="gov-fac-block-content">
-                        <ul className="gov-fac-block-list">
-                          {fac.details.map((detail, idx) => (
-                            <li key={idx}>
-                              <span className="gov-fac-bullet">•</span>
-                              <span>{detail}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <div className="gov-fac-mission">
-                <div className="gov-fac-mission-header">
-                  <Target size={20} />
-                  आमचे ध्येय
-                </div>
-                <div className="gov-fac-mission-body">
-                  "प्रत्येक विद्यार्थी शिकावा, घडावा, प्रगती करावा<br/>
-                  आणि आत्मविश्वासाने भविष्याकडे वाटचाल करावी!"
-                </div>
-              </div>
-
-              <div className="gov-footer-strip">
-                <School size={28} className="gov-footer-icon" color="#0c1a9c" />
-                <div className="gov-footer-text">
-                  गुणवत्तापूर्ण शिक्षण &nbsp;|&nbsp; सक्षम प्रशासन &nbsp;|&nbsp; उज्ज्वल भविष्य
-                </div>
-                <BookOpen size={28} className="gov-footer-icon-right" color="#0c1a9c" />
-              </div>
-
+              <Link to="/#notices" className="gov-notice-more">सर्व पहा &rarr;</Link>
             </div>
+          </aside>
 
-            {/* ======= RIGHT SIDEBAR (ONE INSTANCE) ======= */}
-            <div className="gov-sidebar-sticky">
-              <div className="gov-sidebar">
-                <div className="gov-sidebar-header">
-                  <LinkIcon size={20} />
-                  महत्त्वाच्या लिंक्स
-                </div>
-                <ul className="gov-sidebar-list">
-                  {[
-                    "सूचना व परिपत्रके",
-                    "प्रवेश प्रक्रिया",
-                    "शालेय अभ्यासक्रम",
-                    "शालेय दिनदर्शिका",
-                    "छायाचित्र संग्रह",
-                    "महत्त्वाचे दस्तऐवज"
-                  ].map((text, idx) => (
-                    <li key={idx} className="gov-sidebar-item">
-                      <div className="gov-sidebar-item-left">
-                        <ChevronRight size={14} color="#d9381e" />
-                        <span>{text}</span>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="gov-sidebar gov-notice-board">
-                <div className="gov-sidebar-header">
-                  <Bell size={20} />
-                  सूचना फलक
-                </div>
-                <div className="gov-notice-list">
-                  <div className="gov-notice-item">
-                    <span className="gov-notice-date">नवीन (०१-०६-२०२६)</span>
-                    शाळेत नवीन शैक्षणिक वर्ष २०२६-२७ ची प्रवेश प्रक्रिया सुरू झाली आहे.
-                  </div>
-                  <div className="gov-notice-item">
-                    <span className="gov-notice-date">महत्त्वाचे (२८-०५-२०२६)</span>
-                    विद्यार्थ्यांसाठी गणवेश व पाठ्यपुस्तके वाटप शिबीर.
-                  </div>
-                  <div className="gov-notice-item">
-                    <span className="gov-notice-date">पालक सभा (२५-०५-२०२६)</span>
-                    इयत्ता पहिली ते चौथीच्या पालकांसाठी विशेष सभा.
-                  </div>
-                </div>
-                <a href="#" className="gov-notice-more">सर्व पहा &rarr;</a>
-              </div>
-            </div>
-
-          </div>
         </div>
-      </section>
+      </div>
 
     </div>
   );
 };
 
 export default Home;
-

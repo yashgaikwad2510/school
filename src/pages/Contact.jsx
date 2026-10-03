@@ -13,7 +13,7 @@ const Contact = () => {
           <br/>
           <p><strong>Address:</strong> Bhutkarwadi, Taluka Ahilyanagar, District Ahilyanagar</p>
           <br/>
-          <p><strong>Phone:</strong> 8793617304</p>
+          <p><strong>Phone:</strong> 8329664751</p>
           <br/>
           <p><strong>Email:</strong> mnpschoolbhutkarwadi03@gmail.com</p>
           <br/>
