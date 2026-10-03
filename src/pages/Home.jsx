@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { translations } from '../data/translations';
 import { Link } from 'react-router-dom';
-import { Megaphone, ArrowRight, GraduationCap, Calendar, Book, Users, Image as ImageIcon, Phone, BookOpen, HeartPulse, ShieldCheck, Palette, X, Target, School, Home as HomeIcon, Building, FileText, Link as LinkIcon, Bell, ChevronRight, HelpCircle } from 'lucide-react';
+import { Megaphone, ArrowRight, GraduationCap, Calendar, Book, Users, Image as ImageIcon, Phone, Mail, BookOpen, HeartPulse, ShieldCheck, Palette, X, Target, School, Home as HomeIcon, Building, FileText, Link as LinkIcon, Bell, ChevronRight, HelpCircle } from 'lucide-react';
 
 const rawFacilityImages = import.meta.glob('../assets/आमच्या शाळेतील सुविधा/*.{png,jpg,jpeg,webp}', { eager: true, import: 'default' });
 
@@ -347,6 +347,94 @@ const Home = () => {
           flex-shrink: 0;
           margin-top: 2px;
         }
+        .staff-section {
+          padding: 10px 0 5px;
+        }
+        .staff-section-header {
+          margin-bottom: 24px;
+          padding-left: 14px;
+          border-left: 4px solid #ffb833;
+        }
+        .staff-section-title {
+          margin: 0;
+          color: #0c1a9c;
+          font-size: 2rem;
+          line-height: 1.25;
+        }
+        .staff-section-subtitle {
+          margin: 8px 0 0;
+          color: #667085;
+          font-size: 1rem;
+        }
+        .staff-card-grid {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 20px;
+        }
+        .staff-card {
+          overflow: hidden;
+          background: #fff;
+          border: 1px solid #e5eaf0;
+          border-radius: 13px;
+          box-shadow: 0 4px 14px rgba(13, 43, 91, 0.08);
+        }
+        .staff-card-photo {
+          display: block;
+          width: 100%;
+          aspect-ratio: 4 / 3;
+          object-fit: cover;
+          object-position: center top;
+        }
+        .staff-card-content {
+          padding: 20px;
+        }
+        .staff-card-name {
+          margin: 0 0 10px;
+          color: #0d2b5b;
+          font-size: 1.3rem;
+          line-height: 1.35;
+        }
+        .staff-card-badge {
+          display: inline-block;
+          margin-bottom: 12px;
+          padding: 5px 11px;
+          border-radius: 5px;
+          background: #f2a000;
+          color: #0d2b5b;
+          font-size: 0.85rem;
+          font-weight: 700;
+        }
+        .staff-card-school {
+          min-height: 48px;
+          margin: 0;
+          color: #667085;
+          font-size: 0.9rem;
+          line-height: 1.55;
+        }
+        .staff-card-divider {
+          height: 1px;
+          margin: 18px 0 14px;
+          background: #e5eaf0;
+        }
+        .staff-card-detail {
+          display: flex;
+          align-items: flex-start;
+          gap: 9px;
+          margin-top: 12px;
+          color: #172033;
+          font-size: 0.9rem;
+          line-height: 1.45;
+        }
+        .staff-card-detail svg {
+          flex-shrink: 0;
+          margin-top: 2px;
+          color: #173f82;
+        }
+        .staff-card-detail-label {
+          display: block;
+          color: #667085;
+          font-size: 0.78rem;
+        }
         .gov-fac-grid {
           display: grid;
           grid-template-columns: 1fr 1fr;
@@ -446,6 +534,9 @@ const Home = () => {
           .gov-intro-strip {
             flex-direction: column;
             text-align: center;
+          }
+          .staff-card-grid {
+            grid-template-columns: 1fr;
           }
         }
       `}</style>
@@ -621,7 +712,6 @@ const Home = () => {
             </div>
 
             <div className="gov-profiles-grid">
-              {/* अहिल्यानगर मनपा */}
               <div className="gov-profile-block">
                 <div className="gov-profile-header">
                   <Building size={22} color="#0c1a9c" />
@@ -639,7 +729,7 @@ const Home = () => {
                   <table className="gov-table">
                     <tbody>
                       <tr><th>पद</th><td>आयुक्त</td></tr>
-                      <tr><th>संस्था</th><td>अहिल्यानगर महानगरपालिका</td></tr>
+                      <tr><th>संस्था</th><td>अहिल्यानगर महानपालिका</td></tr>
                       <tr><th>कार्यक्षेत्र</th><td>शिक्षण, प्रशासन व सर्वांगीण विकास</td></tr>
                       <tr><th>मार्गदर्शन</th><td>शाळेच्या गुणवत्तापूर्ण शिक्षणासाठी सतत मार्गदर्शन</td></tr>
                     </tbody>
@@ -647,7 +737,6 @@ const Home = () => {
                 </div>
               </div>
 
-              {/* शिक्षण विभाग */}
               <div className="gov-profile-block">
                 <div className="gov-profile-header">
                   <Target size={22} color="#0c1a9c" />
@@ -681,7 +770,6 @@ const Home = () => {
               </div>
               <BookOpen size={32} className="gov-footer-icon-right" fill="#0c1a9c" color="#fff" strokeWidth={1} />
             </div>
-
             {/* ─── SPACER ─── */}
             <div className="gov-section-divider"></div>
 
