@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
-import { translations } from '../data/translations';
 import { Link } from 'react-router-dom';
 import { Megaphone, ArrowRight, GraduationCap, Calendar, Book, Users, Image as ImageIcon, Phone, Mail, BookOpen, HeartPulse, ShieldCheck, Palette, X, Target, School, Home as HomeIcon, Building, FileText, Link as LinkIcon, Bell, ChevronRight, HelpCircle } from 'lucide-react';
 
@@ -17,61 +16,60 @@ const getFacilityImage = (keywords, defaultFallback = '/teacherbg.png') => {
 };
 
 const Home = () => {
-  const { language } = useLanguage();
-  const t = translations[language];
+  const { t } = useLanguage();
   const [activeFacility, setActiveFacility] = useState(null);
 
   const facilitiesData = [
     {
       id: 'knowledge',
-      title: 'ज्ञानाची समृद्धी',
-      shortText: 'ग्रंथालय, डिजिटल शिक्षण आणि शैक्षणिक साहित्य',
+      title: t('facilities.knowledge'),
+      shortText: t('facilities.knowledgeShort'),
       icon: <BookOpen size={20} color="var(--accent-gold)" />,
       img: getFacilityImage(['library', 'reading']),
       details: [
-        'सुसज्ज ग्रंथालय व वाचन साहित्य',
-        'डिजिटल शिक्षणासाठी संगणक व स्मार्ट साधने',
-        'विज्ञान व गणित विषयासाठी शैक्षणिक साहित्य',
-        'विद्यार्थ्यांच्या कल्पकतेला आणि सर्जनशीलतेला चालना देणारे उपक्रम'
+        t('facilities.library'),
+        t('facilities.digital'),
+        t('facilities.science'),
+        t('facilities.creativity')
       ]
     },
     {
       id: 'sports',
-      title: 'खेळ आणि आरोग्य',
-      shortText: 'क्रीडा, पोषण, स्वच्छता आणि आरोग्यविषयक सुविधा',
+      title: t('facilities.sports'),
+      shortText: t('facilities.sportsShort'),
       icon: <HeartPulse size={20} color="var(--accent-gold)" />,
       img: getFacilityImage(['sports', 'health']),
       details: [
-        'विस्तीर्ण मैदान व विविध खेळांचे साहित्य',
-        'शालेय पोषण आहार आणि स्वच्छ पिण्याचे पाणी',
-        'नियमित आरोग्य तपासणी व वैद्यकीय मार्गदर्शन',
-        'शारीरिक आणि मानसिक स्वास्थ्यासाठी योग आणि व्यायाम'
+        t('facilities.playground'),
+        t('facilities.nutrition'),
+        t('facilities.health'),
+        t('facilities.yoga')
       ]
     },
     {
       id: 'environment',
-      title: 'सुरक्षित शालेय वातावरण',
-      shortText: 'हवेशीर वर्गखोल्या, स्वच्छता आणि सुरक्षित परिसर',
+      title: t('facilities.safe'),
+      shortText: t('facilities.safeShort'),
       icon: <ShieldCheck size={20} color="var(--accent-gold)" />,
       img: getFacilityImage(['safe', 'school', 'classroom']),
       details: [
-        'प्रशस्त व हवेशीर वर्गखोल्या',
-        'शालेय परिसरात सुरक्षिततेसाठी योग्य व्यवस्था',
-        'मुले व मुलींसाठी स्वतंत्र आणि स्वच्छ स्वच्छतागृहे',
-        'निसर्गरम्य आणि आनंददायी शालेय परिसर'
+        t('facilities.classrooms'),
+        t('facilities.security'),
+        t('facilities.restrooms'),
+        t('facilities.environment')
       ]
     },
     {
       id: 'activities',
-      title: 'सर्वांगीण विकास',
-      shortText: 'कला, संस्कृती, पर्यावरण आणि विविध शैक्षणिक उपक्रम',
+      title: t('facilities.development'),
+      shortText: t('facilities.developmentShort'),
       icon: <Palette size={20} color="var(--accent-gold)" />,
       img: getFacilityImage(['overall', 'development']),
       details: [
-        'विविध सांस्कृतिक कार्यक्रम आणि स्नेहसंमेलने',
-        'कला, हस्तकला आणि चित्रकला स्पर्धा',
-        'वृक्षारोपण आणि पर्यावरणपूरक उपक्रम',
-        'सामाजिक जाणीव व नेतृत्वगुण विकसित करणारे कार्यक्रम'
+        t('facilities.cultural'),
+        t('facilities.art'),
+        t('facilities.trees'),
+        t('facilities.social')
       ]
     }
   ];
@@ -612,19 +610,19 @@ const Home = () => {
 
             <div style={{ position: 'relative', zIndex: 2, width: '100%', padding: '0 20px' }}>
                 <div style={{ maxWidth: '650px' }}>
-                  <div className="eyebrow" style={{ color: 'var(--accent-gold)' }}>शिक्षण | संस्कार | उज्ज्वल भविष्य</div>
+                  <div className="eyebrow" style={{ color: 'var(--accent-gold)' }}>{t('home.eyebrow')}</div>
                   <h1 style={{ fontSize: 'clamp(1.75rem, 4vw, 3rem)', marginBottom: '1.5rem', color: 'white', lineHeight: 1.2 }}>
-                    श्री छत्रपती शिवाजी महाराज महानगरपालिका प्राथमिक शाळा, <span style={{ color: 'var(--accent-gold)' }}>भुतकरवाडी</span>
+                    {t('home.heroTitle')}
                   </h1>
                   <p style={{ fontSize: 'clamp(0.95rem, 2vw, 1.15rem)', marginBottom: '2rem', opacity: 0.9, lineHeight: 1.6 }}>
-                    गुणवत्तापूर्ण प्राथमिक शिक्षणाद्वारे विद्यार्थ्यांचे शैक्षणिक, मानसिक आणि सामाजिक विकास हेच आमचे ध्येय.
+                    {t('home.heroMission')}
                   </p>
                   <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
                     <Link to="/about-school" className="btn btn-primary">
-                      शाळेबद्दल जाणून घ्या <ArrowRight size={18} />
+                      {t('home.learnAbout')} <ArrowRight size={18} />
                     </Link>
                     <Link to="/contact" className="btn btn-outline">
-                      प्रवेश माहिती <ArrowRight size={18} />
+                      {t('home.admissionInfo')} <ArrowRight size={18} />
                     </Link>
                   </div>
                 </div>

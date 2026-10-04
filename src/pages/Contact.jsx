@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useLanguage } from '../context/LanguageContext';
 import {
   Bell,
   Building2,
@@ -33,6 +34,7 @@ const initialForm = {
 };
 
 const Contact = () => {
+  const { t } = useLanguage();
   const [form, setForm] = useState(initialForm);
   const [errors, setErrors] = useState({});
   const [submitting, setSubmitting] = useState(false);
@@ -47,13 +49,13 @@ const Contact = () => {
 
   const validateForm = () => {
     const nextErrors = {};
-    if (!form.name.trim()) nextErrors.name = 'कृपया आपले नाव लिहा.';
+    if (!form.name.trim()) nextErrors.name = t('contact.requiredName');
     if (!form.email.trim()) {
-      nextErrors.email = 'कृपया आपला ई-मेल लिहा.';
+      nextErrors.email = t('contact.requiredEmail');
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim())) {
-      nextErrors.email = 'कृपया योग्य ई-मेल लिहा.';
+      nextErrors.email = t('contact.invalidEmail');
     }
-    if (!form.message.trim()) nextErrors.message = 'कृपया आपला संदेश लिहा.';
+    if (!form.message.trim()) nextErrors.message = t('contact.requiredMessage');
     return nextErrors;
   };
 
@@ -67,7 +69,7 @@ const Contact = () => {
     setSubmitting(true);
     window.setTimeout(() => {
       setSubmitting(false);
-      setStatus('संदेश पाठविण्याची सेवा सध्या जोडलेली नाही. कृपया शाळेच्या कार्यालयाशी दूरध्वनीद्वारे संपर्क साधा.');
+      setStatus(t('contact.serviceUnavailable'));
     }, 450);
   };
 
@@ -410,7 +412,7 @@ const Contact = () => {
       <div className="page-layout">
         <aside className="left-sidebar">
           <div className="gov-sidebar">
-            <div className="gov-sidebar-header"><HomeIcon size={20} />त्वरित प्रवेश</div>
+            <div className="gov-sidebar-header"><HomeIcon size={20} />{t('sidebar.quickAccess')}</div>
             <ul className="gov-sidebar-list">
               {[
                 { icon: HomeIcon, text: 'मुख्य पृष्ठ', to: '/' },
@@ -437,69 +439,69 @@ const Contact = () => {
 
         <main className="contact-main">
           <div className="contact-breadcrumb">
-            <Link to="/"><HomeIcon size={14} /> मुख्य पृष्ठ</Link>
+            <Link to="/"><HomeIcon size={14} /> {t('common.home')}</Link>
             <ChevronRight size={14} />
-            <span>संपर्क</span>
+            <span>{t('contact.title')}</span>
           </div>
 
           <section className="contact-banner">
             <div className="contact-banner-title">
               <Phone size={32} strokeWidth={1.8} />
-              <div><h1>संपर्क</h1><p>आमच्याशी संपर्क साधा</p></div>
+              <div><h1>{t('contact.title')}</h1><p>{t('contact.subtitle')}</p></div>
             </div>
           </section>
 
           <div className="contact-intro">
             <School size={28} />
-            <p>शाळेशी संबंधित कोणत्याही माहितीसाठी, प्रवेश प्रक्रियेसाठी किंवा इतर शैक्षणिक बाबींसाठी आमच्याशी संपर्क साधा.</p>
+            <p>{t('contact.intro')}</p>
           </div>
 
-          <section className="contact-grid" aria-label="संपर्क माहिती">
+          <section className="contact-grid" aria-label={t('common.contactInfo')}>
             <article className="contact-card">
               <Building2 className="contact-card-icon" size={29} strokeWidth={1.8} />
-              <div><h2>शाळेचा पत्ता</h2><p>भुतकरवाडी, तालुका अहिल्यानगर,<br />जिल्हा अहिल्यानगर</p></div>
+              <div><h2>{t('contact.addressTitle')}</h2><p>{t('school.address')}</p></div>
             </article>
             <article className="contact-card">
               <Phone className="contact-card-icon" size={29} strokeWidth={1.8} />
-              <div><h2>दूरध्वनी</h2><p><a href="tel:8329664751">8329664751</a></p></div>
+              <div><h2>{t('contact.phoneTitle')}</h2><p><a href={`tel:${t('school.phone')}`}>{t('school.phone')}</a></p></div>
             </article>
             <article className="contact-card">
               <Mail className="contact-card-icon" size={29} strokeWidth={1.8} />
-              <div><h2>ई-मेल</h2><p><a href="mailto:mnpschoolbhutkarwadi03@gmail.com">mnpschoolbhutkarwadi03@gmail.com</a></p></div>
+              <div><h2>{t('contact.emailTitle')}</h2><p><a href={`mailto:${t('school.email')}`}>{t('school.email')}</a></p></div>
             </article>
             <article className="contact-card">
               <Clock3 className="contact-card-icon" size={29} strokeWidth={1.8} />
-              <div><h2>कार्यालयीन वेळ</h2><p>सोमवार ते शनिवार<br />सकाळी 9:00 ते सायंकाळी 5:00</p></div>
+              <div><h2>{t('contact.hoursTitle')}</h2><p>{t('contact.hoursDays')}<br />{t('contact.hoursTime')}</p></div>
             </article>
           </section>
 
-          <section className="contact-actions" aria-label="त्वरित संपर्क कृती">
-            <a className="contact-action" href="tel:8329664751"><Phone size={25} /><div><strong>कॉल करा</strong><span>8329664751</span></div><ChevronRight size={17} /></a>
-            <a className="contact-action" href="mailto:mnpschoolbhutkarwadi03@gmail.com"><Mail size={25} /><div><strong>ई-मेल करा</strong><span>mnpschoolbhutkarwadi03@gmail.com</span></div><ChevronRight size={17} /></a>
-            <a className="contact-action" href={mapsSearchUrl} target="_blank" rel="noreferrer"><MapPin size={25} /><div><strong>मार्गदर्शन मिळवा</strong><span>नकाशावर शाळा पहा</span></div><ChevronRight size={17} /></a>
+          <section className="contact-actions" aria-label={t('common.quickContactActions')}>
+            <a className="contact-action" href={`tel:${t('school.phone')}`}><Phone size={25} /><div><strong>{t('contact.call')}</strong><span>{t('school.phone')}</span></div><ChevronRight size={17} /></a>
+            <a className="contact-action" href={`mailto:${t('school.email')}`}><Mail size={25} /><div><strong>{t('contact.emailAction')}</strong><span>{t('school.email')}</span></div><ChevronRight size={17} /></a>
+            <a className="contact-action" href={mapsSearchUrl} target="_blank" rel="noreferrer"><MapPin size={25} /><div><strong>{t('contact.directions')}</strong><span>{t('contact.viewMap')}</span></div><ChevronRight size={17} /></a>
           </section>
 
           <section className="contact-lower-grid">
             <article className="contact-panel">
-              <div className="contact-panel-heading"><MapPin size={19} /> शाळेचे ठिकाण</div>
+              <div className="contact-panel-heading"><MapPin size={19} /> {t('contact.location')}</div>
               <div className="contact-panel-body">
-                <h2>शाळेचे ठिकाण</h2>
-                <p className="contact-panel-subtitle">भुतकरवाडी, अहिल्यानगर</p>
-                <iframe className="contact-map" title="भुतकरवाडी शाळेचे Google Maps ठिकाण" src={mapsEmbedUrl} loading="lazy" />
-                <a className="map-link" href={mapsSearchUrl} target="_blank" rel="noreferrer">Google Maps वर पहा →</a>
+                <h2>{t('contact.location')}</h2>
+                <p className="contact-panel-subtitle">{t('contact.locationSubtitle')}</p>
+                <iframe className="contact-map" title={t('common.schoolMap')} src={mapsEmbedUrl} loading="lazy" />
+                <a className="map-link" href={mapsSearchUrl} target="_blank" rel="noreferrer">{t('contact.googleMaps')}</a>
               </div>
             </article>
 
             <article className="contact-panel">
-              <div className="contact-panel-heading"><MessageSquare size={19} /> आम्हाला संदेश पाठवा</div>
+              <div className="contact-panel-heading"><MessageSquare size={19} /> {t('contact.messageTitle')}</div>
               <div className="contact-panel-body">
-                <p className="contact-panel-subtitle">आपला संदेश आम्हाला पाठवा. आम्ही शक्य तितक्या लवकर प्रतिसाद देण्याचा प्रयत्न करू.</p>
+                <p className="contact-panel-subtitle">{t('contact.messageIntro')}</p>
                 <form className="contact-form" onSubmit={handleSubmit} noValidate>
-                  <label htmlFor="contact-name">नाव *<input id="contact-name" name="name" value={form.name} onChange={updateField} placeholder="आपले नाव लिहा" aria-invalid={Boolean(errors.name)} />{errors.name && <span className="contact-field-error">{errors.name}</span>}</label>
-                  <label htmlFor="contact-email">ई-मेल *<input id="contact-email" name="email" type="email" value={form.email} onChange={updateField} placeholder="आपला ई-मेल लिहा" aria-invalid={Boolean(errors.email)} />{errors.email && <span className="contact-field-error">{errors.email}</span>}</label>
-                  <label htmlFor="contact-subject">विषय<input id="contact-subject" name="subject" value={form.subject} onChange={updateField} placeholder="विषय लिहा" /></label>
-                  <label htmlFor="contact-message">संदेश *<textarea id="contact-message" name="message" value={form.message} onChange={updateField} placeholder="आपला संदेश येथे लिहा..." aria-invalid={Boolean(errors.message)} />{errors.message && <span className="contact-field-error">{errors.message}</span>}</label>
-                  <button className="contact-submit" type="submit" disabled={submitting}>{submitting ? 'पाठवत आहे...' : 'संदेश पाठवा'} <Send size={15} /></button>
+                  <label htmlFor="contact-name">{t('contact.name')}<input id="contact-name" name="name" value={form.name} onChange={updateField} placeholder={t('contact.namePlaceholder')} aria-invalid={Boolean(errors.name)} />{errors.name && <span className="contact-field-error">{errors.name}</span>}</label>
+                  <label htmlFor="contact-email">{t('contact.email')}<input id="contact-email" name="email" type="email" value={form.email} onChange={updateField} placeholder={t('contact.emailPlaceholder')} aria-invalid={Boolean(errors.email)} />{errors.email && <span className="contact-field-error">{errors.email}</span>}</label>
+                  <label htmlFor="contact-subject">{t('contact.subject')}<input id="contact-subject" name="subject" value={form.subject} onChange={updateField} placeholder={t('contact.subjectPlaceholder')} /></label>
+                  <label htmlFor="contact-message">{t('contact.message')}<textarea id="contact-message" name="message" value={form.message} onChange={updateField} placeholder={t('contact.messagePlaceholder')} aria-invalid={Boolean(errors.message)} />{errors.message && <span className="contact-field-error">{errors.message}</span>}</label>
+                  <button className="contact-submit" type="submit" disabled={submitting}>{submitting ? t('contact.sending') : t('contact.send')} <Send size={15} /></button>
                   {status && <p className="contact-status" role="status">{status}</p>}
                 </form>
               </div>
@@ -508,7 +510,7 @@ const Contact = () => {
 
           <div className="contact-info-strip">
             <Info size={22} color="#1235b5" />
-            <div><strong>महत्त्वाची माहिती</strong><span>शाळेशी संबंधित तातडीच्या माहितीसाठी शाळेच्या कार्यालयाशी दूरध्वनीद्वारे संपर्क साधावा.</span></div>
+            <div><strong>{t('contact.important')}</strong><span>{t('contact.importantText')}</span></div>
           </div>
         </main>
 

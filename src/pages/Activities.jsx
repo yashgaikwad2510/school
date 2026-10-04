@@ -22,47 +22,49 @@ import {
   X
 } from 'lucide-react';
 import { allEvents } from '../data/events';
+import { useLanguage } from '../context/LanguageContext';
 
 const featuredId = 'स्वातंत्र्य दिन';
-const activityDescriptions = {
-  'स्वातंत्र्य दिन': 'विद्यार्थ्यांच्या सहभागातून साजरा झालेल्या स्वातंत्र्य दिनाच्या उपक्रमाची छायाचित्रे.',
-  'वाचन कट्टा': 'वाचनाची आवड आणि शैक्षणिक सहभाग दर्शविणाऱ्या वाचन कट्ट्याच्या छायाचित्रांचा संग्रह.',
-  'राखी': 'रक्षाबंधनाशी संबंधित सांस्कृतिक उपक्रमाची छायाचित्रे.',
-  'Rakhi': 'रक्षाबंधनाशी संबंधित सांस्कृतिक उपक्रमाची छायाचित्रे.',
-  'आरोग्य तपासणी': 'आरोग्य तपासणी उपक्रमातील शाळेचे काही क्षण.',
-  'पाठ्यपुस्तक व गणवेश वाटप कार्यक्रम': 'पाठ्यपुस्तक व गणवेश वाटप कार्यक्रमाची छायाचित्रे.',
-  'शिक्षक दिन': 'शिक्षक दिन उपक्रमातील शाळेचे काही क्षण.'
+const activityDescriptionKeys = {
+  'स्वातंत्र्य दिन': 'activity.description.independence',
+  'वाचन कट्टा': 'activity.description.reading',
+  'राखी': 'activity.description.rakhi',
+  'Rakhi': 'activity.description.rakhi',
+  'आरोग्य तपासणी': 'activity.description.health',
+  'पाठ्यपुस्तक व गणवेश वाटप कार्यक्रम': 'activity.description.uniform',
+  'शिक्षक दिन': 'activity.description.teacherDay'
 };
 
-const getDate = () => 'दिनांक उपलब्ध नाही';
-const getDescription = (event) => activityDescriptions[event.id] || `“${event.title}” या उपक्रमाची छायाचित्रे.`;
-const getCategoryLabel = (event) => event.category === 'इतर' ? 'शालेय उपक्रम' : event.category;
+const getDate = (t) => t('common.dateUnavailable');
+const getDescription = (event, t) => t(activityDescriptionKeys[event.id] || 'activity.description.generic', { title: event.title });
+const getCategoryLabel = (event, t) => event.category === 'इतर' ? t('activity.category.school') : event.category;
 
 const videoItems = [
-  { id: 'independence-video', title: 'स्वातंत्र्य दिन', date: getDate(), thumbnail: allEvents.find((event) => event.id === featuredId)?.cover, videoUrl: null, category: 'राष्ट्रीय दिन' },
-  { id: 'reading-video', title: 'वाचन कट्टा', date: getDate(), thumbnail: allEvents.find((event) => event.id === 'वाचन कट्टा')?.cover, videoUrl: null, category: 'शैक्षणिक' }
+  { id: 'independence-video', titleKey: 'activity.title.independence', title: 'स्वातंत्र्य दिन', thumbnail: allEvents.find((event) => event.id === featuredId)?.cover, videoUrl: null, categoryKey: 'video.category.national' },
+  { id: 'reading-video', titleKey: 'activity.title.reading', title: 'वाचन कट्टा', thumbnail: allEvents.find((event) => event.id === 'वाचन कट्टा')?.cover, videoUrl: null, categoryKey: 'video.category.educational' }
 ];
 
 const Sidebar = ({ side }) => {
+  const { t } = useLanguage();
   if (side === 'left') {
     const items = [
-      { icon: HomeIcon, text: 'मुख्य पृष्ठ', to: '/' },
-      { icon: Users, text: 'शैक्षणिक नेतृत्व', to: '/teachers' },
-      { icon: Users, text: 'शिक्षक आणि कर्मचारी', to: '/teachers' },
-      { icon: GraduationCap, text: 'विद्यार्थी', to: '/students' },
-      { icon: CalendarDays, text: 'उपक्रम', to: '/activities', active: true },
-      { icon: ImageIcon, text: 'गॅलरी', to: '/gallery' },
-      { icon: Phone, text: 'संपर्क', to: '/contact' },
-      { icon: LinkIcon, text: 'महत्त्वाचे दुवे', to: '/contact' },
-      { icon: Building2, text: 'शासकीय योजना', to: '/about-school' },
-      { icon: FileText, text: 'प्रवेश माहिती', to: '/contact' },
-      { icon: Bell, text: 'सूचना फलक', to: '/#notices' },
-      { icon: HelpCircle, text: 'वारंवार विचारले जाणारे प्रश्न', to: '/contact' }
+      { icon: HomeIcon, text: t('nav.home'), to: '/' },
+      { icon: Users, text: t('sidebar.academicLeadership'), to: '/teachers' },
+      { icon: Users, text: t('nav.teachers'), to: '/teachers' },
+      { icon: GraduationCap, text: t('nav.students'), to: '/students' },
+      { icon: CalendarDays, text: t('nav.activities'), to: '/activities', active: true },
+      { icon: ImageIcon, text: t('nav.gallery'), to: '/gallery' },
+      { icon: Phone, text: t('nav.contact'), to: '/contact' },
+      { icon: LinkIcon, text: t('school.quickLinks'), to: '/contact' },
+      { icon: Building2, text: t('sidebar.governmentSchemes'), to: '/about-school' },
+      { icon: FileText, text: t('sidebar.admission'), to: '/contact' },
+      { icon: Bell, text: t('sidebar.noticeBoard'), to: '/#notices' },
+      { icon: HelpCircle, text: t('sidebar.faq'), to: '/contact' }
     ];
     return (
       <aside className="left-sidebar">
         <div className="activity-sidebar">
-          <div className="activity-sidebar-header"><HomeIcon size={20} />त्वरित प्रवेश</div>
+          <div className="activity-sidebar-header"><HomeIcon size={20} />{t('sidebar.quickAccess')}</div>
           {items.map((item) => (
             <Link key={item.text} to={item.to} className={`activity-sidebar-item${item.active ? ' active' : ''}`}>
               <span><item.icon size={16} />{item.text}</span><ChevronRight size={14} />
@@ -76,48 +78,57 @@ const Sidebar = ({ side }) => {
   return (
     <aside className="right-sidebar">
       <div className="activity-sidebar">
-        <div className="activity-sidebar-header"><LinkIcon size={20} />महत्त्वाच्या लिंक्स</div>
+        <div className="activity-sidebar-header"><LinkIcon size={20} />{t('sidebar.importantLinks')}</div>
         {[
-          ['सूचना व परिपत्रके', '/#notices'],
-          ['प्रवेश प्रक्रिया', '/contact'],
-          ['शालेय अभ्यासक्रम', '/students'],
-          ['शालेय दिनदर्शिका', '/#notices'],
-          ['छायाचित्र संग्रह', '/gallery'],
-          ['महत्त्वाचे दस्तऐवज', '/contact']
+          [t('sidebar.circulars'), '/#notices'],
+          [t('home.admission'), '/contact'],
+          [t('sidebar.curriculum'), '/students'],
+          [t('sidebar.calendar'), '/#notices'],
+          [t('sidebar.photoCollection'), '/gallery'],
+          [t('sidebar.documents'), '/contact']
         ].map(([text, to]) => <Link key={text} to={to} className="activity-sidebar-item"><span><ChevronRight size={14} />{text}</span></Link>)}
       </div>
       <div className="activity-sidebar notice-sidebar">
-        <div className="activity-sidebar-header"><Bell size={20} />सूचना फलक</div>
-        <div className="activity-notice"><strong>नवीन (०१-०६-२०२६)</strong>शाळेत नवीन शैक्षणिक वर्ष २०२६-२७ ची प्रवेश प्रक्रिया सुरू झाली आहे.</div>
-        <div className="activity-notice"><strong>महत्त्वाचे (२८-०५-२०२६)</strong>विद्यार्थ्यांसाठी गणवेश व पाठ्यपुस्तके वाटप शिबीर.</div>
-        <div className="activity-notice"><strong>पालक सभा (२५-०५-२०२६)</strong>इयत्ता पहिली ते चौथीच्या पालकांसाठी विशेष सभा.</div>
-        <Link to="/#notices" className="activity-notice-more">सर्व पहा →</Link>
+      <div className="activity-sidebar-header"><Bell size={20} />{t('sidebar.noticeBoard')}</div>
+      <div className="activity-notice"><strong>{t('notice.new')} (०१-०६-२०२६)</strong>{t('notice.admission')}</div>
+      <div className="activity-notice"><strong>{t('notice.important')} (२८-०५-२०२६)</strong>{t('notice.uniformCamp')}</div>
+      <div className="activity-notice"><strong>{t('notice.parentMeeting')} (२५-०५-२०२६)</strong>{t('notice.parentMeetingText')}</div>
+      <Link to="/#notices" className="activity-notice-more">{t('notice.viewAll')}</Link>
       </div>
     </aside>
   );
 };
 
 const VideoCard = ({ video, onOpen }) => (
-  <button type="button" className="activity-video-card" onClick={() => onOpen(video)}>
+  <VideoCardContent video={video} onOpen={onOpen} />
+);
+
+const VideoCardContent = ({ video, onOpen }) => {
+  const { t } = useLanguage();
+  const localizedVideo = { ...video, title: t(video.titleKey), category: t(video.categoryKey), date: getDate(t) };
+  return (
+  <button type="button" className="activity-video-card" onClick={() => onOpen(localizedVideo)}>
     <div className="activity-video-image">
-      {video.thumbnail ? <img src={video.thumbnail} alt={video.title} loading="lazy" /> : <div className="activity-video-empty"><Info size={24} />थंबनेल उपलब्ध नाही</div>}
+      {video.thumbnail ? <img src={video.thumbnail} alt={localizedVideo.title} loading="lazy" /> : <div className="activity-video-empty"><Info size={24} />{t('video.noThumbnail')}</div>}
       <span className="activity-play-button">{video.videoUrl ? <Play size={23} fill="currentColor" /> : <Pause size={21} />}</span>
     </div>
     <div className="activity-video-copy">
-      <h3>{video.title}</h3>
-      <p>{video.date} <span>·</span> {video.category}</p>
-      <small>{video.videoUrl ? 'व्हिडिओ पाहा' : 'व्हिडिओ लवकरच उपलब्ध होईल'}</small>
+      <h3>{localizedVideo.title}</h3>
+      <p>{localizedVideo.date} <span>·</span> {localizedVideo.category}</p>
+      <small>{video.videoUrl ? t('video.watch') : t('video.soon')}</small>
     </div>
   </button>
-);
+  );
+};
 
 const Activities = () => {
+  const { t } = useLanguage();
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [selectedVideo, setSelectedVideo] = useState(null);
   const [activeCategory, setActiveCategory] = useState('सर्व');
-  const categories = useMemo(() => ['सर्व', ...new Set(allEvents.map((event) => getCategoryLabel(event)))], []);
+  const categories = useMemo(() => ['सर्व', ...new Set(allEvents.map((event) => event.category === 'इतर' ? 'शालेय उपक्रम' : event.category))], []);
   const featured = allEvents.find((event) => event.id === featuredId) || allEvents[0];
-  const visibleEvents = allEvents.filter((event) => event.id !== featured?.id && (activeCategory === 'सर्व' || getCategoryLabel(event) === activeCategory));
+  const visibleEvents = allEvents.filter((event) => event.id !== featured?.id && (activeCategory === 'सर्व' || getCategoryLabel(event, t) === activeCategory));
 
   useEffect(() => {
     const closeOnEscape = (event) => {
@@ -213,40 +224,40 @@ const Activities = () => {
       <div className="page-layout">
         <Sidebar side="left" />
         <main className="activities-center">
-          <div className="activity-breadcrumb"><Link to="/"><HomeIcon size={14} /> मुख्य पृष्ठ</Link><ChevronRight size={14} /><span>उपक्रम</span></div>
+          <div className="activity-breadcrumb"><Link to="/"><HomeIcon size={14} /> {t('common.home')}</Link><ChevronRight size={14} /><span>{t('activities.breadcrumb')}</span></div>
           <section className="activity-page-header">
-            <div className="activity-page-header-title"><CalendarDays size={31} /><div><h1>शालेय उपक्रम</h1><p>विद्यार्थ्यांच्या सर्वांगीण विकासासाठी विविध शैक्षणिक व सांस्कृतिक उपक्रम</p></div></div>
+            <div className="activity-page-header-title"><CalendarDays size={31} /><div><h1>{t('activities.title')}</h1><p>{t('activities.subtitle')}</p></div></div>
           </section>
-          <div className="activity-intro"><Sparkles size={29} /><p>विद्यार्थ्यांच्या ज्ञान, कौशल्य, सर्जनशीलता, आत्मविश्वास आणि सामाजिक जाणीवा विकसित करण्यासाठी आमच्या शाळेत विविध शैक्षणिक, सांस्कृतिक, क्रीडा आणि सामाजिक उपक्रम नियमितपणे आयोजित केले जातात.</p></div>
+          <div className="activity-intro"><Sparkles size={29} /><p>{t('activities.intro')}</p></div>
 
           {featured && <section className="activity-featured">
             <div className="activity-featured-image"><img src={featured.cover} alt={featured.title} /></div>
             <div className="activity-featured-copy">
-              <span className="activity-label">{getCategoryLabel(featured)}</span>
+              <span className="activity-label">{getCategoryLabel(featured, t)}</span>
               <h2>{featured.title}</h2>
               <div className="activity-meta"><span><strong>दिनांक:</strong> {getDate(featured)}</span><span><strong>छायाचित्रे:</strong> {featured.images.length}</span></div>
-              <p>{getDescription(featured)}</p>
-              <button type="button" className="activity-more" onClick={() => setSelectedEvent(featured)}>अधिक माहिती →</button>
+              <p>{getDescription(featured, t)}</p>
+              <button type="button" className="activity-more" onClick={() => setSelectedEvent(featured)}>{t('common.details')} →</button>
             </div>
           </section>}
 
           <section>
-            <div className="activity-section-heading"><div><h2>व्हिडिओ</h2><p>आमच्या शाळेतील उपक्रमांचे काही क्षण</p></div><MessageCircle size={21} color="#1235b5" /></div>
+            <div className="activity-section-heading"><div><h2>{t('activities.video')}</h2><p>{t('activities.videoSubtitle')}</p></div><MessageCircle size={21} color="#1235b5" /></div>
             <div className="activity-video-grid" style={{ marginTop: 10 }}>{videoItems.map((video) => <VideoCard key={video.id} video={video} onOpen={setSelectedVideo} />)}</div>
           </section>
 
           <section>
-            <div className="activity-section-heading"><div><h2>सर्व उपक्रम</h2><p>शाळेतील विविध उपक्रम आणि कार्यक्रम</p></div><BookOpen size={21} color="#1235b5" /></div>
+            <div className="activity-section-heading"><div><h2>{t('activities.all')}</h2><p>{t('activities.allSubtitle')}</p></div><BookOpen size={21} color="#1235b5" /></div>
             <div className="activity-filter-row" style={{ margin: '10px 0' }}>{categories.map((category) => <button type="button" key={category} className={`activity-filter${activeCategory === category ? ' active' : ''}`} onClick={() => setActiveCategory(category)}>{category}</button>)}</div>
             <div className="activity-grid">
               {visibleEvents.map((event) => <article className="activity-card" key={event.id}>
                 <div className="activity-card-image"><img src={event.cover} alt={event.title} loading="lazy" /></div>
                 <div className="activity-card-copy">
-                  <span className="activity-label">{getCategoryLabel(event)}</span>
+                  <span className="activity-label">{getCategoryLabel(event, t)}</span>
                   <h3>{event.title}</h3>
-                  <p><strong>{getDate(event)}</strong> · {event.images.length} छायाचित्रे</p>
-                  <p className="activity-description">{getDescription(event)}</p>
-                  <button type="button" className="activity-card-link" onClick={() => setSelectedEvent(event)}>अधिक वाचा →</button>
+                  <p><strong>{getDate(event)}</strong> · {t('activities.photoCount', { count: event.images.length })}</p>
+                  <p className="activity-description">{getDescription(event, t)}</p>
+                  <button type="button" className="activity-card-link" onClick={() => setSelectedEvent(event)}>{t('common.more')} →</button>
                 </div>
               </article>)}
             </div>
@@ -260,10 +271,10 @@ const Activities = () => {
           <button type="button" className="activity-modal-close" onClick={() => setSelectedEvent(null)} aria-label="बंद करा"><X size={19} /></button>
           <img className="activity-modal-image" src={selectedEvent.cover} alt={selectedEvent.title} />
           <div className="activity-modal-copy">
-            <span className="activity-label">{getCategoryLabel(selectedEvent)}</span>
+            <span className="activity-label">{getCategoryLabel(selectedEvent, t)}</span>
             <h2 id="activity-modal-title">{selectedEvent.title}</h2>
             <p><strong>दिनांक:</strong> {getDate(selectedEvent)} · <strong>छायाचित्रे:</strong> {selectedEvent.images.length}</p>
-            <p>{getDescription(selectedEvent)}</p>
+            <p>{getDescription(selectedEvent, t)}</p>
             <div className="activity-related">{selectedEvent.images.slice(0, 4).map((image, index) => <img key={image} src={image} alt={`${selectedEvent.title} ${index + 1}`} loading="lazy" />)}</div>
           </div>
         </div>
@@ -272,7 +283,7 @@ const Activities = () => {
       {selectedVideo && <div className="activity-modal-backdrop" role="presentation" onClick={() => setSelectedVideo(null)}>
         <div className="activity-modal activity-video-modal" role="dialog" aria-modal="true" onClick={(event) => event.stopPropagation()}>
           <button type="button" className="activity-modal-close" onClick={() => setSelectedVideo(null)} aria-label="बंद करा"><X size={19} /></button>
-          {selectedVideo.videoUrl ? <video controls preload="metadata" poster={selectedVideo.thumbnail} src={selectedVideo.videoUrl} style={{ width: '100%' }} /> : <><Info size={38} color="#1235b5" /><h2>{selectedVideo.title}</h2><p>या उपक्रमासाठी व्हिडिओ URL अद्याप उपलब्ध नाही. व्हिडिओ उपलब्ध झाल्यावर तो या विभागात जोडता येईल.</p></>}
+          {selectedVideo.videoUrl ? <video controls preload="metadata" poster={selectedVideo.thumbnail} src={selectedVideo.videoUrl} style={{ width: '100%' }} /> : <><Info size={38} color="#1235b5" /><h2>{selectedVideo.title}</h2><p>{t('video.urlUnavailable')}</p></>}
         </div>
       </div>}
     </div>

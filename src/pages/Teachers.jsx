@@ -1,4 +1,5 @@
 import React from 'react';
+import { useLanguage } from '../context/LanguageContext';
 
 const staff = [
   {
@@ -14,6 +15,12 @@ const staff = [
 ];
 
 const Teachers = () => (
+  <TeachersContent />
+);
+
+const TeachersContent = () => {
+  const { t } = useLanguage();
+  return (
   <div style={{ backgroundColor: 'var(--bg-color)', minHeight: '100vh', padding: '3rem 0 5rem' }}>
     <div className="container">
       <div style={{
@@ -26,10 +33,10 @@ const Teachers = () => (
           color: 'var(--dark-navy)',
           fontSize: 'clamp(1.8rem, 3vw, 2.5rem)'
         }}>
-          शिक्षक आणि कर्मचारी
+          {t('teachers.title')}
         </h1>
         <p style={{ margin: '0.5rem 0 0', color: 'var(--text-muted)' }}>
-          आमच्या शाळेतील समर्पित शिक्षक व कर्मचारी वर्ग
+          {t('teachers.subtitle')}
         </p>
       </div>
 
@@ -88,7 +95,7 @@ const Teachers = () => (
                   fontWeight: 700,
                   fontSize: '0.875rem'
                 }}>
-                  {person.role}
+                  {person.role === 'मुख्याध्यापक' ? t('teachers.principal') : t('teachers.teacher')}
                 </span>
               </div>
             </div>
@@ -98,8 +105,7 @@ const Teachers = () => (
               color: '#333',
               lineHeight: 1.6
             }}>
-              श्री छत्रपती शिवाजी महाराज महानगरपालिका<br />
-              प्राथमिक शाळा, भुतकरवाडी
+              {t('teachers.schoolName')}
             </div>
           </article>
         ))}
@@ -114,6 +120,7 @@ const Teachers = () => (
       }
     `}</style>
   </div>
-);
+  );
+};
 
 export default Teachers;
