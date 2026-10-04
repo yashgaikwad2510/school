@@ -34,10 +34,29 @@ const activityDescriptionKeys = {
   'पाठ्यपुस्तक व गणवेश वाटप कार्यक्रम': 'activity.description.uniform',
   'शिक्षक दिन': 'activity.description.teacherDay'
 };
+const activityTitleKeys = {
+  'स्वातंत्र्य दिन': 'activity.title.independence',
+  'वाचन कट्टा': 'activity.title.reading',
+  'Rakhi': 'activity.title.rakhi',
+  'राखी': 'activity.title.rakhi',
+  'आरोग्य तपासणी': 'activity.title.health',
+  'पाठ्यपुस्तक व गणवेश वाटप कार्यक्रम': 'activity.title.uniform',
+  'शिक्षक दिन': 'activity.title.teacherDay',
+  'सेवा संकल्प अभियाना अंतर्गत चित्रकला स्पर्धा': 'activity.title.artCompetition'
+};
 
 const getDate = (t) => t('common.dateUnavailable');
-const getDescription = (event, t) => t(activityDescriptionKeys[event.id] || 'activity.description.generic', { title: event.title });
-const getCategoryLabel = (event, t) => event.category === 'इतर' ? t('activity.category.school') : event.category;
+const getTitle = (event, t) => t(activityTitleKeys[event.id] || 'activity.title.generic', { title: event.title });
+const getDescription = (event, t) => t(activityDescriptionKeys[event.id] || 'activity.description.generic', { title: getTitle(event, t) });
+const categoryKeys = {
+  'इतर': 'activity.category.school',
+  'राष्ट्रीय दिन': 'activity.category.national',
+  'क्रीडा': 'activity.category.sports',
+  'स्पर्धा': 'activity.category.competition',
+  'शैक्षणिक': 'video.category.educational',
+  'सांस्कृतिक': 'video.category.cultural'
+};
+const getCategoryLabel = (event, t) => t(categoryKeys[event.category] || 'activity.category.school');
 
 const videoItems = [
   { id: 'independence-video', titleKey: 'activity.title.independence', title: 'स्वातंत्र्य दिन', thumbnail: allEvents.find((event) => event.id === featuredId)?.cover, videoUrl: null, categoryKey: 'video.category.national' },
@@ -90,9 +109,9 @@ const Sidebar = ({ side }) => {
       </div>
       <div className="activity-sidebar notice-sidebar">
       <div className="activity-sidebar-header"><Bell size={20} />{t('sidebar.noticeBoard')}</div>
-      <div className="activity-notice"><strong>{t('notice.new')} (०१-०६-२०२६)</strong>{t('notice.admission')}</div>
-      <div className="activity-notice"><strong>{t('notice.important')} (२८-०५-२०२६)</strong>{t('notice.uniformCamp')}</div>
-      <div className="activity-notice"><strong>{t('notice.parentMeeting')} (२५-०५-२०२६)</strong>{t('notice.parentMeetingText')}</div>
+      <div className="activity-notice"><strong>{t('notice.new')} ({t('notice.date.new')})</strong>{t('notice.admission')}</div>
+      <div className="activity-notice"><strong>{t('notice.important')} ({t('notice.date.important')})</strong>{t('notice.uniformCamp')}</div>
+      <div className="activity-notice"><strong>{t('notice.parentMeeting')} ({t('notice.date.parentMeeting')})</strong>{t('notice.parentMeetingText')}</div>
       <Link to="/#notices" className="activity-notice-more">{t('notice.viewAll')}</Link>
       </div>
     </aside>
@@ -126,9 +145,9 @@ const Activities = () => {
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [selectedVideo, setSelectedVideo] = useState(null);
   const [activeCategory, setActiveCategory] = useState('सर्व');
-  const categories = useMemo(() => ['सर्व', ...new Set(allEvents.map((event) => event.category === 'इतर' ? 'शालेय उपक्रम' : event.category))], []);
+  const categories = useMemo(() => ['सर्व', ...new Set(allEvents.map((event) => event.category))].map((category) => category === 'सर्व' ? t('common.all') : t(categoryKeys[category] || 'activity.category.school')), [t]);
   const featured = allEvents.find((event) => event.id === featuredId) || allEvents[0];
-  const visibleEvents = allEvents.filter((event) => event.id !== featured?.id && (activeCategory === 'सर्व' || getCategoryLabel(event, t) === activeCategory));
+  const visibleEvents = allEvents.filter((event) => event.id !== featured?.id && (activeCategory === 'सर्व' || activeCategory === t('common.all') || getCategoryLabel(event, t) === activeCategory));
 
   useEffect(() => {
     const closeOnEscape = (event) => {
@@ -231,11 +250,11 @@ const Activities = () => {
           <div className="activity-intro"><Sparkles size={29} /><p>{t('activities.intro')}</p></div>
 
           {featured && <section className="activity-featured">
-            <div className="activity-featured-image"><img src={featured.cover} alt={featured.title} /></div>
+            <div className="activity-featured-image"><img src={featured.cover} alt={getTitle(featured, t)} /></div>
             <div className="activity-featured-copy">
               <span className="activity-label">{getCategoryLabel(featured, t)}</span>
-              <h2>{featured.title}</h2>
-              <div className="activity-meta"><span><strong>दिनांक:</strong> {getDate(featured)}</span><span><strong>छायाचित्रे:</strong> {featured.images.length}</span></div>
+              <h2>{getTitle(featured, t)}</h2>
+              <div className="activity-meta"><span><strong>{t('common.dateLabel')}:</strong> {getDate(t)}</span><span><strong>{t('common.photos')}:</strong> {featured.images.length}</span></div>
               <p>{getDescription(featured, t)}</p>
               <button type="button" className="activity-more" onClick={() => setSelectedEvent(featured)}>{t('common.details')} →</button>
             </div>
@@ -251,11 +270,11 @@ const Activities = () => {
             <div className="activity-filter-row" style={{ margin: '10px 0' }}>{categories.map((category) => <button type="button" key={category} className={`activity-filter${activeCategory === category ? ' active' : ''}`} onClick={() => setActiveCategory(category)}>{category}</button>)}</div>
             <div className="activity-grid">
               {visibleEvents.map((event) => <article className="activity-card" key={event.id}>
-                <div className="activity-card-image"><img src={event.cover} alt={event.title} loading="lazy" /></div>
+                <div className="activity-card-image"><img src={event.cover} alt={getTitle(event, t)} loading="lazy" /></div>
                 <div className="activity-card-copy">
                   <span className="activity-label">{getCategoryLabel(event, t)}</span>
-                  <h3>{event.title}</h3>
-                  <p><strong>{getDate(event)}</strong> · {t('activities.photoCount', { count: event.images.length })}</p>
+                  <h3>{getTitle(event, t)}</h3>
+                  <p><strong>{getDate(t)}</strong> · {t('activities.photoCount', { count: event.images.length })}</p>
                   <p className="activity-description">{getDescription(event, t)}</p>
                   <button type="button" className="activity-card-link" onClick={() => setSelectedEvent(event)}>{t('common.more')} →</button>
                 </div>
@@ -268,21 +287,21 @@ const Activities = () => {
 
       {selectedEvent && <div className="activity-modal-backdrop" role="presentation" onClick={() => setSelectedEvent(null)}>
         <div className="activity-modal" role="dialog" aria-modal="true" aria-labelledby="activity-modal-title" onClick={(event) => event.stopPropagation()}>
-          <button type="button" className="activity-modal-close" onClick={() => setSelectedEvent(null)} aria-label="बंद करा"><X size={19} /></button>
-          <img className="activity-modal-image" src={selectedEvent.cover} alt={selectedEvent.title} />
+          <button type="button" className="activity-modal-close" onClick={() => setSelectedEvent(null)} aria-label={t('common.close')}><X size={19} /></button>
+          <img className="activity-modal-image" src={selectedEvent.cover} alt={getTitle(selectedEvent, t)} />
           <div className="activity-modal-copy">
             <span className="activity-label">{getCategoryLabel(selectedEvent, t)}</span>
-            <h2 id="activity-modal-title">{selectedEvent.title}</h2>
-            <p><strong>दिनांक:</strong> {getDate(selectedEvent)} · <strong>छायाचित्रे:</strong> {selectedEvent.images.length}</p>
+            <h2 id="activity-modal-title">{getTitle(selectedEvent, t)}</h2>
+            <p><strong>{t('common.dateLabel')}:</strong> {getDate(t)} · <strong>{t('common.photos')}:</strong> {selectedEvent.images.length}</p>
             <p>{getDescription(selectedEvent, t)}</p>
-            <div className="activity-related">{selectedEvent.images.slice(0, 4).map((image, index) => <img key={image} src={image} alt={`${selectedEvent.title} ${index + 1}`} loading="lazy" />)}</div>
+            <div className="activity-related">{selectedEvent.images.slice(0, 4).map((image, index) => <img key={image} src={image} alt={`${getTitle(selectedEvent, t)} ${index + 1}`} loading="lazy" />)}</div>
           </div>
         </div>
       </div>}
 
       {selectedVideo && <div className="activity-modal-backdrop" role="presentation" onClick={() => setSelectedVideo(null)}>
         <div className="activity-modal activity-video-modal" role="dialog" aria-modal="true" onClick={(event) => event.stopPropagation()}>
-          <button type="button" className="activity-modal-close" onClick={() => setSelectedVideo(null)} aria-label="बंद करा"><X size={19} /></button>
+          <button type="button" className="activity-modal-close" onClick={() => setSelectedVideo(null)} aria-label={t('common.close')}><X size={19} /></button>
           {selectedVideo.videoUrl ? <video controls preload="metadata" poster={selectedVideo.thumbnail} src={selectedVideo.videoUrl} style={{ width: '100%' }} /> : <><Info size={38} color="#1235b5" /><h2>{selectedVideo.title}</h2><p>{t('video.urlUnavailable')}</p></>}
         </div>
       </div>}

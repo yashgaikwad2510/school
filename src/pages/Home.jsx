@@ -551,22 +551,22 @@ const Home = () => {
             <div className="gov-sidebar">
               <div className="gov-sidebar-header">
                 <HomeIcon size={20} />
-                त्वरित प्रवेश
+                {t('sidebar.quickAccess')}
               </div>
               <ul className="gov-sidebar-list">
                 {[
-                  { icon: HomeIcon, text: "मुख्य पृष्ठ", to: "/" },
-                  { icon: Users, text: "शैक्षणिक नेतृत्व", to: "/teachers" },
-                  { icon: Users, text: "शिक्षक आणि कर्मचारी", to: "/teachers" },
-                  { icon: GraduationCap, text: "विद्यार्थी", to: "/students" },
-                  { icon: Calendar, text: "उपक्रम", to: "/activities" },
-                  { icon: ImageIcon, text: "गॅलरी", to: "/gallery" },
-                  { icon: Phone, text: "संपर्क", to: "/contact" },
-                  { icon: LinkIcon, text: "महत्त्वाचे दुवे", to: "/contact" },
-                  { icon: Building, text: "शासकीय योजना", to: "/about-school" },
-                  { icon: FileText, text: "प्रवेश माहिती", to: "/contact" },
-                  { icon: Bell, text: "सूचना फलक", to: "/#notices" },
-                  { icon: HelpCircle, text: "वारंवार विचारले जाणारे प्रश्न", to: "/contact" },
+                  { icon: HomeIcon, text: t('common.home'), to: "/" },
+                  { icon: Users, text: t('sidebar.academicLeadership'), to: "/teachers" },
+                  { icon: Users, text: t('nav.teachers'), to: "/teachers" },
+                  { icon: GraduationCap, text: t('nav.students'), to: "/students" },
+                  { icon: Calendar, text: t('nav.activities'), to: "/activities" },
+                  { icon: ImageIcon, text: t('nav.gallery'), to: "/gallery" },
+                  { icon: Phone, text: t('nav.contact'), to: "/contact" },
+                  { icon: LinkIcon, text: t('sidebar.importantLinks'), to: "/contact" },
+                  { icon: Building, text: t('sidebar.governmentSchemes'), to: "/about-school" },
+                  { icon: FileText, text: t('sidebar.admission'), to: "/contact" },
+                  { icon: Bell, text: t('sidebar.noticeBoard'), to: "/#notices" },
+                  { icon: HelpCircle, text: t('sidebar.faq'), to: "/contact" },
                 ].map((item, idx) => (
                   <Link key={idx} to={item.to} className="gov-sidebar-item">
                     <div className="gov-sidebar-item-left">
@@ -635,15 +635,15 @@ const Home = () => {
                 <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flex: 1, flexWrap: 'wrap' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--accent-gold)', fontWeight: 700, whiteSpace: 'nowrap' }}>
                     <Megaphone size={20} />
-                    महत्त्वाच्या सूचना
+                    {t('home.importantNotices')}
                   </div>
                   <div style={{ width: '1px', height: '24px', backgroundColor: 'var(--border-color)' }} className="hide-mobile"></div>
                   <div style={{ color: 'var(--text-main)', fontSize: 'clamp(0.8rem, 2.5vw, 0.9375rem)', fontWeight: 500, flex: 1, minWidth: '200px' }}>
-                    शाळा प्रवेश प्रक्रिया 2026-27 सुरू आहे. <span className="hide-mobile">&nbsp;|&nbsp; शैक्षणिक दिनदर्शिका जाहीर झाली आहे.</span>
+                    {t('home.admissionOpen')} <span className="hide-mobile">&nbsp;|&nbsp; {t('home.calendarPublished')}</span>
                   </div>
                 </div>
                 <Link to="/" style={{ color: 'var(--primary-navy)', fontSize: '0.875rem', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '0.25rem', whiteSpace: 'nowrap' }}>
-                  सर्व सूचना पहा <ArrowRight size={14} />
+                  {t('home.viewAllNotices')} <ArrowRight size={14} />
                 </Link>
               </div>
             </div>
@@ -655,12 +655,12 @@ const Home = () => {
               gap: '1rem'
             }}>
               {[
-                { icon: GraduationCap, title: 'प्रवेश प्रक्रिया', desc: '2026-27 माहिती' },
-                { icon: Calendar, title: 'शैक्षणिक दिनदर्शिका', desc: 'महत्त्वाच्या तारखा' },
-                { icon: Book, title: 'अभ्यासक्रम', desc: 'वर्गानुसार माहिती' },
-                { icon: Users, title: 'शिक्षक व कर्मचारी', desc: 'आमची टीम' },
-                { icon: ImageIcon, title: 'छायाचित्रे', desc: 'शाळेतील उपक्रम' },
-                { icon: Phone, title: 'संपर्क', desc: 'पत्ता व संपर्क माहिती' },
+                { icon: GraduationCap, title: t('home.admission'), desc: t('home.admissionDesc') },
+                { icon: Calendar, title: t('home.calendarTitle'), desc: t('home.calendarDesc') },
+                { icon: Book, title: t('home.curriculum'), desc: t('home.curriculumDesc') },
+                { icon: Users, title: t('home.team'), desc: t('home.teamDesc') },
+                { icon: ImageIcon, title: t('home.photos'), desc: t('home.photosDesc') },
+                { icon: Phone, title: t('home.contact'), desc: t('home.contactDesc') },
               ].map((card, idx) => (
                 <div key={idx} style={{
                   border: '1px solid var(--border-color)',
@@ -692,17 +692,17 @@ const Home = () => {
             <div className="gov-header">
               <div className="gov-header-left">
                 <Users size={32} />
-                <h2 className="gov-header-title" style={{ color: '#fff' }}>शैक्षणिक नेतृत्व</h2>
+                <h2 className="gov-header-title" style={{ color: '#fff' }}>{t('leadership.title')}</h2>
               </div>
               <div className="gov-header-subtitle">
-                शाळेच्या गुणवत्तापूर्ण शिक्षणासाठी मार्गदर्शन करणारे मान्यवर
+                {t('leadership.subtitle')}
               </div>
             </div>
 
             <div className="gov-intro-strip">
               <div>
-                आमच्या शाळेच्या प्रगतीत मार्गदर्शन, प्रशासन, शैक्षणिक नियोजन आणि सर्वांगीण विकासासाठी हे मान्यवर सतत कार्यरत आहेत.<br/>
-                त्यांचा अनुभव, नेतृत्व आणि प्रेरणेमुळे विद्यार्थ्यांना गुणवत्तापूर्ण शिक्षणाची संधी उपलब्ध होत आहे.
+                {t('leadership.intro')}<br/>
+                {t('leadership.intro2')}
               </div>
               <div style={{color: '#081272', paddingLeft: '15px', flexShrink: 0}}>
                 <Megaphone size={40} fill="#c4ecfa" color="#081272" strokeWidth={1} />
@@ -713,23 +713,23 @@ const Home = () => {
               <div className="gov-profile-block">
                 <div className="gov-profile-header">
                   <Building size={22} color="#0c1a9c" />
-                  अहिल्यानगर मनपा
+                  {t('leadership.municipality')}
                 </div>
                 <div className="gov-profile-content">
                   <div className="gov-profile-top">
-                    <img src="/aukta.jpeg" alt="श्री यशवंत भीमराव डांगे" className="gov-profile-photo" />
+                    <img src="/aukta.jpeg" alt={t('leadership.commissionerName')} className="gov-profile-photo" />
                     <div className="gov-profile-details">
-                      <h3 className="gov-profile-name">श्री यशवंत भीमराव डांगे</h3>
-                      <p className="gov-profile-role">अहिल्यानगर मनपा आयुक्त</p>
+                      <h3 className="gov-profile-name">{t('leadership.commissionerName')}</h3>
+                      <p className="gov-profile-role">{t('leadership.commissioner')}</p>
                       <div style={{ marginTop: '10px', width: '30px', height: '3px', backgroundColor: '#ffb833' }}></div>
                     </div>
                   </div>
                   <table className="gov-table">
                     <tbody>
-                      <tr><th>पद</th><td>आयुक्त</td></tr>
-                      <tr><th>संस्था</th><td>अहिल्यानगर महानपालिका</td></tr>
-                      <tr><th>कार्यक्षेत्र</th><td>शिक्षण, प्रशासन व सर्वांगीण विकास</td></tr>
-                      <tr><th>मार्गदर्शन</th><td>शाळेच्या गुणवत्तापूर्ण शिक्षणासाठी सतत मार्गदर्शन</td></tr>
+                      <tr><th>{t('leadership.position')}</th><td>{t('leadership.commissionerRole')}</td></tr>
+                      <tr><th>{t('leadership.organization')}</th><td>{t('leadership.organizationValue')}</td></tr>
+                      <tr><th>{t('leadership.scope')}</th><td>{t('leadership.scopeValue')}</td></tr>
+                      <tr><th>{t('leadership.guidance')}</th><td>{t('leadership.guidanceValue')}</td></tr>
                     </tbody>
                   </table>
                 </div>
@@ -738,23 +738,23 @@ const Home = () => {
               <div className="gov-profile-block">
                 <div className="gov-profile-header">
                   <Target size={22} color="#0c1a9c" />
-                  शिक्षण विभाग
+                  {t('leadership.educationDepartment')}
                 </div>
                 <div className="gov-profile-content">
                   <div className="gov-profile-top">
-                    <img src="/zuber.jpeg" alt="श्री. जुबेर नुरमोहम्मद पठाण" className="gov-profile-photo" />
+                    <img src="/zuber.jpeg" alt={t('leadership.administrationOfficerName')} className="gov-profile-photo" />
                     <div className="gov-profile-details">
-                      <h3 className="gov-profile-name">श्री. जुबेर नुरमोहम्मद पठाण</h3>
-                      <p className="gov-profile-role">प्रशासन अधिकारी<br/>अहिल्यानगर मनपा शिक्षण विभाग</p>
+                      <h3 className="gov-profile-name">{t('leadership.administrationOfficerName')}</h3>
+                      <p className="gov-profile-role">{t('leadership.administrationOfficer')}<br/>{t('leadership.departmentValue')}</p>
                       <div style={{ marginTop: '10px', width: '30px', height: '3px', backgroundColor: '#ffb833' }}></div>
                     </div>
                   </div>
                   <table className="gov-table">
                     <tbody>
-                      <tr><th>पद</th><td>प्रशासन अधिकारी</td></tr>
-                      <tr><th>विभाग</th><td>अहिल्यानगर मनपा शिक्षण विभाग</td></tr>
-                      <tr><th>कार्यक्षेत्र</th><td>शैक्षणिक नियोजन, प्रशासन व शाळा विकास</td></tr>
-                      <tr><th>मार्गदर्शन</th><td>विद्यार्थ्यांच्या उज्ज्वल भविष्यासाठी कटिबद्ध</td></tr>
+                      <tr><th>{t('leadership.position')}</th><td>{t('leadership.administrationOfficer')}</td></tr>
+                      <tr><th>{t('leadership.department')}</th><td>{t('leadership.departmentValue')}</td></tr>
+                      <tr><th>{t('leadership.scope')}</th><td>{t('leadership.planningScope')}</td></tr>
+                      <tr><th>{t('leadership.guidance')}</th><td>{t('leadership.futureGuidance')}</td></tr>
                     </tbody>
                   </table>
                 </div>
@@ -764,7 +764,7 @@ const Home = () => {
             <div className="gov-footer-strip">
               <Building size={32} className="gov-footer-icon" fill="#ffefbc" color="#000" strokeWidth={1} />
               <div className="gov-footer-text">
-                गुणवत्तापूर्ण शिक्षण &nbsp;|&nbsp; सक्षम प्रशासन &nbsp;|&nbsp; उज्ज्वल भविष्य
+                {t('shared.footerStrip')}
               </div>
               <BookOpen size={32} className="gov-footer-icon-right" fill="#0c1a9c" color="#fff" strokeWidth={1} />
             </div>
@@ -775,18 +775,17 @@ const Home = () => {
             <div className="gov-header">
               <div className="gov-header-left">
                 <School size={32} />
-                <h2 className="gov-header-title" style={{ color: '#fff' }}>आमच्या शाळेतील सुविधा</h2>
+                <h2 className="gov-header-title" style={{ color: '#fff' }}>{t('facilities.title')}</h2>
               </div>
               <div className="gov-header-subtitle">
-                गुणवत्तापूर्ण शिक्षण, संस्कार आणि सर्वांगीण विकासासाठी उपलब्ध सुविधा
+                {t('facilities.subtitle')}
               </div>
             </div>
 
             <div className="gov-intro-strip">
               <BookOpen size={40} color="#081272" style={{flexShrink: 0}} />
               <div>
-                विद्यार्थ्यांना आनंददायी, सुरक्षित आणि गुणवत्तापूर्ण शिक्षण मिळावे यासाठी अनेक विविध शैक्षणिक, शारीरिक, आरोग्यविषयक व
-                भौतिक सुविधा उपलब्ध करून देत आहोत. या सुविधांच्या माध्यमातून प्रत्येक विद्यार्थ्यांचा संपूर्ण विकास घडावा, हे आमचे ध्येय आहे.
+                {t('facilities.intro')} {t('facilities.intro2')}
               </div>
             </div>
 
@@ -817,18 +816,17 @@ const Home = () => {
             <div className="gov-fac-mission">
               <div className="gov-fac-mission-header">
                 <Target size={20} />
-                आमचे ध्येय
+                {t('facilities.mission')}
               </div>
               <div className="gov-fac-mission-body">
-                "प्रत्येक विद्यार्थी शिकावा, घडावा, प्रगती करावा<br/>
-                आणि आत्मविश्वासाने भविष्याकडे वाटचाल करावी!"
+                "{t('facilities.missionText')}"
               </div>
             </div>
 
             <div className="gov-footer-strip">
               <School size={28} className="gov-footer-icon" color="#0c1a9c" />
               <div className="gov-footer-text">
-                गुणवत्तापूर्ण शिक्षण &nbsp;|&nbsp; सक्षम प्रशासन &nbsp;|&nbsp; उज्ज्वल भविष्य
+                {t('shared.footerStrip')}
               </div>
               <BookOpen size={28} className="gov-footer-icon-right" color="#0c1a9c" />
             </div>
@@ -840,16 +838,16 @@ const Home = () => {
             <div className="gov-sidebar">
               <div className="gov-sidebar-header">
                 <LinkIcon size={20} />
-                महत्त्वाच्या लिंक्स
+                {t('sidebar.importantLinks')}
               </div>
               <ul className="gov-sidebar-list">
                 {[
-                  { text: "सूचना व परिपत्रके", to: "/#notices" },
-                  { text: "प्रवेश प्रक्रिया", to: "/contact" },
-                  { text: "शालेय अभ्यासक्रम", to: "/students" },
-                  { text: "शालेय दिनदर्शिका", to: "/#notices" },
-                  { text: "छायाचित्र संग्रह", to: "/gallery" },
-                  { text: "महत्त्वाचे दस्तऐवज", to: "/contact" }
+                  { text: t('sidebar.circulars'), to: "/#notices" },
+                  { text: t('sidebar.admissionProcess'), to: "/contact" },
+                  { text: t('sidebar.curriculum'), to: "/students" },
+                  { text: t('sidebar.calendar'), to: "/#notices" },
+                  { text: t('sidebar.photoCollection'), to: "/gallery" },
+                  { text: t('sidebar.documents'), to: "/contact" }
                 ].map((text, idx) => (
                   <Link key={idx} to={text.to} className="gov-sidebar-item">
                     <div className="gov-sidebar-item-left">
@@ -864,23 +862,23 @@ const Home = () => {
             <div id="notices" className="gov-sidebar gov-notice-board">
               <div className="gov-sidebar-header">
                 <Bell size={20} />
-                सूचना फलक
+                {t('sidebar.noticeBoard')}
               </div>
               <div className="gov-notice-list">
                 <div className="gov-notice-item">
-                  <span className="gov-notice-date">नवीन (०१-०६-२०२६)</span>
-                  शाळेत नवीन शैक्षणिक वर्ष २०२६-२७ ची प्रवेश प्रक्रिया सुरू झाली आहे.
+                  <span className="gov-notice-date">{t('notice.new')} ({t('notice.date.new')})</span>
+                  {t('notice.admission')}
                 </div>
                 <div className="gov-notice-item">
-                  <span className="gov-notice-date">महत्त्वाचे (२८-०५-२०२६)</span>
-                  विद्यार्थ्यांसाठी गणवेश व पाठ्यपुस्तके वाटप शिबीर.
+                  <span className="gov-notice-date">{t('notice.important')} ({t('notice.date.important')})</span>
+                  {t('notice.uniformCamp')}
                 </div>
                 <div className="gov-notice-item">
-                  <span className="gov-notice-date">पालक सभा (२५-०५-२०२६)</span>
-                  इयत्ता पहिली ते चौथीच्या पालकांसाठी विशेष सभा.
+                  <span className="gov-notice-date">{t('notice.parentMeeting')} ({t('notice.date.parentMeeting')})</span>
+                  {t('notice.parentMeetingText')}
                 </div>
               </div>
-              <Link to="/#notices" className="gov-notice-more">सर्व पहा &rarr;</Link>
+              <Link to="/#notices" className="gov-notice-more">{t('notice.viewAll')}</Link>
             </div>
           </aside>
 

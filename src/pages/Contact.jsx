@@ -415,18 +415,18 @@ const Contact = () => {
             <div className="gov-sidebar-header"><HomeIcon size={20} />{t('sidebar.quickAccess')}</div>
             <ul className="gov-sidebar-list">
               {[
-                { icon: HomeIcon, text: 'मुख्य पृष्ठ', to: '/' },
-                { icon: Users, text: 'शैक्षणिक नेतृत्व', to: '/teachers' },
-                { icon: Users, text: 'शिक्षक आणि कर्मचारी', to: '/teachers' },
-                { icon: GraduationCap, text: 'विद्यार्थी', to: '/students' },
-                { icon: Calendar, text: 'उपक्रम', to: '/activities' },
-                { icon: ImageIcon, text: 'गॅलरी', to: '/gallery' },
-                { icon: Phone, text: 'संपर्क', to: '/contact', active: true },
-                { icon: LinkIcon, text: 'महत्त्वाचे दुवे', to: '/contact' },
-                { icon: Building2, text: 'शासकीय योजना', to: '/about-school' },
-                { icon: FileText, text: 'प्रवेश माहिती', to: '/contact' },
-                { icon: Bell, text: 'सूचना फलक', to: '/#notices' },
-                { icon: HelpCircle, text: 'वारंवार विचारले जाणारे प्रश्न', to: '/contact' }
+                { icon: HomeIcon, text: t('common.home'), to: '/' },
+                { icon: Users, text: t('sidebar.academicLeadership'), to: '/teachers' },
+                { icon: Users, text: t('nav.teachers'), to: '/teachers' },
+                { icon: GraduationCap, text: t('nav.students'), to: '/students' },
+                { icon: Calendar, text: t('nav.activities'), to: '/activities' },
+                { icon: ImageIcon, text: t('nav.gallery'), to: '/gallery' },
+                { icon: Phone, text: t('nav.contact'), to: '/contact', active: true },
+                { icon: LinkIcon, text: t('sidebar.importantLinks'), to: '/contact' },
+                { icon: Building2, text: t('sidebar.governmentSchemes'), to: '/about-school' },
+                { icon: FileText, text: t('sidebar.admission'), to: '/contact' },
+                { icon: Bell, text: t('sidebar.noticeBoard'), to: '/#notices' },
+                { icon: HelpCircle, text: t('sidebar.faq'), to: '/contact' }
               ].map((item) => (
                 <Link key={item.text} to={item.to} className={`gov-sidebar-item${item.active ? ' active' : ''}`}>
                   <div className="gov-sidebar-item-left"><item.icon size={16} color="#081272" /><span>{item.text}</span></div>
@@ -516,26 +516,26 @@ const Contact = () => {
 
         <aside className="right-sidebar">
           <div className="gov-sidebar">
-            <div className="gov-sidebar-header"><LinkIcon size={20} />महत्त्वाच्या लिंक्स</div>
+            <div className="gov-sidebar-header"><LinkIcon size={20} />{t('sidebar.importantLinks')}</div>
             <ul className="gov-sidebar-list">
               {[
-                { text: 'सूचना व परिपत्रके', to: '/#notices' },
-                { text: 'प्रवेश प्रक्रिया', to: '/contact' },
-                { text: 'शालेय अभ्यासक्रम', to: '/students' },
-                { text: 'शालेय दिनदर्शिका', to: '/#notices' },
-                { text: 'छायाचित्र संग्रह', to: '/gallery' },
-                { text: 'महत्त्वाचे दस्तऐवज', to: '/contact' }
+                { text: t('sidebar.circulars'), to: '/#notices' },
+                { text: t('sidebar.admissionProcess'), to: '/contact' },
+                { text: t('sidebar.curriculum'), to: '/students' },
+                { text: t('sidebar.calendar'), to: '/#notices' },
+                { text: t('sidebar.photoCollection'), to: '/gallery' },
+                { text: t('sidebar.documents'), to: '/contact' }
               ].map((item) => <Link key={item.text} to={item.to} className="gov-sidebar-item"><div className="gov-sidebar-item-left"><ChevronRight size={14} color="#d9381e" /><span>{item.text}</span></div></Link>)}
             </ul>
           </div>
           <div className="gov-sidebar gov-notice-board">
-            <div className="gov-sidebar-header"><Bell size={20} />सूचना फलक</div>
+            <div className="gov-sidebar-header"><Bell size={20} />{t('sidebar.noticeBoard')}</div>
             <div className="gov-notice-list">
-              <div className="gov-notice-item"><span className="gov-notice-date">नवीन (०१-०६-२०२६)</span>शाळेत नवीन शैक्षणिक वर्ष २०२६-२७ ची प्रवेश प्रक्रिया सुरू झाली आहे.</div>
-              <div className="gov-notice-item"><span className="gov-notice-date">महत्त्वाचे (२८-०५-२०२६)</span>विद्यार्थ्यांसाठी गणवेश व पाठ्यपुस्तके वाटप शिबीर.</div>
-              <div className="gov-notice-item"><span className="gov-notice-date">पालक सभा (२५-०५-२०२६)</span>इयत्ता पहिली ते चौथीच्या पालकांसाठी विशेष सभा.</div>
+              <div className="gov-notice-item"><span className="gov-notice-date">{t('notice.new')} ({t('notice.date.new')})</span>{t('notice.admission')}</div>
+              <div className="gov-notice-item"><span className="gov-notice-date">{t('notice.important')} ({t('notice.date.important')})</span>{t('notice.uniformCamp')}</div>
+              <div className="gov-notice-item"><span className="gov-notice-date">{t('notice.parentMeeting')} ({t('notice.date.parentMeeting')})</span>{t('notice.parentMeetingText')}</div>
             </div>
-            <Link to="/#notices" className="gov-notice-more">सर्व पहा →</Link>
+            <Link to="/#notices" className="gov-notice-more">{t('notice.viewAll')}</Link>
           </div>
         </aside>
       </div>

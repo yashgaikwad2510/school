@@ -119,7 +119,7 @@ const Layout = () => {
                 <img src="/logo.png" alt={t('image.schoolLogo')} onError={(e) => { e.target.style.display='none' }} />
                 <div>
                   <h3 style={{color: 'white', fontSize: '1.1rem'}}>{t('school.name.short')}</h3>
-                  <p style={{fontSize: '0.875rem', color: 'rgba(255,255,255,0.7)', marginTop: '4px'}}>अहिल्यानगर महानगरपालिका</p>
+                  <p style={{fontSize: '0.875rem', color: 'rgba(255,255,255,0.7)', marginTop: '4px'}}>{t('leadership.organizationValue')}</p>
                 </div>
               </div>
               <p style={{color: 'rgba(255,255,255,0.7)', fontSize: '0.9rem', marginTop: '1rem'}}>
