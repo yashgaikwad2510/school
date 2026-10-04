@@ -3,13 +3,13 @@ import { useLanguage } from '../context/LanguageContext';
 
 const staff = [
   {
-    name: 'श्री अरुण मारुती पवार',
-    role: 'मुख्याध्यापक',
+    nameKey: 'teachers.principalName',
+    roleKey: 'teachers.principal',
     image: '/teacher2.jpeg'
   },
   {
-    name: 'वर्षा शाम गायकवाड',
-    role: 'शिक्षक',
+    nameKey: 'teachers.teacherName',
+    roleKey: 'teachers.teacher',
     image: '/teacher.jpeg'
   }
 ];
@@ -44,68 +44,24 @@ const TeachersContent = () => {
         className="teachers-page-grid"
         style={{
         display: 'grid',
-        gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
         gap: '1rem'
       }}>
         {staff.map((person) => (
           <article
-            key={person.name}
-            style={{
-              border: '1px solid #8ab8d0',
-              backgroundColor: '#fff'
-            }}
+            key={person.nameKey}
+            className="teacher-profile-card"
           >
-            <div style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '1rem',
-              padding: '1rem',
-              backgroundColor: '#ffefbc',
-              borderBottom: '1px solid #8ab8d0'
-            }}>
+            <div className="teacher-profile-header" aria-hidden="true" />
+            <div className="teacher-profile-content">
               <img
                 src={person.image}
-                alt={person.name}
-                style={{
-                  width: '120px',
-                  height: '150px',
-                  objectFit: 'cover',
-                  objectPosition: 'center top',
-                  border: '1px solid #8ab8d0',
-                  backgroundColor: '#fff',
-                  padding: '2px',
-                  flexShrink: 0
-                }}
+                alt={t(person.nameKey)}
+                className="teacher-profile-photo"
               />
-              <div>
-                <h2 style={{
-                  margin: '0 0 0.5rem',
-                  color: '#0c1a9c',
-                  fontSize: '1.35rem',
-                  lineHeight: 1.35
-                }}>
-                  {person.name}
-                </h2>
-                <span style={{
-                  display: 'inline-block',
-                  padding: '0.3rem 0.7rem',
-                  borderRadius: '4px',
-                  backgroundColor: 'var(--accent-gold)',
-                  color: 'var(--dark-navy)',
-                  fontWeight: 700,
-                  fontSize: '0.875rem'
-                }}>
-                  {person.role === 'मुख्याध्यापक' ? t('teachers.principal') : t('teachers.teacher')}
-                </span>
-              </div>
-            </div>
-            <div style={{
-              padding: '1rem',
-              backgroundColor: '#f7fbff',
-              color: '#333',
-              lineHeight: 1.6
-            }}>
-              {t('teachers.schoolName')}
+              <h2 className="teacher-profile-name">{t(person.nameKey)}</h2>
+              <p className="teacher-profile-role">{t(person.roleKey)}</p>
+              <div className="teacher-profile-accent" />
+              <p className="teacher-profile-school">{t('teachers.schoolName')}</p>
             </div>
           </article>
         ))}
@@ -113,9 +69,64 @@ const TeachersContent = () => {
     </div>
 
     <style>{`
+      .teacher-profile-card {
+        overflow: hidden;
+        border: 1px solid #8ab8d0;
+        background: #fff;
+      }
+      .teacher-profile-header {
+        height: 14px;
+        background: #ffefbc;
+        border-bottom: 1px solid #8ab8d0;
+      }
+      .teacher-profile-content {
+        display: flex;
+        min-height: 360px;
+        align-items: center;
+        flex-direction: column;
+        padding: 20px 18px 24px;
+        background: #f7fbff;
+        text-align: center;
+      }
+      .teacher-profile-photo {
+        width: 150px;
+        height: 185px;
+        object-fit: cover;
+        object-position: center top;
+        border: 1px solid #8ab8d0;
+        background: #fff;
+        padding: 3px;
+      }
+      .teacher-profile-name {
+        margin: 16px 0 5px;
+        color: #0c1a9c;
+        font-size: 1.35rem;
+        line-height: 1.35;
+      }
+      .teacher-profile-role {
+        margin: 0;
+        color: #000;
+        font-size: 0.95rem;
+        line-height: 1.4;
+      }
+      .teacher-profile-accent {
+        width: 34px;
+        height: 3px;
+        margin: 12px auto 14px;
+        background: #ffb833;
+      }
+      .teacher-profile-school {
+        max-width: 32ch;
+        margin: 0;
+        color: #333;
+        line-height: 1.6;
+      }
       @media (max-width: 680px) {
         .teachers-page-grid {
           grid-template-columns: 1fr;
+        }
+        .teacher-profile-content {
+          min-height: 0;
         }
       }
     `}</style>

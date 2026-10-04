@@ -58,10 +58,18 @@ const categoryKeys = {
 };
 const getCategoryLabel = (event, t) => t(categoryKeys[event.category] || 'activity.category.school');
 
-const videoItems = [
-  { id: 'independence-video', titleKey: 'activity.title.independence', title: 'स्वातंत्र्य दिन', thumbnail: allEvents.find((event) => event.id === featuredId)?.cover, videoUrl: null, categoryKey: 'video.category.national' },
-  { id: 'reading-video', titleKey: 'activity.title.reading', title: 'वाचन कट्टा', thumbnail: allEvents.find((event) => event.id === 'वाचन कट्टा')?.cover, videoUrl: null, categoryKey: 'video.category.educational' }
-];
+const videoFiles = import.meta.glob(
+  '../assets/upakrm/videos/*.{mp4,webm,ogg,mov}',
+  { eager: true, query: '?url', import: 'default' }
+);
+const videoItems = Object.entries(videoFiles).map(([path, videoUrl]) => ({
+  id: path,
+  titleKey: 'video.defaultTitle',
+  title: 'शालेय उपक्रमाचा व्हिडिओ',
+  thumbnail: undefined,
+  videoUrl,
+  categoryKey: 'video.category.cultural'
+}));
 
 const Sidebar = ({ side }) => {
   const { t } = useLanguage();
@@ -126,9 +134,17 @@ const VideoCardContent = ({ video, onOpen }) => {
   const { t } = useLanguage();
   const localizedVideo = { ...video, title: t(video.titleKey), category: t(video.categoryKey), date: getDate(t) };
   return (
-  <button type="button" className="activity-video-card" onClick={() => onOpen(localizedVideo)}>
+  <div
+    className="activity-video-card"
+    role="button"
+    tabIndex={0}
+    onClick={() => onOpen(localizedVideo)}
+    onKeyDown={(event) => {
+      if (event.key === 'Enter' || event.key === ' ') onOpen(localizedVideo);
+    }}
+  >
     <div className="activity-video-image">
-      {video.thumbnail ? <img src={video.thumbnail} alt={localizedVideo.title} loading="lazy" /> : <div className="activity-video-empty"><Info size={24} />{t('video.noThumbnail')}</div>}
+      {video.videoUrl ? <video controls preload="metadata" src={video.videoUrl} aria-label={localizedVideo.title} onClick={(event) => event.stopPropagation()} /> : <div className="activity-video-empty"><Info size={24} />{t('video.none')}</div>}
       <span className="activity-play-button">{video.videoUrl ? <Play size={23} fill="currentColor" /> : <Pause size={21} />}</span>
     </div>
     <div className="activity-video-copy">
@@ -136,7 +152,7 @@ const VideoCardContent = ({ video, onOpen }) => {
       <p>{localizedVideo.date} <span>·</span> {localizedVideo.category}</p>
       <small>{video.videoUrl ? t('video.watch') : t('video.soon')}</small>
     </div>
-  </button>
+  </div>
   );
 };
 
@@ -206,6 +222,7 @@ const Activities = () => {
         .activity-video-card { padding: 0; color: inherit; cursor: pointer; }
         .activity-video-image { position: relative; height: 170px; background: #dbeef6; }
         .activity-video-image img { width: 100%; height: 100%; display: block; object-fit: cover; }
+        .activity-video-image video { width: 100%; height: 100%; display: block; object-fit: cover; }
         .activity-video-empty { height: 100%; display: flex; align-items: center; justify-content: center; gap: 8px; color: #526176; font-size: .82rem; }
         .activity-play-button { position: absolute; top: 50%; left: 50%; display: grid; place-items: center; width: 48px; height: 48px; transform: translate(-50%, -50%); border: 2px solid #fff; border-radius: 50%; background: #0c1a9c; color: #fff; box-shadow: 0 2px 8px rgba(0,0,0,.18); }
         .activity-video-copy, .activity-card-copy { padding: 12px 14px; }
@@ -262,7 +279,7 @@ const Activities = () => {
 
           <section>
             <div className="activity-section-heading"><div><h2>{t('activities.video')}</h2><p>{t('activities.videoSubtitle')}</p></div><MessageCircle size={21} color="#1235b5" /></div>
-            <div className="activity-video-grid" style={{ marginTop: 10 }}>{videoItems.map((video) => <VideoCard key={video.id} video={video} onOpen={setSelectedVideo} />)}</div>
+            <div className="activity-video-grid" style={{ marginTop: 10 }}>{videoItems.length > 0 ? videoItems.map((video) => <VideoCard key={video.id} video={video} onOpen={setSelectedVideo} />) : <div className="activity-video-empty">{t('video.none')}</div>}</div>
           </section>
 
           <section>
