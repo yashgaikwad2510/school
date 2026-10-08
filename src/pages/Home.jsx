@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
+import ProfileCard, { schoolPillars } from '../components/ProfileCard';
 import { Link } from 'react-router-dom';
 import { Megaphone, ArrowRight, GraduationCap, Calendar, Book, Users, Image as ImageIcon, Phone, Mail, BookOpen, HeartPulse, ShieldCheck, Palette, X, Target, School, Home as HomeIcon, Building, FileText, Link as LinkIcon, Bell, ChevronRight, HelpCircle } from 'lucide-react';
 
@@ -768,6 +769,19 @@ const Home = () => {
               </div>
               <BookOpen size={32} className="gov-footer-icon-right" fill="#0c1a9c" color="#fff" strokeWidth={1} />
             </div>
+
+            <section aria-labelledby="school-pillars-title" style={{ marginTop: '2rem' }}>
+              <div className="gov-header">
+                <div className="gov-header-left">
+                  <Users size={32} />
+                  <h2 id="school-pillars-title" className="gov-header-title" style={{ color: '#fff' }}>{t('pillars.title')}</h2>
+                </div>
+              </div>
+              <div className="cards-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', marginTop: '1rem' }}>
+                {schoolPillars.map((person) => <ProfileCard key={person.nameKey} person={person} t={t} />)}
+              </div>
+            </section>
+
             {/* ─── SPACER ─── */}
             <div className="gov-section-divider"></div>
 
