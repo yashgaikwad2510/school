@@ -88,17 +88,17 @@ const About = () => {
         </div>
 
         <section className="section" style={{ paddingLeft: 0, paddingRight: 0 }}>
-          <h2 className="section-title">{t('leadership.title')}</h2>
-          <div className="school-pillars-grid">
-            {educationalGuides.map((person) => <ProfileCard key={person.nameKey} person={person} t={t} />)}
-          </div>
-
           <h2 className="section-title" style={{ marginTop: '3rem' }}>{t('pillars.title')}</h2>
           <div className="school-pillars-featured">
             <ProfileCard person={schoolPillars[0]} t={t} variant="pillar" />
           </div>
           <div className="school-pillars-grid">
             {schoolPillars.slice(1).map((person) => <ProfileCard key={person.nameKey} person={person} t={t} variant="pillar" />)}
+          </div>
+
+          <h2 className="section-title">{t('leadership.title')}</h2>
+          <div className="school-pillars-grid">
+            {educationalGuides.map((person) => <ProfileCard key={person.nameKey} person={person} t={t} />)}
           </div>
         </section>
       </div>

@@ -239,6 +239,15 @@ const Home = () => {
           gap: 15px;
           min-width: 0;
         }
+        .gov-center > .school-pillars-section {
+          order: 1;
+        }
+        .gov-center > .facilities-order {
+          order: 3;
+        }
+        .gov-center > .leadership-order {
+          order: 2;
+        }
 
         /* Section Divider */
         .gov-section-divider {
@@ -792,7 +801,7 @@ const Home = () => {
             </div>
 
             {/* ─── SECTION 1: शैक्षणिक नेतृत्व ─── */}
-            <div className="gov-header">
+            <div className="gov-header leadership-order">
               <div className="gov-header-left">
                 <Users size={32} />
                 <h2 className="gov-header-title" style={{ color: '#fff' }}>{t('leadership.title')}</h2>
@@ -802,7 +811,7 @@ const Home = () => {
               </div>
             </div>
 
-            <div className="gov-intro-strip">
+            <div className="gov-intro-strip leadership-order">
               <div>
                 {t('leadership.intro')}<br/>
                 {t('leadership.intro2')}
@@ -812,7 +821,7 @@ const Home = () => {
               </div>
             </div>
 
-            <div className="gov-profiles-grid">
+            <div className="gov-profiles-grid leadership-order">
               <div className="gov-profile-block">
                 <div className="gov-profile-header">
                   <Building size={22} color="#0c1a9c" />
@@ -890,7 +899,7 @@ const Home = () => {
               ))}
             </div>
 
-            <div className="gov-footer-strip">
+            <div className="gov-footer-strip leadership-order">
               <Building size={32} className="gov-footer-icon" fill="#ffefbc" color="#000" strokeWidth={1} />
               <div className="gov-footer-text">
                 {t('shared.footerStrip')}
@@ -898,7 +907,7 @@ const Home = () => {
               <BookOpen size={32} className="gov-footer-icon-right" fill="#0c1a9c" color="#fff" strokeWidth={1} />
             </div>
 
-            <section aria-labelledby="school-pillars-title" style={{ marginTop: '2rem' }}>
+            <section className="school-pillars-section" aria-labelledby="school-pillars-title" style={{ marginTop: '2rem' }}>
               <div className="gov-header">
                 <div className="gov-header-left">
                   <Users size={32} />
@@ -927,10 +936,10 @@ const Home = () => {
             </section>
 
             {/* ─── SPACER ─── */}
-            <div className="gov-section-divider"></div>
+            <div className="gov-section-divider facilities-order"></div>
 
             {/* ─── SECTION 2: आमच्या शाळेतील सुविधा ─── */}
-            <div className="gov-header">
+            <div className="gov-header facilities-order">
               <div className="gov-header-left">
                 <School size={32} />
                 <h2 className="gov-header-title" style={{ color: '#fff' }}>{t('facilities.title')}</h2>
@@ -940,14 +949,14 @@ const Home = () => {
               </div>
             </div>
 
-            <div className="gov-intro-strip">
+            <div className="gov-intro-strip facilities-order">
               <BookOpen size={40} color="#081272" style={{flexShrink: 0}} />
               <div>
                 {t('facilities.intro')} {t('facilities.intro2')}
               </div>
             </div>
 
-            <div className="gov-fac-grid">
+            <div className="gov-fac-grid facilities-order">
               {facilitiesData.map((fac) => (
                 <div key={fac.id} className="gov-fac-block">
                   <div className="gov-fac-block-header">
@@ -971,7 +980,7 @@ const Home = () => {
               ))}
             </div>
 
-            <div className="gov-fac-mission">
+            <div className="gov-fac-mission facilities-order">
               <div className="gov-fac-mission-header">
                 <Target size={20} />
                 {t('facilities.mission')}
@@ -981,7 +990,7 @@ const Home = () => {
               </div>
             </div>
 
-            <div className="gov-footer-strip">
+            <div className="gov-footer-strip facilities-order">
               <School size={28} className="gov-footer-icon" color="#0c1a9c" />
               <div className="gov-footer-text">
                 {t('shared.footerStrip')}
