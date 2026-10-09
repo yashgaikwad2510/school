@@ -240,13 +240,10 @@ const Home = () => {
           min-width: 0;
         }
         .gov-center > .school-pillars-section {
-          order: 1;
         }
         .gov-center > .facilities-order {
-          order: 3;
         }
         .gov-center > .leadership-order {
-          order: 2;
         }
 
         /* Section Divider */
@@ -800,7 +797,36 @@ const Home = () => {
               ))}
             </div>
 
-            {/* ─── SECTION 1: शैक्षणिक नेतृत्व ─── */}
+            {/* ─── SECTION 1: शालेय आधारस्तंभ (School Pillars) ─── */}
+            <section className="school-pillars-section" aria-labelledby="school-pillars-title">
+              <div className="gov-header">
+                <div className="gov-header-left">
+                  <Users size={32} />
+                  <h2 id="school-pillars-title" className="gov-header-title" style={{ color: '#fff' }}>{t('pillars.title')}</h2>
+                </div>
+                <div className="gov-header-subtitle">
+                  {t('pillars.subtitle')}
+                </div>
+              </div>
+              <div className="gov-intro-strip">
+                <div>
+                  {t('pillars.intro')}<br />
+                  {t('pillars.intro2')}
+                </div>
+                <div style={{ color: '#081272', paddingLeft: '15px', flexShrink: 0 }}>
+                  <Building size={40} fill="#c4ecfa" color="#081272" strokeWidth={1} />
+                </div>
+              </div>
+              <div className="school-pillars-featured">
+                <ProfileCard person={schoolPillars[0]} t={t} variant="pillar" />
+              </div>
+              <div className="school-pillars-grid">
+                {schoolPillars.slice(1, 3).map((person) => <ProfileCard key={person.nameKey} person={person} t={t} variant="pillar" />)}
+                {schoolPillars.slice(3).map((person) => <ProfileCard key={person.nameKey} person={person} t={t} variant="pillar" />)}
+              </div>
+            </section>
+
+            {/* ─── SECTION 2: शैक्षणिक मार्गदर्शक (Educational Guides) ─── */}
             <div className="gov-header leadership-order">
               <div className="gov-header-left">
                 <Users size={32} />
@@ -906,34 +932,6 @@ const Home = () => {
               </div>
               <BookOpen size={32} className="gov-footer-icon-right" fill="#0c1a9c" color="#fff" strokeWidth={1} />
             </div>
-
-            <section className="school-pillars-section" aria-labelledby="school-pillars-title" style={{ marginTop: '2rem' }}>
-              <div className="gov-header">
-                <div className="gov-header-left">
-                  <Users size={32} />
-                  <h2 id="school-pillars-title" className="gov-header-title" style={{ color: '#fff' }}>{t('pillars.title')}</h2>
-                </div>
-                <div className="gov-header-subtitle">
-                  {t('pillars.subtitle')}
-                </div>
-              </div>
-              <div className="gov-intro-strip">
-                <div>
-                  {t('pillars.intro')}<br />
-                  {t('pillars.intro2')}
-                </div>
-                <div style={{ color: '#081272', paddingLeft: '15px', flexShrink: 0 }}>
-                  <Building size={40} fill="#c4ecfa" color="#081272" strokeWidth={1} />
-                </div>
-              </div>
-              <div className="school-pillars-featured">
-                <ProfileCard person={schoolPillars[0]} t={t} variant="pillar" />
-              </div>
-              <div className="school-pillars-grid">
-                {schoolPillars.slice(1, 3).map((person) => <ProfileCard key={person.nameKey} person={person} t={t} variant="pillar" />)}
-                {schoolPillars.slice(3).map((person) => <ProfileCard key={person.nameKey} person={person} t={t} variant="pillar" />)}
-              </div>
-            </section>
 
             {/* ─── SPACER ─── */}
             <div className="gov-section-divider facilities-order"></div>
