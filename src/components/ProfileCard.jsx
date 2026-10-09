@@ -25,9 +25,9 @@ export const schoolPillars = [
   ['pillar.sangramJagtapName', 'pillar.sangramJagtapRole', 'संग्राम भैया जगताप.jpeg'],
   ['pillar.jyotiGadeName', 'pillar.jyotiGadeRole', 'ज्योतीताई गाडे.jpeg'],
   ['pillar.dhananjayJadhavName', 'pillar.dhananjayJadhavRole', 'धनंजय जाधव.jpeg'],
+  ['pillar.vandanaTatheName', 'pillar.vandanaTatheRole', 'वंदना ताई ताठे.jpeg'],
   ['pillar.pushpataiBorudheName', 'pillar.pushpataiBorudheRole', 'पुष्पाताई बोरूढे.jpeg'],
   ['pillar.revannathPawarName', 'pillar.revannathPawarRole', 'रेवणनाथ दगडू पवार.jpeg'],
-  ['pillar.vandanaTatheName', 'pillar.vandanaTatheRole', 'वंदना ताई ताठे.jpeg'],
   ['pillar.ravindraBaraskarName', 'pillar.ravindraBaraskarRole', 'रवींद्र रावसाहेब बारस्कर.jpeg'],
   ['pillar.babasahebWakaleName', 'pillar.babasahebWakaleRole', 'मा.श्री बाबासाहेब वाकळे.jpeg'],
   ['pillar.varshaSanapName', 'pillar.varshaSanapRole', 'मा.सौ वर्षा रोहन सानप.jpeg']

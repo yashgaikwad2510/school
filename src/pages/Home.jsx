@@ -814,7 +814,7 @@ const Home = () => {
                   {t('pillars.intro2')}
                 </div>
                 <div style={{ color: '#081272', paddingLeft: '15px', flexShrink: 0 }}>
-                  <Building size={40} fill="#c4ecfa" color="#081272" strokeWidth={1} />
+                  <Megaphone size={40} fill="#c4ecfa" color="#081272" strokeWidth={1} />
                 </div>
               </div>
               <div className="school-pillars-featured">
