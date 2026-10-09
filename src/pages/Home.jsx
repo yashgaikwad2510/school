@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
+import ProfileCard, { educationalGuides, schoolPillars } from '../components/ProfileCard';
 import { Link } from 'react-router-dom';
 import { Megaphone, ArrowRight, GraduationCap, Calendar, Book, Users, Image as ImageIcon, Phone, Mail, BookOpen, HeartPulse, ShieldCheck, Palette, X, Target, School, Home as HomeIcon, Building, FileText, Link as LinkIcon, Bell, ChevronRight, HelpCircle } from 'lucide-react';
 
@@ -117,6 +118,108 @@ const Home = () => {
         .gov-sidebar-item:hover {
           background-color: #f7fbff;
         }
+        .school-pillars-grid {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 20px;
+          margin-top: 1rem;
+        }
+        .school-pillars-featured {
+          display: flex;
+          justify-content: center;
+          margin: 1rem 0;
+        }
+        .school-pillars-featured .pillar-profile-card {
+          width: min(100%, 308px);
+        }
+        .school-guides-extra .tcard {
+          display: flex;
+          flex-direction: column;
+          min-width: 0;
+          overflow: hidden;
+          border: 1px solid #8ab8d0;
+          background: #fff;
+          box-shadow: 0 2px 7px rgba(16, 42, 114, .06);
+        }
+        .school-guides-extra .tcard-photo {
+          width: 100%;
+          aspect-ratio: 4 / 3;
+          overflow: hidden;
+          background: #dbeef6;
+          border-bottom: 1px solid #8ab8d0;
+        }
+        .school-guides-extra .tcard-photo img {
+          width: 100%;
+          height: 100%;
+          display: block;
+          object-fit: cover;
+          object-position: center top;
+        }
+        .school-guides-extra .tcard > div:not(.tcard-photo) {
+          flex: 1;
+          padding: 14px 16px 18px;
+          background: #f7fbff;
+        }
+        .school-guides-extra .tcard h3 {
+          margin: 0 0 6px;
+          color: #0c1a9c;
+          font-size: 1.2rem;
+          line-height: 1.35;
+        }
+        .school-guides-extra .tcard-role {
+          display: block;
+          margin: 0;
+          color: #111;
+          font-size: .95rem;
+          line-height: 1.5;
+        }
+        .pillar-profile-card {
+          overflow: hidden;
+          border: 1px solid #8ab8d0;
+          background: #fff;
+          box-shadow: 0 2px 7px rgba(16, 42, 114, .06);
+        }
+        .pillar-profile-photo {
+          width: 100%;
+          aspect-ratio: 4 / 3;
+          background: #dbeef6;
+          border-bottom: 1px solid #8ab8d0;
+        }
+        .pillar-profile-photo img {
+          width: 100%;
+          height: 100%;
+          display: block;
+          object-fit: cover;
+          object-position: center top;
+        }
+        .pillar-profile-content {
+          min-height: 112px;
+          padding: 14px 16px 18px;
+          background: #f7fbff;
+        }
+        .pillar-profile-content h3 {
+          margin: 0 0 6px;
+          color: #0c1a9c;
+          font-size: 1.2rem;
+          line-height: 1.35;
+        }
+        .pillar-profile-content .tcard-role {
+          margin-top: 0;
+          color: #111;
+          border: 0;
+          border-radius: 0;
+          padding: 0;
+          font-family: inherit;
+          font-size: .95rem;
+          font-weight: 400;
+          letter-spacing: normal;
+          text-transform: none;
+        }
+        @media (max-width: 620px) {
+          .school-pillars-grid {
+            grid-template-columns: 1fr;
+          }
+        }
         .gov-sidebar-item-left {
           display: flex;
           align-items: center;
@@ -135,6 +238,12 @@ const Home = () => {
           flex-direction: column;
           gap: 15px;
           min-width: 0;
+        }
+        .gov-center > .school-pillars-section {
+        }
+        .gov-center > .facilities-order {
+        }
+        .gov-center > .leadership-order {
         }
 
         /* Section Divider */
@@ -688,8 +797,37 @@ const Home = () => {
               ))}
             </div>
 
-            {/* ─── SECTION 1: शैक्षणिक नेतृत्व ─── */}
-            <div className="gov-header">
+            {/* ─── SECTION 1: शालेय आधारस्तंभ (School Pillars) ─── */}
+            <section className="school-pillars-section" aria-labelledby="school-pillars-title">
+              <div className="gov-header">
+                <div className="gov-header-left">
+                  <Users size={32} />
+                  <h2 id="school-pillars-title" className="gov-header-title" style={{ color: '#fff' }}>{t('pillars.title')}</h2>
+                </div>
+                <div className="gov-header-subtitle">
+                  {t('pillars.subtitle')}
+                </div>
+              </div>
+              <div className="gov-intro-strip">
+                <div>
+                  {t('pillars.intro')}<br />
+                  {t('pillars.intro2')}
+                </div>
+                <div style={{ color: '#081272', paddingLeft: '15px', flexShrink: 0 }}>
+                  <Megaphone size={40} fill="#c4ecfa" color="#081272" strokeWidth={1} />
+                </div>
+              </div>
+              <div className="school-pillars-featured">
+                <ProfileCard person={schoolPillars[0]} t={t} variant="pillar" />
+              </div>
+              <div className="school-pillars-grid">
+                {schoolPillars.slice(1, 3).map((person) => <ProfileCard key={person.nameKey} person={person} t={t} variant="pillar" />)}
+                {schoolPillars.slice(3).map((person) => <ProfileCard key={person.nameKey} person={person} t={t} variant="pillar" />)}
+              </div>
+            </section>
+
+            {/* ─── SECTION 2: शैक्षणिक मार्गदर्शक (Educational Guides) ─── */}
+            <div className="gov-header leadership-order">
               <div className="gov-header-left">
                 <Users size={32} />
                 <h2 className="gov-header-title" style={{ color: '#fff' }}>{t('leadership.title')}</h2>
@@ -699,7 +837,7 @@ const Home = () => {
               </div>
             </div>
 
-            <div className="gov-intro-strip">
+            <div className="gov-intro-strip leadership-order">
               <div>
                 {t('leadership.intro')}<br/>
                 {t('leadership.intro2')}
@@ -709,7 +847,7 @@ const Home = () => {
               </div>
             </div>
 
-            <div className="gov-profiles-grid">
+            <div className="gov-profiles-grid leadership-order">
               <div className="gov-profile-block">
                 <div className="gov-profile-header">
                   <Building size={22} color="#0c1a9c" />
@@ -759,20 +897,47 @@ const Home = () => {
                   </table>
                 </div>
               </div>
+              {educationalGuides.slice(2).map((person) => (
+                <div className="gov-profile-block" key={person.nameKey}>
+                  <div className="gov-profile-header">
+                    <Building size={22} color="#0c1a9c" />
+                    {t('leadership.municipality')}
+                  </div>
+                  <div className="gov-profile-content">
+                    <div className="gov-profile-top">
+                      <img src={person.image} alt={t(person.nameKey)} className="gov-profile-photo" />
+                      <div className="gov-profile-details">
+                        <h3 className="gov-profile-name">{t(person.nameKey)}</h3>
+                        <p className="gov-profile-role">{t(person.roleKey)}</p>
+                        <div style={{ marginTop: '10px', width: '30px', height: '3px', backgroundColor: '#ffb833' }}></div>
+                      </div>
+                    </div>
+                    <table className="gov-table">
+                      <tbody>
+                        <tr><th>{t('leadership.position')}</th><td>{t(person.roleKey)}</td></tr>
+                        <tr><th>{t('leadership.organization')}</th><td>{t(person.organizationKey)}</td></tr>
+                        <tr><th>{t('leadership.scope')}</th><td>{t(person.scopeKey)}</td></tr>
+                        <tr><th>{t('leadership.guidance')}</th><td>{t(person.guidanceKey)}</td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              ))}
             </div>
 
-            <div className="gov-footer-strip">
+            <div className="gov-footer-strip leadership-order">
               <Building size={32} className="gov-footer-icon" fill="#ffefbc" color="#000" strokeWidth={1} />
               <div className="gov-footer-text">
                 {t('shared.footerStrip')}
               </div>
               <BookOpen size={32} className="gov-footer-icon-right" fill="#0c1a9c" color="#fff" strokeWidth={1} />
             </div>
+
             {/* ─── SPACER ─── */}
-            <div className="gov-section-divider"></div>
+            <div className="gov-section-divider facilities-order"></div>
 
             {/* ─── SECTION 2: आमच्या शाळेतील सुविधा ─── */}
-            <div className="gov-header">
+            <div className="gov-header facilities-order">
               <div className="gov-header-left">
                 <School size={32} />
                 <h2 className="gov-header-title" style={{ color: '#fff' }}>{t('facilities.title')}</h2>
@@ -782,14 +947,14 @@ const Home = () => {
               </div>
             </div>
 
-            <div className="gov-intro-strip">
+            <div className="gov-intro-strip facilities-order">
               <BookOpen size={40} color="#081272" style={{flexShrink: 0}} />
               <div>
                 {t('facilities.intro')} {t('facilities.intro2')}
               </div>
             </div>
 
-            <div className="gov-fac-grid">
+            <div className="gov-fac-grid facilities-order">
               {facilitiesData.map((fac) => (
                 <div key={fac.id} className="gov-fac-block">
                   <div className="gov-fac-block-header">
@@ -813,7 +978,7 @@ const Home = () => {
               ))}
             </div>
 
-            <div className="gov-fac-mission">
+            <div className="gov-fac-mission facilities-order">
               <div className="gov-fac-mission-header">
                 <Target size={20} />
                 {t('facilities.mission')}
@@ -823,7 +988,7 @@ const Home = () => {
               </div>
             </div>
 
-            <div className="gov-footer-strip">
+            <div className="gov-footer-strip facilities-order">
               <School size={28} className="gov-footer-icon" color="#0c1a9c" />
               <div className="gov-footer-text">
                 {t('shared.footerStrip')}
