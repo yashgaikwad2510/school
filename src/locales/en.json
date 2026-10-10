@@ -292,5 +292,17 @@
   "common.galleryCategories": "Gallery categories",
   "activity.category.national": "National Day",
   "activity.category.sports": "Sports",
-  "activity.category.competition": "Competition"
+  "activity.category.competition": "Competition",
+  "teachers.title": "Teachers and Staff",
+  "teachers.subtitle": "Dedicated Staff",
+  "teachers.intro": "Our dedicated teachers shape the future of our students.",
+  "teachers.intro2": "They bring experience and care to the classroom.",
+  "teacher.arunPawarName": "Shri Arun Maruti Pawar",
+  "teacher.arunPawarRole": "Headmaster",
+  "teacher.varshaGaikwadName": "Varsha Shyam Gaikwad",
+  "teacher.varshaGaikwadRole": "Teacher",
+  "teacher.ujwalaPadoleName": "Hon. Ujwala Padole",
+  "teacher.ujwalaPadoleRole": "Under Snehgyandeep Project — School Co-teacher",
+  "teacher.raziyaDafedarName": "Hon. Raziya Dafedar",
+  "teacher.raziyaDafedarRole": "Under Snehgyandeep Project — School Co-teacher"
 }

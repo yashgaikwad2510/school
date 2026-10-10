@@ -292,5 +292,17 @@
   "common.galleryCategories": "गॅलरी श्रेणी",
   "activity.category.national": "राष्ट्रीय दिन",
   "activity.category.sports": "क्रीडा",
-  "activity.category.competition": "स्पर्धा"
+  "activity.category.competition": "स्पर्धा",
+  "teachers.title": "शिक्षक आणि कर्मचारी",
+  "teachers.subtitle": "आमचे समर्पित शिक्षक",
+  "teachers.intro": "आमचे समर्पित शिक्षक विद्यार्थ्यांचे भविष्य घडवतात.",
+  "teachers.intro2": "ते वर्गात अनुभव आणि काळजी आणतात.",
+  "teacher.arunPawarName": "श्री अरुण मारुती पवार",
+  "teacher.arunPawarRole": "मुख्याध्यापक",
+  "teacher.varshaGaikwadName": "वर्षा शाम गायकवाड",
+  "teacher.varshaGaikwadRole": "शिक्षक",
+  "teacher.ujwalaPadoleName": "मा. उज्वला पडोळे",
+  "teacher.ujwalaPadoleRole": "स्नेहज्ञानदीप प्रकल्प अंतर्गत — शालेय सहकारी शिक्षिका",
+  "teacher.raziyaDafedarName": "मा. रजिया दफेदार",
+  "teacher.raziyaDafedarRole": "स्नेहज्ञानदीप प्रकल्प अंतर्गत — शालेय सहकारी शिक्षिका"
 }
