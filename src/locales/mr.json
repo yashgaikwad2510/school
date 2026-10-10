@@ -304,5 +304,21 @@
   "teacher.ujwalaPadoleName": "मा. उज्वला पडोळे",
   "teacher.ujwalaPadoleRole": "स्नेहज्ञानदीप प्रकल्प अंतर्गत — शालेय सहकारी शिक्षिका",
   "teacher.raziyaDafedarName": "मा. रजिया दफेदार",
-  "teacher.raziyaDafedarRole": "स्नेहज्ञानदीप प्रकल्प अंतर्गत — शालेय सहकारी शिक्षिका"
+  "teacher.raziyaDafedarRole": "स्नेहज्ञानदीप प्रकल्प अंतर्गत — शालेय सहकारी शिक्षिका",
+  "teachers.slogan1": "शिक्षक नेतृत्वाची ज्योत, विद्यार्थ्यांच्या प्रगतीची पहाट!",
+  "teachers.slogan2": "शिक्षक पुढे, शिक्षण पुढे, प्रगतीकडे शाळेची वाटचाल!",
+  "teachers.slogan3": "कृतीतून नेतृत्व, गुणवत्तेतून कर्तृत्व!",
+  "teachers.slogan4": "शिक्षकांचे नेतृत्व, नवोपक्रमांचे बळ!",
+  "teachers.slogan5": "प्रेरक शिक्षक, सक्षम नेतृत्व, गुणवत्तापूर्ण शिक्षण!",
+  "teachers.institutionLabel": "संस्था",
+  "teachers.qualificationLabel": "शैक्षणिक पात्रता",
+  "teacher.arunPawarInst": "अहिल्यानगर महानगरपालिका शिक्षण विभाग ,अहिल्यानगर",
+  "teacher.arunPawarQual": "B.A. D.Ed",
+  "teacher.varshaGaikwadInst": "अहिल्यानगर महानगरपालिका शिक्षण विभाग ,अहिल्यानगर",
+  "teacher.varshaGaikwadQual": "M.A D.Ed",
+  "teacher.ujwalaPadoleQual": "B.A.B.Ed",
+  "teacher.raziyaDafedarQual": "M.Sc D.Ed",
+  "teacher.ujwalaPadoleRoleShort": "शालेय सहकारी शिक्षिका",
+  "teacher.raziyaDafedarRoleShort": "शालेय सहकारी शिक्षिका",
+  "teachers.projectLabel": "पद"
 }

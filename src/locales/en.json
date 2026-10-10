@@ -304,5 +304,21 @@
   "teacher.ujwalaPadoleName": "Hon. Ujwala Padole",
   "teacher.ujwalaPadoleRole": "Under Snehgyandeep Project — School Co-teacher",
   "teacher.raziyaDafedarName": "Hon. Raziya Dafedar",
-  "teacher.raziyaDafedarRole": "Under Snehgyandeep Project — School Co-teacher"
+  "teacher.raziyaDafedarRole": "Under Snehgyandeep Project — School Co-teacher",
+  "teachers.slogan1": "The flame of teacher leadership, the dawn of student progress!",
+  "teachers.slogan2": "Teachers forward, education forward, the school's journey towards progress!",
+  "teachers.slogan3": "Leadership through action, achievement through quality!",
+  "teachers.slogan4": "Teacher leadership, the power of innovation!",
+  "teachers.slogan5": "Inspiring teachers, capable leadership, quality education!",
+  "teachers.institutionLabel": "Institution",
+  "teachers.qualificationLabel": "Qualification",
+  "teacher.arunPawarInst": "Ahmednagar Municipal Corporation Education Department, Ahmednagar",
+  "teacher.arunPawarQual": "B.A. D.Ed",
+  "teacher.varshaGaikwadInst": "Ahmednagar Municipal Corporation Education Department, Ahmednagar",
+  "teacher.varshaGaikwadQual": "M.A D.Ed",
+  "teacher.ujwalaPadoleQual": "B.A.B.Ed",
+  "teacher.raziyaDafedarQual": "M.Sc D.Ed",
+  "teacher.ujwalaPadoleRoleShort": "School Co-teacher",
+  "teacher.raziyaDafedarRoleShort": "School Co-teacher",
+  "teachers.projectLabel": "Designation"
 }

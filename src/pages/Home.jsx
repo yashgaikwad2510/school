@@ -939,21 +939,60 @@ const Home = () => {
                 <Users size={32} />
                 <h2 className="gov-header-title" style={{ color: '#fff' }}>{t('teachers.title')}</h2>
               </div>
-              <div className="gov-header-subtitle">
-                {t('teachers.subtitle')}
-              </div>
             </div>
             <div className="gov-intro-strip teachers-order">
               <div>
-                {t('teachers.intro')}<br/>
-                {t('teachers.intro2')}
+                <ul style={{ listStyleType: 'disc', paddingLeft: '20px', margin: 0, lineHeight: '1.6' }}>
+                  <li>{t('teachers.slogan1')}</li>
+                  <li>{t('teachers.slogan2')}</li>
+                  <li>{t('teachers.slogan3')}</li>
+                  <li>{t('teachers.slogan4')}</li>
+                  <li>{t('teachers.slogan5')}</li>
+                </ul>
               </div>
-              <div style={{ color: '#081272', paddingLeft: '15px', flexShrink: 0 }}>
+              <div style={{ color: '#081272', paddingLeft: '15px', flexShrink: 0, display: 'flex', alignItems: 'center' }}>
                 <Megaphone size={40} fill="#c4ecfa" color="#081272" strokeWidth={1} />
               </div>
             </div>
-            <div className="school-pillars-grid teachers-order">
-              {teachers.map((person) => <ProfileCard key={person.nameKey} person={person} t={t} variant="pillar" />)}
+            <div className="gov-profiles-grid teachers-order">
+              {teachers.map((person) => (
+                <div className="gov-profile-block" key={person.nameKey}>
+                  <div className="gov-profile-header">
+                    <School size={22} color="#0c1a9c" />
+                    {t('teachers.title')}
+                  </div>
+                  <div className="gov-profile-content">
+                    <div className="gov-profile-top">
+                      <img src={person.image} alt={t(person.nameKey)} className="gov-profile-photo" />
+                      <div className="gov-profile-details">
+                        <h3 className="gov-profile-name">{t(person.nameKey)}</h3>
+                        <p className="gov-profile-role">{t(person.roleKey)}</p>
+                        <div style={{ marginTop: '10px', width: '30px', height: '3px', backgroundColor: '#ffb833' }}></div>
+                      </div>
+                    </div>
+                    <table className="gov-table">
+                      <tbody>
+                        {person.instKey && (
+                          <tr>
+                            <th>{t('teachers.institutionLabel')}</th>
+                            <td>{t(person.instKey)}</td>
+                          </tr>
+                        )}
+                        {person.projectKey && (
+                          <tr>
+                            <th>{t('teachers.projectLabel')}</th>
+                            <td>{t(person.projectKey)}</td>
+                          </tr>
+                        )}
+                        <tr>
+                          <th>{t('teachers.qualificationLabel')}</th>
+                          <td>{t(person.qualKey)}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              ))}
             </div>
 
             {/* ─── SPACER ─── */}
