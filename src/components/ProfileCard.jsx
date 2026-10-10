@@ -37,6 +37,17 @@ export const schoolPillars = [
   image: `/शालेय आधारस्तंभ/${fileName}`
 }));
 
+export const teachers = [
+  ['teacher.arunPawarName', 'teacher.arunPawarRole', 'श्री अरुण मारुती पवार.jpeg'],
+  ['teacher.varshaGaikwadName', 'teacher.varshaGaikwadRole', 'वर्षा शाम गायकवाड.jpeg'],
+  ['teacher.ujwalaPadoleName', 'teacher.ujwalaPadoleRole', 'मा.उज्वला  पडोळे.jpeg'],
+  ['teacher.raziyaDafedarName', 'teacher.raziyaDafedarRole', 'मा.रजिया दफेदार.jpeg']
+].map(([nameKey, roleKey, fileName]) => ({
+  nameKey,
+  roleKey,
+  image: `/teacher/${fileName}`
+}));
+
 const ProfileCard = ({ person, t, variant = 'default' }) => (
   <article className={variant === 'pillar' ? 'pillar-profile-card' : 'tcard'}>
     {(person.image || person.img) && (
