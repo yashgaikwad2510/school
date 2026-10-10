@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
-import ProfileCard, { educationalGuides, schoolPillars } from '../components/ProfileCard';
+import ProfileCard, { educationalGuides, schoolPillars, teachers } from '../components/ProfileCard';
 import { Link } from 'react-router-dom';
 import { Megaphone, ArrowRight, GraduationCap, Calendar, Book, Users, Image as ImageIcon, Phone, Mail, BookOpen, HeartPulse, ShieldCheck, Palette, X, Target, School, Home as HomeIcon, Building, FileText, Link as LinkIcon, Bell, ChevronRight, HelpCircle } from 'lucide-react';
 
@@ -931,6 +931,29 @@ const Home = () => {
                 {t('shared.footerStrip')}
               </div>
               <BookOpen size={32} className="gov-footer-icon-right" fill="#0c1a9c" color="#fff" strokeWidth={1} />
+            </div>
+
+            {/* ─── SECTION: शिक्षक आणि कर्मचारी (Teachers) ─── */}
+            <div className="gov-header teachers-order">
+              <div className="gov-header-left">
+                <Users size={32} />
+                <h2 className="gov-header-title" style={{ color: '#fff' }}>{t('teachers.title')}</h2>
+              </div>
+              <div className="gov-header-subtitle">
+                {t('teachers.subtitle')}
+              </div>
+            </div>
+            <div className="gov-intro-strip teachers-order">
+              <div>
+                {t('teachers.intro')}<br/>
+                {t('teachers.intro2')}
+              </div>
+              <div style={{ color: '#081272', paddingLeft: '15px', flexShrink: 0 }}>
+                <Megaphone size={40} fill="#c4ecfa" color="#081272" strokeWidth={1} />
+              </div>
+            </div>
+            <div className="school-pillars-grid teachers-order">
+              {teachers.map((person) => <ProfileCard key={person.nameKey} person={person} t={t} variant="pillar" />)}
             </div>
 
             {/* ─── SPACER ─── */}
