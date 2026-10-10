@@ -38,15 +38,35 @@ export const schoolPillars = [
 }));
 
 export const teachers = [
-  ['teacher.arunPawarName', 'teacher.arunPawarRole', 'श्री अरुण मारुती पवार.jpeg'],
-  ['teacher.varshaGaikwadName', 'teacher.varshaGaikwadRole', 'वर्षा शाम गायकवाड.jpeg'],
-  ['teacher.ujwalaPadoleName', 'teacher.ujwalaPadoleRole', 'मा.उज्वला  पडोळे.jpeg'],
-  ['teacher.raziyaDafedarName', 'teacher.raziyaDafedarRole', 'मा.रजिया दफेदार.jpeg']
-].map(([nameKey, roleKey, fileName]) => ({
-  nameKey,
-  roleKey,
-  image: `/teacher/${fileName}`
-}));
+  {
+    nameKey: 'teacher.arunPawarName',
+    roleKey: 'teacher.arunPawarRole',
+    instKey: 'teacher.arunPawarInst',
+    qualKey: 'teacher.arunPawarQual',
+    image: '/teacher/श्री अरुण मारुती पवार.jpeg'
+  },
+  {
+    nameKey: 'teacher.varshaGaikwadName',
+    roleKey: 'teacher.varshaGaikwadRole',
+    instKey: 'teacher.varshaGaikwadInst',
+    qualKey: 'teacher.varshaGaikwadQual',
+    image: '/teacher/वर्षा शाम गायकवाड.jpeg'
+  },
+  {
+    nameKey: 'teacher.raziyaDafedarName',
+    roleKey: 'teacher.raziyaDafedarRoleShort',
+    projectKey: 'teacher.raziyaDafedarRole',
+    qualKey: 'teacher.raziyaDafedarQual',
+    image: '/teacher/मा.रजिया दफेदार.jpeg'
+  },
+  {
+    nameKey: 'teacher.ujwalaPadoleName',
+    roleKey: 'teacher.ujwalaPadoleRoleShort',
+    projectKey: 'teacher.ujwalaPadoleRole',
+    qualKey: 'teacher.ujwalaPadoleQual',
+    image: '/teacher/मा.उज्वला  पडोळे.jpeg'
+  }
+];
 
 const ProfileCard = ({ person, t, variant = 'default' }) => (
   <article className={variant === 'pillar' ? 'pillar-profile-card' : 'tcard'}>

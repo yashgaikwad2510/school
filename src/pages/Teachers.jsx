@@ -1,18 +1,7 @@
 import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
-
-const staff = [
-  {
-    nameKey: 'teachers.principalName',
-    roleKey: 'teachers.principal',
-    image: '/teacher2.jpeg'
-  },
-  {
-    nameKey: 'teachers.teacherName',
-    roleKey: 'teachers.teacher',
-    image: '/teacher.jpeg'
-  }
-];
+import { School } from 'lucide-react';
+import { teachers } from '../components/ProfileCard';
 
 const Teachers = () => (
   <TeachersContent />
@@ -22,6 +11,96 @@ const TeachersContent = () => {
   const { t } = useLanguage();
   return (
   <div style={{ backgroundColor: 'var(--bg-color)', minHeight: '100vh', padding: '3rem 0 5rem' }}>
+    <style>{`
+      .teachers-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+      }
+      .teacher-block {
+        border: 1px solid #8ab8d0;
+        background: #fff;
+      }
+      .teacher-block-header {
+        background-color: #ffefbc;
+        color: #0c1a9c;
+        font-size: 1.25rem;
+        font-weight: bold;
+        padding: 10px 15px;
+        border-bottom: 1px solid #8ab8d0;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .teacher-block-content {
+        padding: 15px;
+        background-color: #f7fbff;
+      }
+      .teacher-block-top {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 15px;
+      }
+      .teacher-block-photo {
+        width: 120px;
+        height: 150px;
+        object-fit: cover;
+        border: 1px solid #8ab8d0;
+        background-color: #fff;
+        padding: 2px;
+        flex-shrink: 0;
+      }
+      .teacher-block-details {
+        flex: 1;
+        padding-top: 5px;
+      }
+      .teacher-block-name {
+        color: #0c1a9c;
+        font-size: 1.25rem;
+        font-weight: bold;
+        margin: 0 0 5px 0;
+      }
+      .teacher-block-role {
+        color: #000;
+        font-size: 0.95rem;
+        font-weight: normal;
+        margin: 0;
+        line-height: 1.4;
+      }
+      .teacher-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.9rem;
+        table-layout: fixed;
+        word-wrap: break-word;
+      }
+      .teacher-table th, .teacher-table td {
+        border: 1px solid #8ab8d0;
+        padding: 8px 10px;
+        text-align: left;
+        color: #000;
+        word-break: break-word;
+      }
+      .teacher-table th {
+        background-color: #d6eaf8;
+        width: 35%;
+        font-weight: normal;
+      }
+      .teacher-table td {
+        background-color: #fff;
+      }
+      @media (max-width: 860px) {
+        .teachers-grid {
+          grid-template-columns: 1fr;
+        }
+        .teacher-block-top {
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        }
+      }
+    `}</style>
+
     <div className="container">
       <div style={{
         marginBottom: '2rem',
@@ -40,96 +119,47 @@ const TeachersContent = () => {
         </p>
       </div>
 
-      <div
-        className="teachers-page-grid"
-        style={{
-        display: 'grid',
-        gap: '1rem'
-      }}>
-        {staff.map((person) => (
-          <article
-            key={person.nameKey}
-            className="teacher-profile-card"
-          >
-            <div className="teacher-profile-header" aria-hidden="true" />
-            <div className="teacher-profile-content">
-              <img
-                src={person.image}
-                alt={t(person.nameKey)}
-                className="teacher-profile-photo"
-              />
-              <h2 className="teacher-profile-name">{t(person.nameKey)}</h2>
-              <p className="teacher-profile-role">{t(person.roleKey)}</p>
-              <div className="teacher-profile-accent" />
-              <p className="teacher-profile-school">{t('teachers.schoolName')}</p>
+      <div className="teachers-grid">
+        {teachers.map((person) => (
+          <div className="teacher-block" key={person.nameKey}>
+            <div className="teacher-block-header">
+              <School size={22} color="#0c1a9c" />
+              {t('teachers.title')}
             </div>
-          </article>
+            <div className="teacher-block-content">
+              <div className="teacher-block-top">
+                <img src={person.image} alt={t(person.nameKey)} className="teacher-block-photo" />
+                <div className="teacher-block-details">
+                  <h3 className="teacher-block-name">{t(person.nameKey)}</h3>
+                  <p className="teacher-block-role">{t(person.roleKey)}</p>
+                  <div style={{ marginTop: '10px', width: '30px', height: '3px', backgroundColor: '#ffb833' }}></div>
+                </div>
+              </div>
+              <table className="teacher-table">
+                <tbody>
+                  {person.instKey && (
+                    <tr>
+                      <th>{t('teachers.institutionLabel')}</th>
+                      <td>{t(person.instKey)}</td>
+                    </tr>
+                  )}
+                  {person.projectKey && (
+                    <tr>
+                      <th>{t('teachers.projectLabel')}</th>
+                      <td>{t(person.projectKey)}</td>
+                    </tr>
+                  )}
+                  <tr>
+                    <th>{t('teachers.qualificationLabel')}</th>
+                    <td>{t(person.qualKey)}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         ))}
       </div>
     </div>
-
-    <style>{`
-      .teacher-profile-card {
-        overflow: hidden;
-        border: 1px solid #8ab8d0;
-        background: #fff;
-      }
-      .teacher-profile-header {
-        height: 14px;
-        background: #ffefbc;
-        border-bottom: 1px solid #8ab8d0;
-      }
-      .teacher-profile-content {
-        display: flex;
-        min-height: 360px;
-        align-items: center;
-        flex-direction: column;
-        padding: 20px 18px 24px;
-        background: #f7fbff;
-        text-align: center;
-      }
-      .teacher-profile-photo {
-        width: 150px;
-        height: 185px;
-        object-fit: cover;
-        object-position: center top;
-        border: 1px solid #8ab8d0;
-        background: #fff;
-        padding: 3px;
-      }
-      .teacher-profile-name {
-        margin: 16px 0 5px;
-        color: #0c1a9c;
-        font-size: 1.35rem;
-        line-height: 1.35;
-      }
-      .teacher-profile-role {
-        margin: 0;
-        color: #000;
-        font-size: 0.95rem;
-        line-height: 1.4;
-      }
-      .teacher-profile-accent {
-        width: 34px;
-        height: 3px;
-        margin: 12px auto 14px;
-        background: #ffb833;
-      }
-      .teacher-profile-school {
-        max-width: 32ch;
-        margin: 0;
-        color: #333;
-        line-height: 1.6;
-      }
-      @media (max-width: 680px) {
-        .teachers-page-grid {
-          grid-template-columns: 1fr;
-        }
-        .teacher-profile-content {
-          min-height: 0;
-        }
-      }
-    `}</style>
   </div>
   );
 };
