@@ -8,7 +8,6 @@ import {
   ChevronLeft,
   ChevronRight,
   FileText,
-  GraduationCap,
   HelpCircle,
   Home as HomeIcon,
   Image as ImageIcon,
@@ -99,7 +98,7 @@ const Sidebar = ({ right = false, t }) => {
   if (!right) {
     const items = [
       [HomeIcon, t('common.home'), '/'], [HomeIcon, t('nav.about'), '/about-school'], [Users, t('sidebar.academicLeadership'), '/teachers'],
-      [Building2, t('nav.facilities'), '/facilities'], [Users, t('nav.teachers'), '/teachers'], [GraduationCap, t('nav.students'), '/students'],
+      [Building2, t('nav.facilities'), '/facilities'], [Users, t('nav.teachers'), '/teachers'],
       [CalendarDays, t('nav.activities'), '/activities'], [ImageIcon, t('nav.gallery'), '/gallery', true], [Phone, t('nav.contact'), '/contact'],
       [LinkIcon, t('sidebar.importantLinks'), '/contact'], [Building2, t('sidebar.governmentSchemes'), '/about-school'], [FileText, t('sidebar.admission'), '/contact'],
       [Bell, t('sidebar.noticeBoard'), '/#notices'], [HelpCircle, t('sidebar.faq'), '/contact']
