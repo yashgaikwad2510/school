@@ -1,7 +1,7 @@
 import React from 'react';
 import { Outlet, Link, NavLink } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
-import { MapPin, Phone, Mail, Search, Menu, Book } from 'lucide-react';
+import { MapPin, Phone, Mail, Search, Menu, Book, Users } from 'lucide-react';
 
 const SocialIcon = ({ type }) => {
   if (type === 'instagram') {
@@ -35,6 +35,61 @@ const Layout = () => {
   const { language, toggleLanguage } = useLanguage();
   const { t } = useLanguage();
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
+  const [visitorCount, setVisitorCount] = React.useState(() => {
+    try {
+      const cached = window.localStorage.getItem('real-visitor-count');
+      return cached ? parseInt(cached, 10) : null;
+    } catch {
+      return null;
+    }
+  });
+
+  React.useEffect(() => {
+    const NAMESPACE = 'mnp-school-bhutkarwadi-ahilyanagar';
+    const KEY = 'visitors';
+    let isMounted = true;
+
+    try {
+      const hasVisited = window.sessionStorage.getItem('school_visited_session');
+      const endpoint = hasVisited
+        ? `https://api.counterapi.dev/v1/${NAMESPACE}/${KEY}`
+        : `https://api.counterapi.dev/v1/${NAMESPACE}/${KEY}/up`;
+
+      fetch(endpoint)
+        .then((res) => {
+          if (!res.ok) throw new Error('Counter API error: ' + res.status);
+          return res.json();
+        })
+        .then((data) => {
+          if (isMounted && data && typeof data.count === 'number') {
+            setVisitorCount(data.count);
+            window.sessionStorage.setItem('school_visited_session', 'true');
+            window.localStorage.setItem('real-visitor-count', data.count.toString());
+          }
+        })
+        .catch(() => {
+          // Graceful fallback for offline / restricted network: persistent local count
+          if (isMounted) {
+            try {
+              const stored = window.localStorage.getItem('real-visitor-count');
+              const current = stored ? parseInt(stored, 10) : 1;
+              const next = hasVisited ? current : current + 1;
+              setVisitorCount(next);
+              window.localStorage.setItem('real-visitor-count', next.toString());
+              window.sessionStorage.setItem('school_visited_session', 'true');
+            } catch {
+              setVisitorCount(1);
+            }
+          }
+        });
+    } catch {
+      setVisitorCount(1);
+    }
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   return (
     <div className="app-container">
@@ -166,6 +221,18 @@ const Layout = () => {
               </ul>
             </div>
           </div>
+          <div className="footer-visitors">
+            <div className="visitor-counter-box">
+              <span className="visitor-label">
+                <Users size={16} className="visitor-icon" />
+                {t('footer.visitors')}:
+              </span>
+              <span className="visitor-odometer" aria-label={`${t('footer.visitors')} ${visitorCount ?? ''}`}>
+                {visitorCount !== null ? String(visitorCount).padStart(6, '0') : '------'}
+              </span>
+            </div>
+          </div>
+
           <div className="footer-bottom">
             <p>© 2026 {t('school.name')}. {t('school.footerRights')}</p>
           </div>
