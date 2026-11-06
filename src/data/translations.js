@@ -10,7 +10,8 @@ const toLegacyShape = (locale) => ({
     facilities: locale['nav.facilities'],
     activities: locale['nav.activities'],
     gallery: locale['nav.gallery'],
-    contact: locale['nav.contact']
+    contact: locale['nav.contact'],
+    history: locale['nav.history']
   },
   hero: {
     title: locale['home.heroTitle'],
