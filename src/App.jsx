@@ -9,6 +9,7 @@ import Facilities from './pages/Facilities';
 import Activities from './pages/Activities';
 import Gallery from './pages/Gallery';
 import Contact from './pages/Contact';
+import History from './pages/History';
 import { useLanguage } from './context/LanguageContext';
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
         <Route path="activities" element={<Activities />} />
         <Route path="gallery" element={<Gallery />} />
         <Route path="contact" element={<Contact />} />
+        <Route path="history" element={<History />} />
       </Route>
     </Routes>
   );

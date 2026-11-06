@@ -102,6 +102,7 @@ const Layout = () => {
             <NavLink to="/activities" onClick={() => setMobileMenuOpen(false)} className={({isActive}) => isActive ? "nav-link active" : "nav-link"}>{t('nav.activities')}</NavLink>
             <NavLink to="/gallery" onClick={() => setMobileMenuOpen(false)} className={({isActive}) => isActive ? "nav-link active" : "nav-link"}>{t('nav.gallery')}</NavLink>
             <NavLink to="/contact" onClick={() => setMobileMenuOpen(false)} className={({isActive}) => isActive ? "nav-link active" : "nav-link"}>{t('nav.contact')}</NavLink>
+            <NavLink to="/history" onClick={() => setMobileMenuOpen(false)} className={({isActive}) => isActive ? "nav-link active" : "nav-link"}>{t('nav.history')}</NavLink>
             <Search size={18} className="search-icon" style={{ color: 'var(--text-muted)', cursor: 'pointer', marginLeft: '0.5rem' }} />
           </nav>
         </div>
@@ -132,6 +133,7 @@ const Layout = () => {
               <ul className="footer-links">
                 <li><Link to="/">{t('nav.home')}</Link></li>
                 <li><Link to="/about-school">{t('nav.about')}</Link></li>
+                <li><Link to="/history">{t('nav.history')}</Link></li>
 
                 <li><Link to="/contact">{t('nav.contact')}</Link></li>
               </ul>

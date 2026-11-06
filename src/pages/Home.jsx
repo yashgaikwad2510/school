@@ -667,6 +667,7 @@ const Home = () => {
                   { icon: HomeIcon, text: t('common.home'), to: "/" },
                   { icon: Users, text: t('sidebar.academicLeadership'), to: "/teachers" },
                   { icon: Users, text: t('nav.teachers'), to: "/teachers" },
+                  { icon: Book, text: t('nav.history'), to: "/history" },
                   { icon: Calendar, text: t('nav.activities'), to: "/activities" },
                   { icon: ImageIcon, text: t('nav.gallery'), to: "/gallery" },
                   { icon: Phone, text: t('nav.contact'), to: "/contact" },
